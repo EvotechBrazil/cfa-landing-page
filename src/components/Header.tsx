@@ -1,6 +1,7 @@
-import { Phone, Mail, MapPin, Menu, Heart, Car, X } from "lucide-react";
+import { Phone, Mail, MapPin, Menu, Heart, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
+import logo from "@/assets/logo.jpeg";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -19,19 +20,19 @@ const Header = () => {
       {/* Top bar */}
       <div className="bg-card border-b border-border">
         <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between h-10 text-sm">
-            <div className="hidden md:flex items-center gap-6 text-muted-foreground">
-              <a href="tel:+5511999999999" className="flex items-center gap-2 hover:text-primary transition-colors">
-                <Phone className="w-3.5 h-3.5" />
+          <div className="flex items-center justify-between h-9 text-xs">
+            <div className="hidden md:flex items-center gap-5 text-muted-foreground">
+              <a href="tel:+5511999999999" className="flex items-center gap-1.5 hover:text-primary transition-colors">
+                <Phone className="w-3 h-3" />
                 (11) 99999-9999
               </a>
-              <a href="mailto:contato@autoshop.com" className="flex items-center gap-2 hover:text-primary transition-colors">
-                <Mail className="w-3.5 h-3.5" />
+              <a href="mailto:contato@autoshop.com" className="flex items-center gap-1.5 hover:text-primary transition-colors">
+                <Mail className="w-3 h-3" />
                 contato@autoshop.com
               </a>
             </div>
-            <div className="flex items-center gap-2 text-muted-foreground">
-              <MapPin className="w-3.5 h-3.5" />
+            <div className="flex items-center gap-1.5 text-muted-foreground">
+              <MapPin className="w-3 h-3" />
               <span className="hidden sm:inline">São Paulo, SP</span>
               <span className="sm:hidden">SP</span>
             </div>
@@ -42,16 +43,14 @@ const Header = () => {
       {/* Main header */}
       <div className="bg-background/95 backdrop-blur-md border-b border-border">
         <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between h-16 lg:h-20">
+          <div className="flex items-center justify-between h-14 lg:h-16">
             {/* Logo */}
             <a href="#" className="flex items-center gap-2">
-              <div className="w-10 h-10 bg-gradient-to-br from-primary to-orange-dark rounded-lg flex items-center justify-center">
-                <Car className="w-6 h-6 text-primary-foreground" />
-              </div>
-              <div>
-                <span className="text-xl lg:text-2xl font-black tracking-tight text-foreground">AUTO</span>
-                <span className="text-xl lg:text-2xl font-black tracking-tight text-primary">SHOP</span>
-              </div>
+              <img 
+                src={logo} 
+                alt="AutoShop Logo" 
+                className="h-10 lg:h-12 w-auto object-contain"
+              />
             </a>
 
             {/* Desktop Navigation */}
@@ -60,7 +59,7 @@ const Header = () => {
                 <a
                   key={item.label}
                   href={item.href}
-                  className="px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-muted rounded-lg transition-all duration-200"
+                  className="px-3 py-1.5 text-xs font-medium text-muted-foreground hover:text-foreground hover:bg-muted rounded-lg transition-all duration-200"
                 >
                   {item.label}
                 </a>
@@ -68,12 +67,12 @@ const Header = () => {
             </nav>
 
             {/* Actions */}
-            <div className="flex items-center gap-3">
-              <Button variant="ghost" size="icon" className="hidden sm:flex">
-                <Heart className="w-5 h-5" />
+            <div className="flex items-center gap-2">
+              <Button variant="ghost" size="icon" className="hidden sm:flex h-8 w-8">
+                <Heart className="w-4 h-4" />
               </Button>
-              <Button variant="whatsapp" size="sm" className="hidden sm:flex">
-                <Phone className="w-4 h-4" />
+              <Button variant="whatsapp" size="sm" className="hidden sm:flex text-xs h-8 px-3">
+                <Phone className="w-3.5 h-3.5" />
                 WhatsApp
               </Button>
               <Button

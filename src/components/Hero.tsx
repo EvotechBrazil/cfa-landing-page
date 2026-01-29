@@ -17,13 +17,13 @@ const Hero = () => {
       <div className="relative container mx-auto px-4 py-20">
         <div className="max-w-4xl mx-auto text-center">
           {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 border border-primary/30 rounded-full mb-8 animate-fade-in">
-            <span className="w-2 h-2 bg-primary rounded-full animate-pulse"></span>
-            <span className="text-sm font-medium text-primary">Novos veículos disponíveis</span>
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-primary/10 border border-primary/30 rounded-full mb-6 animate-fade-in">
+            <span className="w-1.5 h-1.5 bg-primary rounded-full animate-pulse"></span>
+            <span className="text-xs font-medium text-primary">Novos veículos disponíveis</span>
           </div>
 
           {/* Headline */}
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black leading-tight mb-6 animate-slide-up">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black leading-tight mb-5 animate-slide-up">
             <span className="text-foreground">Encontre o </span>
             <span className="text-gradient">Carro dos</span>
             <br />
@@ -31,24 +31,24 @@ const Hero = () => {
           </h1>
 
           {/* Subtitle */}
-          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 animate-slide-up" style={{ animationDelay: '0.1s' }}>
+          <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto mb-8 animate-slide-up" style={{ animationDelay: '0.1s' }}>
             Os melhores veículos novos, seminovos e usados com as melhores condições de financiamento do mercado.
           </p>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16 animate-slide-up" style={{ animationDelay: '0.2s' }}>
-            <Button variant="hero" size="xl">
-              <Search className="w-5 h-5" />
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-12 animate-slide-up" style={{ animationDelay: '0.2s' }}>
+            <Button variant="hero" size="lg">
+              <Search className="w-4 h-4" />
               Ver Estoque Completo
             </Button>
-            <Button variant="outline" size="xl">
+            <Button variant="outline" size="lg">
               Simular Financiamento
-              <ChevronRight className="w-5 h-5" />
+              <ChevronRight className="w-4 h-4" />
             </Button>
           </div>
 
           {/* Stats */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 animate-slide-up" style={{ animationDelay: '0.3s' }}>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 animate-slide-up" style={{ animationDelay: '0.3s' }}>
             {[
               { value: "500+", label: "Veículos" },
               { value: "15+", label: "Anos no Mercado" },
@@ -56,8 +56,8 @@ const Hero = () => {
               { value: "48h", label: "Aprovação Rápida" },
             ].map((stat) => (
               <div key={stat.label} className="text-center">
-                <div className="text-3xl md:text-4xl font-black text-primary mb-1">{stat.value}</div>
-                <div className="text-sm text-muted-foreground">{stat.label}</div>
+                <div className="text-2xl md:text-3xl font-black text-primary mb-0.5">{stat.value}</div>
+                <div className="text-xs text-muted-foreground">{stat.label}</div>
               </div>
             ))}
           </div>
