@@ -36,31 +36,31 @@ const WhyExerciseSection = () => {
     <section id="porque" className="section-padding bg-card">
       <div className="container-custom mx-auto">
         {/* Header */}
-        <div className="text-center mb-12 md:mb-16">
-          <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
+        <div className="text-center mb-10 md:mb-12">
+          <h2 className="font-display text-2xl md:text-3xl lg:text-4xl font-bold mb-3">
             <span className="text-foreground">Sedentarismo custa caro.</span>
             <br />
             <span className="text-gradient">Energia, saúde e autoestima.</span>
           </h2>
-          <p className="text-muted-foreground text-lg max-w-3xl mx-auto">
+          <p className="text-muted-foreground text-sm md:text-base max-w-2xl mx-auto">
             A rotina pesa, o corpo reclama, a mente cansa. Atividade física não é luxo — é necessidade.
             No CrossFit você evolui em força, condicionamento e saúde de um jeito eficiente, dinâmico e motivador.
           </p>
         </div>
 
         {/* Benefits Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 mb-10">
           {benefits.map((benefit, index) => (
             <div
               key={benefit.title}
-              className="group bg-secondary/50 border border-border/50 rounded-xl p-6 text-center hover-lift hover:border-primary/50 transition-all duration-300"
+              className="group bg-secondary/50 border border-border/50 rounded-xl p-5 text-center hover-lift hover:border-primary/50 transition-all duration-300"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
-              <div className="w-14 h-14 mx-auto mb-4 bg-primary/10 rounded-xl flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                <benefit.icon className="w-7 h-7 text-primary" />
+              <div className="w-12 h-12 mx-auto mb-3 bg-primary/10 rounded-xl flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                <benefit.icon className="w-6 h-6 text-primary" />
               </div>
-              <h3 className="font-display text-lg font-bold text-foreground mb-2">{benefit.title}</h3>
-              <p className="text-sm text-muted-foreground">{benefit.description}</p>
+              <h3 className="font-display text-base font-bold text-foreground mb-1.5">{benefit.title}</h3>
+              <p className="text-xs text-muted-foreground">{benefit.description}</p>
             </div>
           ))}
         </div>
@@ -68,8 +68,8 @@ const WhyExerciseSection = () => {
         {/* CTA */}
         <div className="text-center">
           <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
-            <Button className="cta-button text-base">
-              <MessageCircle className="w-5 h-5" />
+            <Button className="cta-button text-sm">
+              <MessageCircle className="w-4 h-4" />
               Comece Hoje. Agende Sua Aula Experimental
             </Button>
           </a>
