@@ -1,84 +1,58 @@
 import { Button } from "@/components/ui/button";
-import { Target, Users, TrendingUp, MessageCircle } from "lucide-react";
 import logoCFA from "@/assets/logo-cfa.jpeg";
 
-const WHATSAPP_LINK = "https://wa.me/5543991080383?text=Olá! Gostaria de agendar uma aula experimental.";
+const WHATSAPP_LINK = "https://wa.me/5543991080383?text=Olá! Gostaria de conhecer mais sobre a CrossFit Arapongas.";
 
 const AboutSection = () => {
-  const highlights = [
-    {
-      icon: Target,
-      title: "Metodologia CrossFit",
-      description: "Adaptação por nível para todos os alunos",
-    },
-    {
-      icon: Users,
-      title: "Ambiente motivador",
-      description: "Estrutura completa e comunidade acolhedora",
-    },
-    {
-      icon: TrendingUp,
-      title: "Evolução real",
-      description: "Progresso visível treino a treino",
-    },
-  ];
-
   return (
-    <section className="section-padding bg-background">
-      <div className="container-custom mx-auto">
-        <div className="grid lg:grid-cols-2 gap-10 items-center">
-          {/* Content */}
-          <div>
-            <h2 className="font-display text-2xl md:text-3xl lg:text-4xl font-bold mb-5">
-              <span className="text-foreground">Aqui você treina com </span>
-              <span className="text-gradient">propósito.</span>
-              <br />
-              <span className="text-foreground">E com gente que </span>
-              <span className="text-gradient">cuida de você.</span>
-            </h2>
-            
-            <p className="text-muted-foreground text-sm md:text-base mb-6">
-              A CrossFit Arapongas é para pessoas que decidiram parar de adiar resultados.
-              Você treina com orientação, segurança e uma comunidade que vibra com cada evolução.
-            </p>
-
-            {/* Highlights */}
-            <div className="space-y-3 mb-6">
-              {highlights.map((item) => (
-                <div key={item.title} className="flex items-start gap-3">
-                  <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <item.icon className="w-5 h-5 text-primary" />
-                  </div>
-                  <div>
-                    <h3 className="font-display text-base font-bold text-foreground">{item.title}</h3>
-                    <p className="text-sm text-muted-foreground">{item.description}</p>
-                  </div>
-                </div>
-              ))}
+    <section id="sobre" className="py-20 md:py-28 bg-card">
+      <div className="container mx-auto px-4 lg:px-8">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          {/* Image/Logo */}
+          <div className="relative order-2 lg:order-1">
+            <div className="aspect-square max-w-md mx-auto bg-secondary/50 rounded-2xl overflow-hidden border border-border flex items-center justify-center p-8">
+              <img 
+                src={logoCFA} 
+                alt="CrossFit Arapongas" 
+                className="w-full h-auto object-contain"
+              />
             </div>
-
-            {/* CTA */}
-            <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
-              <Button className="cta-button text-sm">
-                <MessageCircle className="w-4 h-4" />
-                Quero Viver Essa Experiência
-              </Button>
-            </a>
+            {/* Decorative element */}
+            <div className="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-primary/5 rounded-full blur-3xl" />
           </div>
 
-          {/* Visual */}
-          <div className="relative">
-            <div className="aspect-square bg-secondary rounded-2xl overflow-hidden border border-border">
-              <div className="w-full h-full bg-gradient-to-br from-primary/20 to-transparent flex items-center justify-center p-8">
-                <img 
-                  src={logoCFA} 
-                  alt="CrossFit Arapongas" 
-                  className="max-w-full max-h-full object-contain"
-                />
-              </div>
+          {/* Content */}
+          <div className="order-1 lg:order-2">
+            <span className="text-primary font-bold uppercase tracking-wider text-sm">Quem Somos</span>
+            
+            <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold mt-4 mb-6 text-foreground">
+              Transformando Vidas Através do Movimento
+            </h2>
+            
+            <div className="space-y-4 text-foreground/80 leading-relaxed">
+              <p>
+                A CrossFit Arapongas nasceu com o propósito de transformar vidas através do treinamento funcional 
+                de alta intensidade. Somos uma das referências em CrossFit na região, unindo pessoas de todas 
+                as idades e níveis de condicionamento.
+              </p>
+              <p>
+                Seguimos a metodologia oficial do CrossFit, que é comprovadamente o melhor programa de 
+                condicionamento físico e força do mundo. Nosso diferencial está na <strong className="text-foreground">simplicidade, 
+                empatia e excelência</strong> de atendimento de toda nossa equipe.
+              </p>
+              <p>
+                Aqui você não treina sozinho. Você faz parte de uma <strong className="text-primary">comunidade</strong> que 
+                celebra cada conquista e te apoia em cada desafio.
+              </p>
             </div>
-            {/* Decorative glow */}
-            <div className="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-primary/10 rounded-full blur-[80px]"></div>
+
+            <div className="mt-8">
+              <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
+                <Button className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold uppercase tracking-wide px-8 py-3 rounded-full">
+                  Quero Conhecer
+                </Button>
+              </a>
+            </div>
           </div>
         </div>
       </div>

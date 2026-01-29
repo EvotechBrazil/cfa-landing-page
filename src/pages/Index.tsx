@@ -1,12 +1,9 @@
 import Header from "@/components/crossfit/Header";
 import HeroSection from "@/components/crossfit/HeroSection";
-import WhyExerciseSection from "@/components/crossfit/WhyExerciseSection";
 import AboutSection from "@/components/crossfit/AboutSection";
-import TourSection from "@/components/crossfit/TourSection";
 import ClassesSection from "@/components/crossfit/ClassesSection";
 import ScheduleSection from "@/components/crossfit/ScheduleSection";
-import WhatsAppCTASection from "@/components/crossfit/WhatsAppCTASection";
-import BlogSection from "@/components/crossfit/BlogSection";
+import CTASection from "@/components/crossfit/CTASection";
 import ContactSection from "@/components/crossfit/ContactSection";
 import Footer from "@/components/crossfit/Footer";
 import WhatsAppFloatingButton from "@/components/crossfit/WhatsAppFloatingButton";
@@ -17,13 +14,10 @@ const Index = () => {
       <Header />
       <main>
         <HeroSection />
-        <WhyExerciseSection />
         <AboutSection />
-        <TourSection />
         <ClassesSection />
         <ScheduleSection />
-        <WhatsAppCTASection />
-        <BlogSection />
+        <CTASection />
         <ContactSection />
       </main>
       <Footer />

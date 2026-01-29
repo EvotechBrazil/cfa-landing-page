@@ -1,81 +1,82 @@
 import { Button } from "@/components/ui/button";
-import { MessageCircle, Clock } from "lucide-react";
+import { Clock } from "lucide-react";
 
-const WHATSAPP_LINK = "https://wa.me/5543991080383?text=Olá! Gostaria de agendar uma aula experimental.";
+const WHATSAPP_LINK = "https://wa.me/5543991080383?text=Olá! Gostaria de saber mais sobre os horários.";
 
 const ScheduleSection = () => {
-  const crossfitTimes = ["06h", "07h", "08h", "11h", "16h", "17h30", "18h30", "19h30"];
-  const cfa4girlsTime = "13h10";
+  const schedule = {
+    crossfit: ["06h", "07h", "08h", "11h", "16h", "17h30", "18h30", "19h30"],
+    cfa4girls: "13h10",
+  };
 
   return (
-    <section id="horarios" className="section-padding bg-card">
-      <div className="container-custom mx-auto">
+    <section id="horarios" className="py-20 md:py-28 bg-card">
+      <div className="container mx-auto px-4 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-10">
-          <h2 className="font-display text-2xl md:text-3xl lg:text-4xl font-bold mb-3">
-            <span className="text-foreground">Horários que cabem na sua </span>
-            <span className="text-gradient">rotina.</span>
-            <br />
-            <span className="text-gradient">Não tem desculpa.</span>
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <span className="text-primary font-bold uppercase tracking-wider text-sm">Horários</span>
+          <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold mt-4 mb-6 text-foreground">
+            Horários que Cabem na Sua Rotina
           </h2>
-          <p className="text-muted-foreground text-sm md:text-base">
-            Escolha o melhor horário e venha viver a experiência.
+          <p className="text-foreground/70">
+            Temos aulas de segunda a sexta em diversos horários para você não ter desculpa.
           </p>
         </div>
 
         {/* Schedule Cards */}
-        <div className="max-w-3xl mx-auto space-y-5 mb-10">
+        <div className="max-w-4xl mx-auto space-y-6">
           {/* CrossFit */}
-          <div className="bg-secondary/50 border border-border rounded-xl p-5 md:p-6">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
-                <Clock className="w-5 h-5 text-primary" />
+          <div className="bg-background border border-border rounded-2xl p-8">
+            <div className="flex items-center gap-4 mb-6">
+              <div className="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center">
+                <Clock className="w-7 h-7 text-primary" />
               </div>
               <div>
-                <h3 className="font-display text-xl font-bold text-foreground">CrossFit</h3>
-                <p className="text-sm text-muted-foreground">Segunda a Sexta</p>
+                <h3 className="font-display text-2xl font-bold text-foreground">CrossFit</h3>
+                <p className="text-foreground/60">Segunda a Sexta</p>
               </div>
             </div>
-            <div className="flex flex-wrap gap-2">
-              {crossfitTimes.map((time) => (
+            
+            <div className="flex flex-wrap gap-3">
+              {schedule.crossfit.map((time) => (
                 <div
                   key={time}
-                  className="px-4 py-2 bg-background border border-border rounded-lg text-center hover:border-primary/50 transition-colors"
+                  className="px-6 py-3 bg-card border border-border rounded-xl text-center hover:border-primary/50 transition-colors"
                 >
-                  <span className="font-display text-sm font-bold text-foreground">{time}</span>
+                  <span className="font-display text-lg font-bold text-foreground">{time}</span>
                 </div>
               ))}
             </div>
           </div>
 
           {/* CFA4Girls */}
-          <div className="bg-secondary/50 border border-primary/30 rounded-xl p-5 md:p-6">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 bg-primary/20 rounded-lg flex items-center justify-center">
-                <Clock className="w-5 h-5 text-primary" />
+          <div className="bg-background border border-primary/30 rounded-2xl p-8">
+            <div className="flex items-center justify-between flex-wrap gap-4 mb-6">
+              <div className="flex items-center gap-4">
+                <div className="w-14 h-14 bg-primary/20 rounded-xl flex items-center justify-center">
+                  <Clock className="w-7 h-7 text-primary" />
+                </div>
+                <div>
+                  <h3 className="font-display text-2xl font-bold text-foreground">CFA4Girls</h3>
+                  <p className="text-foreground/60">Exclusivo Feminino • Segunda a Sexta</p>
+                </div>
               </div>
-              <div>
-                <h3 className="font-display text-xl font-bold text-foreground">CFA4Girls</h3>
-                <p className="text-sm text-muted-foreground">Exclusivo Feminino • Segunda a Sexta</p>
-              </div>
-              <span className="ml-auto bg-primary/10 text-primary text-xs font-bold uppercase px-2 py-0.5 rounded-full">
+              <span className="bg-primary/10 text-primary text-xs font-bold uppercase px-4 py-2 rounded-full">
                 Exclusivo
               </span>
             </div>
-            <div className="flex flex-wrap gap-2">
-              <div className="px-5 py-3 bg-primary/10 border border-primary/30 rounded-lg text-center">
-                <span className="font-display text-lg font-bold text-primary">{cfa4girlsTime}</span>
-              </div>
+            
+            <div className="inline-block px-8 py-4 bg-primary/10 border border-primary/30 rounded-xl">
+              <span className="font-display text-2xl font-bold text-primary">{schedule.cfa4girls}</span>
             </div>
           </div>
         </div>
 
         {/* CTA */}
-        <div className="text-center">
+        <div className="text-center mt-12">
           <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
-            <Button className="cta-button text-sm">
-              <MessageCircle className="w-4 h-4" />
-              Agendar Aula no WhatsApp
+            <Button className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold uppercase tracking-wide px-10 py-4 rounded-full">
+              Escolher Meu Horário
             </Button>
           </a>
         </div>

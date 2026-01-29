@@ -1,88 +1,92 @@
-import { useState } from "react";
-import { Menu, X, Phone } from "lucide-react";
+import { useState, useEffect } from "react";
+import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import logoCFA from "@/assets/logo-cfa.jpeg";
 
-const WHATSAPP_LINK = "https://wa.me/5543991080383?text=Olá! Gostaria de agendar uma aula experimental.";
+const WHATSAPP_LINK = "https://wa.me/5543991080383?text=Olá! Gostaria de agendar uma aula experimental gratuita.";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const navItems = [
     { label: "Início", href: "#inicio" },
-    { label: "Por que CrossFit", href: "#porque" },
-    { label: "Tour", href: "#tour" },
-    { label: "Turmas", href: "#turmas" },
+    { label: "Sobre", href: "#sobre" },
+    { label: "Modalidades", href: "#modalidades" },
     { label: "Horários", href: "#horarios" },
-    { label: "Blog", href: "#blog" },
     { label: "Contato", href: "#contato" },
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-md border-b border-border">
-      <div className="container-custom mx-auto">
-        <div className="flex items-center justify-between h-14 md:h-16 px-4">
+    <header 
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        isScrolled 
+          ? "bg-background/95 backdrop-blur-md shadow-lg" 
+          : "bg-transparent"
+      }`}
+    >
+      <div className="container mx-auto px-4 lg:px-8">
+        <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <a href="#inicio" className="flex items-center">
             <img 
               src={logoCFA} 
               alt="CrossFit Arapongas" 
-              className="h-10 md:h-12 w-auto object-contain"
+              className="h-14 w-auto object-contain"
             />
           </a>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-5">
+          <nav className="hidden lg:flex items-center gap-8">
             {navItems.map((item) => (
               <a
                 key={item.label}
                 href={item.href}
-                className="text-xs font-medium text-muted-foreground hover:text-primary transition-colors"
+                className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors relative group"
               >
                 {item.label}
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
               </a>
             ))}
           </nav>
 
-          {/* CTA + Mobile Menu */}
-          <div className="flex items-center gap-3">
-            {/* Phone - Desktop */}
-            <a
-              href="tel:+5543991080383"
-              className="hidden md:flex items-center gap-1.5 text-xs font-medium text-muted-foreground hover:text-primary transition-colors"
-            >
-              <Phone className="w-3.5 h-3.5" />
-              (43) 9 9108-0383
-            </a>
-
-            {/* CTA Button */}
+          {/* CTA Button */}
+          <div className="hidden lg:block">
             <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
-              <Button className="hidden sm:flex cta-button text-xs px-3 py-1.5 h-auto">
-                Agendar Aula
+              <Button className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold uppercase tracking-wide px-6 py-2 rounded-full">
+                7 Dias Grátis
               </Button>
             </a>
-
-            {/* Mobile Menu Button */}
-            <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="lg:hidden p-2 text-foreground"
-              aria-label="Menu"
-            >
-              {isMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-            </button>
           </div>
+
+          {/* Mobile Menu Button */}
+          <button
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="lg:hidden p-2 text-foreground"
+            aria-label="Menu"
+          >
+            {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
         </div>
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="lg:hidden bg-card border-t border-border animate-slide-up">
-            <nav className="flex flex-col py-3 px-4">
+          <div className="lg:hidden absolute top-full left-0 right-0 bg-background border-t border-border animate-fade-in">
+            <nav className="flex flex-col p-4">
               {navItems.map((item) => (
                 <a
                   key={item.label}
                   href={item.href}
                   onClick={() => setIsMenuOpen(false)}
-                  className="py-2.5 text-sm font-medium text-foreground hover:text-primary transition-colors border-b border-border/50 last:border-0"
+                  className="py-3 text-base font-medium text-foreground hover:text-primary transition-colors border-b border-border/30 last:border-0"
                 >
                   {item.label}
                 </a>
@@ -91,10 +95,10 @@ const Header = () => {
                 href={WHATSAPP_LINK}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-3"
+                className="mt-4"
               >
-                <Button className="w-full cta-button text-sm">
-                  Agendar Aula Experimental
+                <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-bold uppercase tracking-wide rounded-full">
+                  7 Dias Grátis
                 </Button>
               </a>
             </nav>
