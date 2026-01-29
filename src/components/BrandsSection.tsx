@@ -11,32 +11,32 @@ const brands = [
 
 const BrandsSection = () => {
   return (
-    <section id="marcas" className="py-16 bg-gradient-to-b from-background to-card">
+    <section id="marcas" className="py-12 bg-gradient-to-b from-background to-card">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-black text-foreground mb-4">
+        <div className="text-center mb-8">
+          <h2 className="text-2xl md:text-3xl font-black text-foreground mb-3">
             Marcas <span className="text-gradient">Disponíveis</span>
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-sm text-muted-foreground max-w-2xl mx-auto">
             Trabalhamos com as principais montadoras do mercado para oferecer a você as melhores opções.
           </p>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-4">
+        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3">
           {brands.map((brand, index) => (
             <button
               key={brand.name}
-              className="group flex flex-col items-center gap-3 p-6 bg-card border border-border rounded-2xl hover:border-primary/50 hover:bg-muted/50 transition-all duration-300 hover:-translate-y-1 animate-fade-in"
+              className="group flex flex-col items-center gap-2 p-4 bg-card border border-border rounded-xl hover:border-primary/50 hover:bg-muted/50 transition-all duration-300 hover:-translate-y-1 animate-fade-in"
               style={{ animationDelay: `${index * 0.05}s` }}
             >
-              <div className="w-16 h-16 flex items-center justify-center grayscale group-hover:grayscale-0 transition-all duration-300">
+              <div className="w-12 h-12 flex items-center justify-center grayscale group-hover:grayscale-0 transition-all duration-300">
                 <img
                   src={brand.logo}
                   alt={brand.name}
                   className="max-w-full max-h-full object-contain"
                 />
               </div>
-              <span className="text-sm font-medium text-muted-foreground group-hover:text-foreground transition-colors">
+              <span className="text-xs font-medium text-muted-foreground group-hover:text-foreground transition-colors">
                 {brand.name}
               </span>
             </button>

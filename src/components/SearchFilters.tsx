@@ -43,43 +43,43 @@ const SearchFilters = () => {
   };
 
   return (
-    <div className="bg-card border border-border rounded-2xl overflow-hidden">
+    <div className="bg-card border border-border rounded-xl overflow-hidden">
       {/* Header */}
-      <div className="flex items-center justify-between p-4 border-b border-border">
+      <div className="flex items-center justify-between p-3 border-b border-border">
         <div className="flex items-center gap-2">
-          <Filter className="w-5 h-5 text-primary" />
-          <span className="font-semibold text-foreground">Filtros</span>
+          <Filter className="w-4 h-4 text-primary" />
+          <span className="text-sm font-semibold text-foreground">Filtros</span>
         </div>
-        <Button variant="ghost" size="sm" onClick={clearFilters} className="text-muted-foreground">
-          <X className="w-4 h-4 mr-1" />
+        <Button variant="ghost" size="sm" onClick={clearFilters} className="text-xs text-muted-foreground h-7">
+          <X className="w-3.5 h-3.5 mr-1" />
           Limpar
         </Button>
       </div>
 
       {/* Condition */}
-      <div className="filter-section">
-        <h4 className="text-sm font-medium text-foreground mb-3">Estado</h4>
-        <div className="flex flex-wrap gap-2">
+      <div className="p-3 border-b border-border">
+        <h4 className="text-xs font-medium text-foreground mb-2">Estado</h4>
+        <div className="flex flex-wrap gap-1.5">
           {conditions.map((condition) => (
             <button
               key={condition.id}
-              className="flex items-center gap-2 px-3 py-2 bg-muted hover:bg-muted/80 rounded-lg transition-colors"
+              className="flex items-center gap-1.5 px-2.5 py-1.5 bg-muted hover:bg-muted/80 rounded-lg transition-colors"
             >
-              <span className={`w-2 h-2 rounded-full ${condition.color}`}></span>
-              <span className="text-sm text-foreground">{condition.label}</span>
+              <span className={`w-1.5 h-1.5 rounded-full ${condition.color}`}></span>
+              <span className="text-xs text-foreground">{condition.label}</span>
             </button>
           ))}
         </div>
       </div>
 
       {/* Brands */}
-      <div className="filter-section">
-        <h4 className="text-sm font-medium text-foreground mb-3">Marcas</h4>
-        <div className="grid grid-cols-2 gap-2">
+      <div className="p-3 border-b border-border">
+        <h4 className="text-xs font-medium text-foreground mb-2">Marcas</h4>
+        <div className="grid grid-cols-2 gap-1.5">
           {brands.slice(0, isExpanded ? brands.length : 6).map((brand) => (
             <label
               key={brand.id}
-              className={`flex items-center gap-2 p-2 rounded-lg cursor-pointer transition-all ${
+              className={`flex items-center gap-1.5 p-1.5 rounded-lg cursor-pointer transition-all ${
                 selectedBrands.includes(brand.id)
                   ? "bg-primary/10 border border-primary/30"
                   : "bg-muted hover:bg-muted/80"
@@ -88,9 +88,9 @@ const SearchFilters = () => {
               <Checkbox
                 checked={selectedBrands.includes(brand.id)}
                 onCheckedChange={() => toggleBrand(brand.id)}
-                className="border-muted-foreground data-[state=checked]:bg-primary data-[state=checked]:border-primary"
+                className="h-3.5 w-3.5 border-muted-foreground data-[state=checked]:bg-primary data-[state=checked]:border-primary"
               />
-              <span className="text-sm text-foreground">{brand.name}</span>
+              <span className="text-xs text-foreground">{brand.name}</span>
             </label>
           ))}
         </div>
@@ -99,53 +99,53 @@ const SearchFilters = () => {
             variant="ghost"
             size="sm"
             onClick={() => setIsExpanded(!isExpanded)}
-            className="w-full mt-2 text-primary"
+            className="w-full mt-1.5 text-primary text-xs h-7"
           >
             {isExpanded ? "Ver menos" : "Ver mais"}
-            <ChevronDown className={`w-4 h-4 transition-transform ${isExpanded ? "rotate-180" : ""}`} />
+            <ChevronDown className={`w-3.5 h-3.5 transition-transform ${isExpanded ? "rotate-180" : ""}`} />
           </Button>
         )}
       </div>
 
       {/* Price Range */}
-      <div className="filter-section">
-        <h4 className="text-sm font-medium text-foreground mb-3">Valor</h4>
+      <div className="p-3 border-b border-border">
+        <h4 className="text-xs font-medium text-foreground mb-2">Valor</h4>
         <Slider
           value={priceRange}
           onValueChange={setPriceRange}
           max={300000}
           min={10000}
           step={5000}
-          className="mb-3"
+          className="mb-2"
         />
-        <div className="flex justify-between text-sm text-muted-foreground">
+        <div className="flex justify-between text-[10px] text-muted-foreground">
           <span>R$ {priceRange[0].toLocaleString("pt-BR")}</span>
           <span>R$ {priceRange[1].toLocaleString("pt-BR")}</span>
         </div>
       </div>
 
       {/* Mileage Range */}
-      <div className="filter-section">
-        <h4 className="text-sm font-medium text-foreground mb-3">Quilometragem</h4>
+      <div className="p-3 border-b border-border">
+        <h4 className="text-xs font-medium text-foreground mb-2">Quilometragem</h4>
         <Slider
           value={mileageRange}
           onValueChange={setMileageRange}
           max={200000}
           min={0}
           step={5000}
-          className="mb-3"
+          className="mb-2"
         />
-        <div className="flex justify-between text-sm text-muted-foreground">
+        <div className="flex justify-between text-[10px] text-muted-foreground">
           <span>{mileageRange[0].toLocaleString("pt-BR")} km</span>
           <span>{mileageRange[1].toLocaleString("pt-BR")} km</span>
         </div>
       </div>
 
       {/* Transmission */}
-      <div className="filter-section">
-        <h4 className="text-sm font-medium text-foreground mb-3">Câmbio</h4>
+      <div className="p-3 border-b border-border">
+        <h4 className="text-xs font-medium text-foreground mb-2">Câmbio</h4>
         <Select>
-          <SelectTrigger className="bg-muted border-border">
+          <SelectTrigger className="bg-muted border-border text-xs h-8">
             <SelectValue placeholder="Todos os câmbios" />
           </SelectTrigger>
           <SelectContent>
@@ -158,10 +158,10 @@ const SearchFilters = () => {
       </div>
 
       {/* Fuel */}
-      <div className="filter-section border-b-0">
-        <h4 className="text-sm font-medium text-foreground mb-3">Combustível</h4>
+      <div className="p-3 border-b border-border">
+        <h4 className="text-xs font-medium text-foreground mb-2">Combustível</h4>
         <Select>
-          <SelectTrigger className="bg-muted border-border">
+          <SelectTrigger className="bg-muted border-border text-xs h-8">
             <SelectValue placeholder="Todos os combustíveis" />
           </SelectTrigger>
           <SelectContent>
@@ -175,8 +175,8 @@ const SearchFilters = () => {
       </div>
 
       {/* Apply Button */}
-      <div className="p-4">
-        <Button variant="hero" className="w-full">
+      <div className="p-3">
+        <Button variant="hero" className="w-full text-xs h-9">
           Buscar Veículos
         </Button>
       </div>

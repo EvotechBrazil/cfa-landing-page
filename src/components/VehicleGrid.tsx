@@ -120,15 +120,15 @@ const VehicleGrid = () => {
   return (
     <div className="flex-1">
       {/* Toolbar */}
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 mb-5">
         <div>
-          <h2 className="text-2xl font-bold text-foreground">Veículos Disponíveis</h2>
-          <p className="text-muted-foreground">{vehicles.length} veículos encontrados</p>
+          <h2 className="text-xl font-bold text-foreground">Veículos Disponíveis</h2>
+          <p className="text-xs text-muted-foreground">{vehicles.length} veículos encontrados</p>
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2">
           <Select defaultValue="recent">
-            <SelectTrigger className="w-[180px] bg-card border-border">
+            <SelectTrigger className="w-[160px] bg-card border-border text-xs h-8">
               <SelectValue placeholder="Ordenar por" />
             </SelectTrigger>
             <SelectContent>
@@ -139,19 +139,19 @@ const VehicleGrid = () => {
             </SelectContent>
           </Select>
 
-          <div className="hidden sm:flex items-center gap-1 bg-card border border-border rounded-lg p-1">
-            <Button variant="ghost" size="icon" className="h-8 w-8 bg-primary text-primary-foreground">
-              <Grid3X3 className="w-4 h-4" />
+          <div className="hidden sm:flex items-center gap-1 bg-card border border-border rounded-lg p-0.5">
+            <Button variant="ghost" size="icon" className="h-7 w-7 bg-primary text-primary-foreground">
+              <Grid3X3 className="w-3.5 h-3.5" />
             </Button>
-            <Button variant="ghost" size="icon" className="h-8 w-8">
-              <List className="w-4 h-4" />
+            <Button variant="ghost" size="icon" className="h-7 w-7">
+              <List className="w-3.5 h-3.5" />
             </Button>
           </div>
         </div>
       </div>
 
       {/* Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
         {vehicles.map((vehicle, index) => (
           <div
             key={vehicle.id}
@@ -164,8 +164,8 @@ const VehicleGrid = () => {
       </div>
 
       {/* Load more */}
-      <div className="flex justify-center mt-10">
-        <Button variant="outline" size="lg">
+      <div className="flex justify-center mt-8">
+        <Button variant="outline" size="default" className="text-sm">
           Carregar mais veículos
         </Button>
       </div>
