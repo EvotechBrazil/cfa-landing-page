@@ -30,13 +30,18 @@ const ContactSection = () => {
           </a>
 
           {/* Location */}
-          <div className="bg-card border border-border rounded-2xl p-8 text-center">
-            <div className="w-16 h-16 mx-auto bg-primary/10 rounded-full flex items-center justify-center mb-6">
+          <a 
+            href="https://www.google.com/maps/search/?api=1&query=Av+Sanhaço+Rei+140+Arapongas+PR"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group bg-card border border-border rounded-2xl p-8 text-center hover:border-primary/50 transition-all duration-300"
+          >
+            <div className="w-16 h-16 mx-auto bg-primary/10 rounded-full flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
               <MapPin className="w-7 h-7 text-primary" />
             </div>
             <h3 className="font-display text-xl font-bold text-foreground mb-2">Localização</h3>
-            <p className="text-foreground/70">Arapongas - PR</p>
-          </div>
+            <p className="text-foreground/70">Av Sanhaço Rei, 140<br />Arapongas - PR</p>
+          </a>
 
           {/* Hours */}
           <div className="bg-card border border-border rounded-2xl p-8 text-center">
@@ -51,13 +56,17 @@ const ContactSection = () => {
         {/* Social Links */}
         <div className="flex items-center justify-center gap-4 mt-12">
           <a
-            href="#"
+            href="https://www.instagram.com/crossfitarapongas"
+            target="_blank"
+            rel="noopener noreferrer"
             className="w-14 h-14 bg-card border border-border rounded-full flex items-center justify-center hover:border-primary hover:bg-primary/10 transition-all duration-300"
           >
             <Instagram className="w-6 h-6 text-foreground" />
           </a>
           <a
-            href="#"
+            href="https://www.facebook.com/crossfitarapongas/?locale=pt_BR"
+            target="_blank"
+            rel="noopener noreferrer"
             className="w-14 h-14 bg-card border border-border rounded-full flex items-center justify-center hover:border-primary hover:bg-primary/10 transition-all duration-300"
           >
             <Facebook className="w-6 h-6 text-foreground" />
