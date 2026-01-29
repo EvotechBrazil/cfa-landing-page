@@ -47,9 +47,9 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        graphite: {
-          DEFAULT: "hsl(var(--graphite))",
-          light: "hsl(var(--graphite-light))",
+        charcoal: {
+          DEFAULT: "hsl(var(--charcoal))",
+          light: "hsl(var(--charcoal-light))",
         },
         orange: {
           glow: "hsl(var(--orange-glow))",
@@ -73,6 +73,7 @@ export default {
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
+        display: ['Oswald', 'sans-serif'],
       },
       boxShadow: {
         'card': 'var(--shadow-card)',
@@ -95,12 +96,17 @@ export default {
           to: { height: "0" },
         },
         "pulse-glow": {
-          "0%, 100%": { boxShadow: "0 0 20px hsl(24 95% 53% / 0.3)" },
-          "50%": { boxShadow: "0 0 40px hsl(24 95% 53% / 0.5)" },
+          "0%, 100%": { boxShadow: "0 0 20px hsl(24 100% 50% / 0.4)" },
+          "50%": { boxShadow: "0 0 40px hsl(24 100% 50% / 0.6)" },
         },
         "float": {
           "0%, 100%": { transform: "translateY(0)" },
           "50%": { transform: "translateY(-10px)" },
+        },
+        "shake": {
+          "0%, 100%": { transform: "translateX(0)" },
+          "25%": { transform: "translateX(-5px)" },
+          "75%": { transform: "translateX(5px)" },
         },
       },
       animation: {
@@ -108,6 +114,7 @@ export default {
         "accordion-up": "accordion-up 0.2s ease-out",
         "pulse-glow": "pulse-glow 2s ease-in-out infinite",
         "float": "float 3s ease-in-out infinite",
+        "shake": "shake 0.5s ease-in-out",
       },
     },
   },
