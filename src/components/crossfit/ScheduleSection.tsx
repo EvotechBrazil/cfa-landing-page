@@ -74,9 +74,9 @@ const ScheduleSection = () => {
 
         {/* CTA */}
         <div className="text-center mt-12">
-          <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
+          <a href="https://agendamento.nextfit.com.br/91c65473-3162-4da5-a3c3-d1e5768d7a07" target="_blank" rel="noopener noreferrer">
             <Button className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold uppercase tracking-wide px-10 py-4 rounded-full">
-              Escolher Meu Horário
+              Agendar Meu Horário
             </Button>
           </a>
         </div>
