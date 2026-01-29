@@ -1,37 +1,33 @@
-import Header from "@/components/Header";
-import Hero from "@/components/Hero";
-import SearchFilters from "@/components/SearchFilters";
-import VehicleGrid from "@/components/VehicleGrid";
-import BrandsSection from "@/components/BrandsSection";
-import Footer from "@/components/Footer";
-import WhatsAppButton from "@/components/WhatsAppButton";
+import Header from "@/components/crossfit/Header";
+import HeroSection from "@/components/crossfit/HeroSection";
+import WhyExerciseSection from "@/components/crossfit/WhyExerciseSection";
+import AboutSection from "@/components/crossfit/AboutSection";
+import TourSection from "@/components/crossfit/TourSection";
+import ClassesSection from "@/components/crossfit/ClassesSection";
+import ScheduleSection from "@/components/crossfit/ScheduleSection";
+import WhatsAppCTASection from "@/components/crossfit/WhatsAppCTASection";
+import BlogSection from "@/components/crossfit/BlogSection";
+import ContactSection from "@/components/crossfit/ContactSection";
+import Footer from "@/components/crossfit/Footer";
+import WhatsAppFloatingButton from "@/components/crossfit/WhatsAppFloatingButton";
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <Header />
-      <Hero />
-      
-      {/* Main Content */}
-      <section id="estoque" className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-col lg:flex-row gap-8">
-            {/* Filters Sidebar */}
-            <aside className="w-full lg:w-80 shrink-0">
-              <div className="lg:sticky lg:top-32">
-                <SearchFilters />
-              </div>
-            </aside>
-
-            {/* Vehicle Grid */}
-            <VehicleGrid />
-          </div>
-        </div>
-      </section>
-
-      <BrandsSection />
+      <main>
+        <HeroSection />
+        <WhyExerciseSection />
+        <AboutSection />
+        <TourSection />
+        <ClassesSection />
+        <ScheduleSection />
+        <WhatsAppCTASection />
+        <BlogSection />
+        <ContactSection />
+      </main>
       <Footer />
-      <WhatsAppButton />
+      <WhatsAppFloatingButton />
     </div>
   );
 };
