@@ -11,7 +11,7 @@ const HeroSection = () => {
   ];
 
   return (
-    <section id="inicio" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+    <section id="inicio" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-hero">
         <div 
@@ -23,55 +23,55 @@ const HeroSection = () => {
       </div>
 
       {/* Decorative glows */}
-      <div className="absolute top-1/4 left-0 w-96 h-96 bg-primary/20 rounded-full blur-[150px]"></div>
-      <div className="absolute bottom-1/4 right-0 w-80 h-80 bg-primary/10 rounded-full blur-[120px]"></div>
+      <div className="absolute top-1/4 left-0 w-80 h-80 bg-primary/20 rounded-full blur-[120px]"></div>
+      <div className="absolute bottom-1/4 right-0 w-64 h-64 bg-primary/10 rounded-full blur-[100px]"></div>
 
       {/* Content */}
-      <div className="relative container-custom mx-auto px-4 py-20">
-        <div className="max-w-4xl mx-auto text-center">
+      <div className="relative container-custom mx-auto px-4 py-16">
+        <div className="max-w-3xl mx-auto text-center">
           {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 border border-primary/30 rounded-full mb-8 animate-fade-in">
-            <span className="w-2 h-2 bg-primary rounded-full animate-pulse"></span>
-            <span className="text-sm font-semibold text-primary uppercase tracking-wider">CrossFit Arapongas</span>
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-primary/10 border border-primary/30 rounded-full mb-6 animate-fade-in">
+            <span className="w-1.5 h-1.5 bg-primary rounded-full animate-pulse"></span>
+            <span className="text-xs font-semibold text-primary uppercase tracking-wider">CrossFit Arapongas</span>
           </div>
 
           {/* Headline */}
-          <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6 animate-slide-up text-shadow">
+          <h1 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-5 animate-slide-up text-shadow">
             <span className="text-foreground">Seu corpo é capaz de </span>
             <span className="text-gradient">muito mais.</span>
             <br />
-            <span className="text-foreground text-3xl sm:text-4xl md:text-5xl lg:text-6xl">A mudança começa no </span>
-            <span className="text-gradient text-3xl sm:text-4xl md:text-5xl lg:text-6xl">primeiro treino.</span>
+            <span className="text-foreground text-2xl sm:text-3xl md:text-4xl lg:text-5xl">A mudança começa no </span>
+            <span className="text-gradient text-2xl sm:text-3xl md:text-4xl lg:text-5xl">primeiro treino.</span>
           </h1>
 
           {/* Subheadline */}
-          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-8 animate-slide-up" style={{ animationDelay: '0.1s' }}>
+          <p className="text-base md:text-lg text-muted-foreground max-w-xl mx-auto mb-6 animate-slide-up" style={{ animationDelay: '0.1s' }}>
             Treinos intensos, acompanhamento profissional e uma comunidade que te puxa pra cima. 
             Aqui você não vem só treinar — você vem se transformar.
           </p>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10 animate-slide-up" style={{ animationDelay: '0.2s' }}>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-8 animate-slide-up" style={{ animationDelay: '0.2s' }}>
             <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
-              <Button className="cta-button text-base sm:text-lg w-full sm:w-auto">
-                <MessageCircle className="w-5 h-5" />
+              <Button className="cta-button text-sm sm:text-base w-full sm:w-auto px-6 py-3">
+                <MessageCircle className="w-4 h-4" />
                 Agendar Aula Experimental
               </Button>
             </a>
             <a href="#tour">
-              <Button className="cta-button-outline text-base sm:text-lg w-full sm:w-auto">
-                <MapPin className="w-5 h-5" />
+              <Button className="cta-button-outline text-sm sm:text-base w-full sm:w-auto px-6 py-3">
+                <MapPin className="w-4 h-4" />
                 Quero Conhecer o Box
               </Button>
             </a>
           </div>
 
           {/* Highlights */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 animate-slide-up" style={{ animationDelay: '0.3s' }}>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6 animate-slide-up" style={{ animationDelay: '0.3s' }}>
             {highlights.map((item) => (
-              <div key={item} className="flex items-center gap-2">
-                <CheckCircle className="w-5 h-5 text-primary flex-shrink-0" />
-                <span className="text-sm md:text-base text-muted-foreground">{item}</span>
+              <div key={item} className="flex items-center gap-1.5">
+                <CheckCircle className="w-4 h-4 text-primary flex-shrink-0" />
+                <span className="text-xs md:text-sm text-muted-foreground">{item}</span>
               </div>
             ))}
           </div>
@@ -79,9 +79,9 @@ const HeroSection = () => {
       </div>
 
       {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-float">
-        <div className="w-6 h-10 border-2 border-muted-foreground/30 rounded-full flex items-start justify-center p-2">
-          <div className="w-1.5 h-3 bg-primary rounded-full animate-bounce"></div>
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 animate-float">
+        <div className="w-5 h-8 border-2 border-muted-foreground/30 rounded-full flex items-start justify-center p-1.5">
+          <div className="w-1 h-2 bg-primary rounded-full animate-bounce"></div>
         </div>
       </div>
     </section>
