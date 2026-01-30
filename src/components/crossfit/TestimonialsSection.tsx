@@ -55,7 +55,7 @@ const TestimonialsSection = () => {
   const currentTestimonial = testimonials[currentIndex];
 
   return (
-    <section className="py-16 bg-charcoal">
+    <section className="py-16 bg-secondary">
       <div className="container mx-auto px-4">
         {/* Header */}
         <div className="text-center mb-12">
@@ -72,7 +72,7 @@ const TestimonialsSection = () => {
 
         {/* Carousel Container */}
         <div className="max-w-5xl mx-auto">
-          <div className="bg-charcoal-light rounded-2xl p-6 md:p-8 relative">
+          <div className="bg-card border border-border rounded-2xl p-6 md:p-8 relative shadow-card">
             <div className="grid md:grid-cols-2 gap-8 items-center">
               {/* Before/After Images */}
               <div className="relative">
