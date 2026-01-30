@@ -6,24 +6,24 @@
 
 @layer base {
   :root {
-    /* CrossFit Arapongas - Black, Orange, Charcoal */
-    --background: 0 0% 5%;
-    --foreground: 0 0% 98%;
+    /* CrossFit Arapongas - Lighter theme for dark logo */
+    --background: 0 0% 95%;
+    --foreground: 0 0% 10%;
 
-    --card: 0 0% 9%;
-    --card-foreground: 0 0% 98%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 10%;
 
-    --popover: 0 0% 9%;
-    --popover-foreground: 0 0% 98%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 10%;
 
     --primary: 24 100% 50%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 0 0% 15%;
-    --secondary-foreground: 0 0% 98%;
+    --secondary: 0 0% 90%;
+    --secondary-foreground: 0 0% 15%;
 
-    --muted: 0 0% 18%;
-    --muted-foreground: 0 0% 65%;
+    --muted: 0 0% 85%;
+    --muted-foreground: 0 0% 40%;
 
     --accent: 24 100% 50%;
     --accent-foreground: 0 0% 100%;
@@ -31,40 +31,40 @@
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 0 0% 20%;
-    --input: 0 0% 20%;
+    --border: 0 0% 85%;
+    --input: 0 0% 85%;
     --ring: 24 100% 50%;
 
     --radius: 0.5rem;
 
     /* Custom tokens */
-    --charcoal: 0 0% 12%;
-    --charcoal-light: 0 0% 22%;
+    --charcoal: 0 0% 15%;
+    --charcoal-light: 0 0% 25%;
     --orange-glow: 24 100% 55%;
     --orange-dark: 24 90% 40%;
 
     /* Gradients */
-    --gradient-hero: linear-gradient(135deg, hsl(0 0% 3%) 0%, hsl(0 0% 8%) 100%);
-    --gradient-card: linear-gradient(180deg, hsl(0 0% 12%) 0%, hsl(0 0% 7%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(0 0% 98%) 0%, hsl(0 0% 92%) 100%);
+    --gradient-card: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(0 0% 96%) 100%);
     --gradient-orange: linear-gradient(135deg, hsl(24 100% 50%) 0%, hsl(24 90% 40%) 100%);
-    --gradient-overlay: linear-gradient(180deg, transparent 0%, hsl(0 0% 3% / 0.95) 100%);
+    --gradient-overlay: linear-gradient(180deg, transparent 0%, hsl(0 0% 98% / 0.95) 100%);
 
     /* Shadows */
-    --shadow-card: 0 4px 24px -4px hsl(0 0% 0% / 0.6);
-    --shadow-glow: 0 0 60px hsl(24 100% 50% / 0.3);
-    --shadow-button: 0 4px 20px hsl(24 100% 50% / 0.4);
+    --shadow-card: 0 4px 24px -4px hsl(0 0% 0% / 0.1);
+    --shadow-glow: 0 0 60px hsl(24 100% 50% / 0.2);
+    --shadow-button: 0 4px 20px hsl(24 100% 50% / 0.3);
 
     /* Animations */
     --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
     --transition-smooth: 300ms cubic-bezier(0.4, 0, 0.2, 1);
 
-    --sidebar-background: 0 0% 8%;
-    --sidebar-foreground: 0 0% 98%;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 0 0% 10%;
     --sidebar-primary: 24 100% 50%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 0 0% 15%;
-    --sidebar-accent-foreground: 0 0% 98%;
-    --sidebar-border: 0 0% 20%;
+    --sidebar-accent: 0 0% 92%;
+    --sidebar-accent-foreground: 0 0% 15%;
+    --sidebar-border: 0 0% 85%;
     --sidebar-ring: 24 100% 50%;
   }
 
