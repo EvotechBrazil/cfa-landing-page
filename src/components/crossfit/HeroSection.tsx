@@ -10,7 +10,7 @@ const HeroSection = () => {
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
       {/* Background with overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-background z-10" />
+      <div className="absolute inset-0 bg-gradient-to-b from-background via-background to-secondary z-10" />
       
       {/* Animated background pattern */}
       <div className="absolute inset-0 opacity-30">
