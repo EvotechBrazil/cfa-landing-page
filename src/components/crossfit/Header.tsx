@@ -40,7 +40,7 @@ const Header = () => {
             <img 
               src={logoCFA} 
               alt="CrossFit Arapongas" 
-              className="h-14 w-auto object-contain"
+              className="h-14 w-auto object-contain mix-blend-multiply"
             />
           </a>
 
