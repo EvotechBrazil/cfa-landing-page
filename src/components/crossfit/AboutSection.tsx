@@ -10,15 +10,28 @@ const AboutSection = () => {
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Image/Logo */}
           <div className="relative order-2 lg:order-1">
-            <div className="aspect-square max-w-md mx-auto bg-secondary/50 rounded-2xl overflow-hidden border border-border flex items-center justify-center p-8">
-              <img 
-                src={logoCFA} 
-                alt="CrossFit Arapongas" 
-                className="w-full h-auto object-contain"
-              />
+            <div className="relative aspect-square max-w-sm mx-auto">
+              {/* Outer glow ring */}
+              <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary/30 via-primary/10 to-transparent blur-xl" />
+              
+              {/* Logo container */}
+              <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-primary/40 shadow-2xl shadow-primary/30 bg-gradient-to-br from-background via-card to-background p-4">
+                <div className="w-full h-full rounded-full overflow-hidden bg-background/90 flex items-center justify-center p-6">
+                  <img 
+                    src={logoCFA} 
+                    alt="CrossFit Arapongas" 
+                    className="w-full h-full object-cover rounded-full"
+                  />
+                </div>
+              </div>
+              
+              {/* Decorative accent */}
+              <div className="absolute -top-2 -right-2 w-8 h-8 bg-primary rounded-full shadow-lg shadow-primary/50" />
+              <div className="absolute -bottom-2 -left-2 w-6 h-6 bg-primary/70 rounded-full shadow-lg shadow-primary/30" />
             </div>
-            {/* Decorative element */}
-            <div className="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-primary/5 rounded-full blur-3xl" />
+            
+            {/* Background glow */}
+            <div className="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150%] h-[150%] bg-primary/5 rounded-full blur-3xl" />
           </div>
 
           {/* Content */}
