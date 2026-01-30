@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import logoCFA from "@/assets/logo-cfa.jpeg";
+import logoCFA from "@/assets/logo-cfa.png";
 
 const WHATSAPP_LINK = "https://wa.me/5543991080383?text=Olá! Gostaria de agendar uma aula experimental gratuita.";
 
@@ -37,13 +37,11 @@ const Header = () => {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <a href="#inicio" className="flex items-center">
-            <div className="h-12 w-12 rounded-full overflow-hidden border-2 border-primary/50 shadow-lg shadow-primary/20 bg-background/80 backdrop-blur-sm p-1">
-              <img 
-                src={logoCFA} 
-                alt="CrossFit Arapongas" 
-                className="h-full w-full object-cover rounded-full"
-              />
-            </div>
+            <img 
+              src={logoCFA} 
+              alt="CrossFit Arapongas" 
+              className="h-14 w-auto object-contain"
+            />
           </a>
 
           {/* Desktop Navigation */}

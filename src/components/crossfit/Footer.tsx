@@ -1,4 +1,4 @@
-import logoCFA from "@/assets/logo-cfa.jpeg";
+import logoCFA from "@/assets/logo-cfa.png";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -9,13 +9,11 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           {/* Logo */}
           <div className="flex items-center">
-            <div className="h-10 w-10 rounded-full overflow-hidden border-2 border-primary/40 shadow-md shadow-primary/20 bg-background/80 p-0.5">
-              <img 
-                src={logoCFA} 
-                alt="CrossFit Arapongas" 
-                className="h-full w-full object-cover rounded-full"
-              />
-            </div>
+            <img 
+              src={logoCFA} 
+              alt="CrossFit Arapongas" 
+              className="h-12 w-auto object-contain"
+            />
           </div>
 
           {/* Copyright */}
