@@ -1,16 +1,16 @@
 import { useState } from "react";
 import { ChevronLeft, ChevronRight, Quote, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import beforeAfter1 from "@/assets/before-after-1.png";
 
 const testimonials = [
   {
     id: 1,
-    name: "Maria Silva",
-    age: 32,
-    text: "Em 6 meses de treino no CFA, perdi 15kg e ganhei muito mais disposição. A equipe é incrível e o ambiente é motivador!",
+    name: "Aluno CFA",
+    age: null,
+    text: "Transformação real através do CrossFit. Dedicação, consistência e o apoio da equipe CFA fazem toda a diferença!",
     rating: 5,
-    beforeImage: "/placeholder.svg",
-    afterImage: "/placeholder.svg",
+    compositeImage: beforeAfter1,
   },
   {
     id: 2,
@@ -18,8 +18,7 @@ const testimonials = [
     age: 28,
     text: "Nunca imaginei que conseguiria resultados tão rápidos. O CrossFit mudou minha vida e minha autoestima.",
     rating: 5,
-    beforeImage: "/placeholder.svg",
-    afterImage: "/placeholder.svg",
+    compositeImage: null,
   },
   {
     id: 3,
@@ -27,8 +26,7 @@ const testimonials = [
     age: 45,
     text: "Comecei com muitas limitações e hoje faço exercícios que achava impossíveis. A evolução é real!",
     rating: 5,
-    beforeImage: "/placeholder.svg",
-    afterImage: "/placeholder.svg",
+    compositeImage: null,
   },
   {
     id: 4,
@@ -36,8 +34,7 @@ const testimonials = [
     age: 35,
     text: "O suporte dos coaches é fantástico. Eles adaptam os treinos para cada pessoa e isso faz toda a diferença.",
     rating: 5,
-    beforeImage: "/placeholder.svg",
-    afterImage: "/placeholder.svg",
+    compositeImage: null,
   },
 ];
 
@@ -76,35 +73,37 @@ const TestimonialsSection = () => {
             <div className="grid md:grid-cols-2 gap-8 items-center">
               {/* Before/After Images */}
               <div className="relative">
-                <div className="grid grid-cols-2 gap-3">
-                  {/* Before */}
-                  <div className="relative">
-                    <div className="aspect-[3/4] bg-muted rounded-xl overflow-hidden">
-                      <img
-                        src={currentTestimonial.beforeImage}
-                        alt={`${currentTestimonial.name} - Antes`}
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                    <span className="absolute bottom-2 left-2 bg-background/90 text-foreground text-[10px] font-bold px-2 py-1 rounded">
-                      ANTES
-                    </span>
+                {currentTestimonial.compositeImage ? (
+                  <div className="aspect-[4/3] bg-muted rounded-xl overflow-hidden">
+                    <img
+                      src={currentTestimonial.compositeImage}
+                      alt={`${currentTestimonial.name} - Transformação`}
+                      className="w-full h-full object-cover"
+                    />
                   </div>
-                  
-                  {/* After */}
-                  <div className="relative">
-                    <div className="aspect-[3/4] bg-muted rounded-xl overflow-hidden border-2 border-primary">
-                      <img
-                        src={currentTestimonial.afterImage}
-                        alt={`${currentTestimonial.name} - Depois`}
-                        className="w-full h-full object-cover"
-                      />
+                ) : (
+                  <div className="grid grid-cols-2 gap-3">
+                    {/* Before */}
+                    <div className="relative">
+                      <div className="aspect-[3/4] bg-muted rounded-xl overflow-hidden flex items-center justify-center">
+                        <span className="text-muted-foreground text-xs">Foto antes</span>
+                      </div>
+                      <span className="absolute bottom-2 left-2 bg-background/90 text-foreground text-[10px] font-bold px-2 py-1 rounded">
+                        ANTES
+                      </span>
                     </div>
-                    <span className="absolute bottom-2 left-2 bg-primary text-primary-foreground text-[10px] font-bold px-2 py-1 rounded">
-                      DEPOIS
-                    </span>
+                    
+                    {/* After */}
+                    <div className="relative">
+                      <div className="aspect-[3/4] bg-muted rounded-xl overflow-hidden border-2 border-primary flex items-center justify-center">
+                        <span className="text-muted-foreground text-xs">Foto depois</span>
+                      </div>
+                      <span className="absolute bottom-2 left-2 bg-primary text-primary-foreground text-[10px] font-bold px-2 py-1 rounded">
+                        DEPOIS
+                      </span>
+                    </div>
                   </div>
-                </div>
+                )}
               </div>
 
               {/* Testimonial Content */}
@@ -127,9 +126,11 @@ const TestimonialsSection = () => {
                   <p className="text-foreground font-bold text-sm">
                     {currentTestimonial.name}
                   </p>
-                  <p className="text-muted-foreground text-xs">
-                    {currentTestimonial.age} anos
-                  </p>
+                  {currentTestimonial.age && (
+                    <p className="text-muted-foreground text-xs">
+                      {currentTestimonial.age} anos
+                    </p>
+                  )}
                 </div>
               </div>
             </div>
