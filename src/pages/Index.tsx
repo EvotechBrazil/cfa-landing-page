@@ -2,6 +2,7 @@ import Header from "@/components/crossfit/Header";
 import HeroSection from "@/components/crossfit/HeroSection";
 import AboutSection from "@/components/crossfit/AboutSection";
 import ClassesSection from "@/components/crossfit/ClassesSection";
+import PlansSection from "@/components/crossfit/PlansSection";
 import TourSection from "@/components/crossfit/TourSection";
 import ScheduleSection from "@/components/crossfit/ScheduleSection";
 import TestimonialsSection from "@/components/crossfit/TestimonialsSection";
@@ -18,6 +19,7 @@ const Index = () => {
         <HeroSection />
         <AboutSection />
         <ClassesSection />
+        <PlansSection />
         <TourSection />
         <ScheduleSection />
         <TestimonialsSection />
