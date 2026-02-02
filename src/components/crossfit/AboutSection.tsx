@@ -1,28 +1,24 @@
 import { Button } from "@/components/ui/button";
-import logoCFA from "@/assets/logo-cfa.png";
+import lionWatermark from "@/assets/lion-watermark.png";
 
 const WHATSAPP_LINK = "https://wa.me/5543991080383?text=Olá! Gostaria de conhecer mais sobre a CrossFit Arapongas.";
 
 const AboutSection = () => {
   return (
-    <section id="sobre" className="py-20 md:py-28 bg-card">
-      <div className="container mx-auto px-4 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          {/* Image/Logo */}
-          <div className="relative order-2 lg:order-1">
-            <div className="aspect-square max-w-md mx-auto flex items-center justify-center p-8">
-              <img 
-                src={logoCFA} 
-                alt="CrossFit Arapongas" 
-                className="w-full h-auto object-contain max-w-xs"
-              />
-            </div>
-            {/* Decorative element */}
-            <div className="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-primary/5 rounded-full blur-3xl" />
-          </div>
-
+    <section id="sobre" className="py-20 md:py-28 bg-card relative overflow-hidden">
+      {/* Lion Watermark Background */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+        <img 
+          src={lionWatermark} 
+          alt="" 
+          className="w-[600px] h-auto opacity-[0.08] object-contain"
+        />
+      </div>
+      
+      <div className="container mx-auto px-4 lg:px-8 relative z-10">
+        <div className="max-w-4xl mx-auto text-center">
           {/* Content */}
-          <div className="order-1 lg:order-2">
+          <div>
             <span className="text-primary font-bold uppercase tracking-wider text-sm">Quem Somos</span>
             
             <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold mt-4 mb-6 text-foreground">
