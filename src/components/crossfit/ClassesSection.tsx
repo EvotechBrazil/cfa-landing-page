@@ -1,5 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Dumbbell, Target, Heart, Baby, User, Zap, ImageIcon } from "lucide-react";
+import cfaKids1 from "@/assets/cfa-kids-1.jpg";
+import cfaKids2 from "@/assets/cfa-kids-2.jpg";
 
 const WHATSAPP_LINK = "https://wa.me/5543991080383?text=Olá! Gostaria de experimentar uma aula.";
 
@@ -9,37 +11,37 @@ const ClassesSection = () => {
       icon: Dumbbell,
       name: "CrossFit",
       description: "Treino funcional completo que combina força, cardio e performance em alta intensidade.",
-      image: null, // Placeholder para imagem futura
+      images: null,
     },
     {
       icon: Target,
       name: "GAP",
       description: "Foco em glúteos, abdômen e pernas para definição e fortalecimento muscular.",
-      image: null,
+      images: null,
     },
     {
       icon: Heart,
       name: "CFA4Girls",
       description: "Turma exclusiva feminina às 13h10. Ambiente acolhedor e motivador.",
-      image: null,
+      images: null,
     },
     {
       icon: Baby,
       name: "CFA Kids",
       description: "Movimento, disciplina e diversão. Hábitos saudáveis desde a infância.",
-      image: null,
+      images: [cfaKids1, cfaKids2],
     },
     {
       icon: User,
       name: "Calistenia",
       description: "Força e controle corporal usando o peso do próprio corpo.",
-      image: null,
+      images: null,
     },
     {
       icon: Zap,
       name: "Personal",
       description: "Acompanhamento individualizado para resultados ainda mais rápidos.",
-      image: null,
+      images: null,
     },
   ];
 
@@ -66,12 +68,17 @@ const ClassesSection = () => {
             >
               {/* Área de Imagem */}
               <div className="relative h-48 bg-secondary/50 overflow-hidden">
-                {classItem.image ? (
-                  <img 
-                    src={classItem.image} 
-                    alt={classItem.name}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
+                {classItem.images && classItem.images.length > 0 ? (
+                  <div className="w-full h-full grid grid-cols-2 gap-0.5">
+                    {classItem.images.slice(0, 2).map((img, idx) => (
+                      <img 
+                        key={idx}
+                        src={img} 
+                        alt={`${classItem.name} ${idx + 1}`}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                    ))}
+                  </div>
                 ) : (
                   <div className="w-full h-full flex flex-col items-center justify-center text-muted-foreground">
                     <ImageIcon className="w-12 h-12 mb-2 opacity-30" />
