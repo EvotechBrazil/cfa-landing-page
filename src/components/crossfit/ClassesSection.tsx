@@ -4,6 +4,10 @@ import cfaKids1 from "@/assets/cfa-kids-1.jpg";
 import cfaKids2 from "@/assets/cfa-kids-2.jpg";
 import cfa4girls1 from "@/assets/cfa4girls-1.jpg";
 import cfa4girls2 from "@/assets/cfa4girls-2.jpg";
+import crossfit1 from "@/assets/crossfit-1.jpg";
+import crossfit2 from "@/assets/crossfit-2.jpg";
+import crossfit3 from "@/assets/crossfit-3.jpg";
+import crossfit4 from "@/assets/crossfit-4.jpg";
 
 const WHATSAPP_LINK = "https://wa.me/5543991080383?text=Olá! Gostaria de experimentar uma aula.";
 
@@ -13,7 +17,7 @@ const ClassesSection = () => {
       icon: Dumbbell,
       name: "CrossFit",
       description: "Treino funcional completo que combina força, cardio e performance em alta intensidade.",
-      images: null,
+      images: [crossfit1, crossfit2, crossfit3, crossfit4],
     },
     {
       icon: Target,
@@ -71,8 +75,8 @@ const ClassesSection = () => {
               {/* Área de Imagem */}
               <div className="relative h-48 bg-secondary/50 overflow-hidden">
                 {classItem.images && classItem.images.length > 0 ? (
-                  <div className="w-full h-full grid grid-cols-2 gap-0.5">
-                    {classItem.images.slice(0, 2).map((img, idx) => (
+                  <div className={`w-full h-full grid gap-0.5 ${classItem.images.length > 2 ? 'grid-cols-2 grid-rows-2' : 'grid-cols-2'}`}>
+                    {classItem.images.slice(0, 4).map((img, idx) => (
                       <img 
                         key={idx}
                         src={img} 
