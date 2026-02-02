@@ -3,6 +3,7 @@ import { ChevronLeft, ChevronRight, Quote, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import beforeAfter1 from "@/assets/before-after-1.png";
 import beforeAfter2 from "@/assets/before-after-2.png";
+import beforeAfter3 from "@/assets/before-after-3.png";
 
 const testimonials = [
   {
@@ -23,11 +24,11 @@ const testimonials = [
   },
   {
     id: 3,
-    name: "Ana Costa",
-    age: 45,
-    text: "Comecei com muitas limitações e hoje faço exercícios que achava impossíveis. A evolução é real!",
+    name: "Aluno CFA",
+    age: null,
+    text: "Superação e evolução constante. Cada treino é uma vitória!",
     rating: 5,
-    compositeImage: null,
+    compositeImage: beforeAfter3,
   },
   {
     id: 4,
