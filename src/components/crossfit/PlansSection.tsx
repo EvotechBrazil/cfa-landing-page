@@ -22,12 +22,13 @@ const PlansSection = () => {
           </p>
         </div>
 
-        {/* Plans Image with clickable areas */}
-        <div className="relative max-w-5xl mx-auto">
+        {/* Plans Image with clickable areas - 30% menor */}
+        <div className="relative max-w-3xl mx-auto">
           <img
             src={planosTodos}
             alt="Planos CFA"
-            className="w-full h-auto rounded-2xl shadow-lg"
+            className="w-full h-auto rounded-2xl shadow-lg object-contain"
+            style={{ imageRendering: 'auto' }}
           />
           
           {/* Áreas clicáveis invisíveis sobre cada plano */}
