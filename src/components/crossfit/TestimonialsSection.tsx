@@ -75,11 +75,11 @@ const TestimonialsSection = () => {
               {/* Before/After Images */}
               <div className="relative">
                 {currentTestimonial.compositeImage ? (
-                  <div className="aspect-[4/3] bg-muted rounded-xl overflow-hidden">
+                  <div className="bg-muted rounded-xl overflow-hidden flex items-center justify-center">
                     <img
                       src={currentTestimonial.compositeImage}
                       alt={`${currentTestimonial.name} - Transformação`}
-                      className="w-full h-full object-cover"
+                      className="w-[90%] h-auto object-contain"
                     />
                   </div>
                 ) : (
