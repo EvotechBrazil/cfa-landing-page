@@ -1,23 +1,12 @@
-import { Button } from "@/components/ui/button";
-import { ExternalLink } from "lucide-react";
-import planos1 from "@/assets/planos-1.jpg";
-import planos2 from "@/assets/planos-2.png";
+import planosTodos from "@/assets/planos-todos.png";
 
 const PlansSection = () => {
-  const plans = [
-    {
-      id: 1,
-      image: planos1,
-      name: "Plano 1",
-      link: "#", // Será atualizado com o link real
-    },
-    {
-      id: 2,
-      image: planos2,
-      name: "Plano 2",
-      link: "#", // Será atualizado com o link real
-    },
-  ];
+  // Links dos planos - serão atualizados com os links reais
+  const planLinks = {
+    mensal: "#", // LINK 1 - Plano Mensal
+    trimestral: "#", // LINK 3 - Plano Trimestral
+    semestral: "#", // LINK 2 - Plano Semestral
+  };
 
   return (
     <section id="planos" className="py-20 md:py-28 bg-secondary/30">
@@ -33,34 +22,39 @@ const PlansSection = () => {
           </p>
         </div>
 
-        {/* Plans Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-          {plans.map((plan) => (
+        {/* Plans Image with clickable areas */}
+        <div className="relative max-w-5xl mx-auto">
+          <img
+            src={planosTodos}
+            alt="Planos CFA"
+            className="w-full h-auto rounded-2xl shadow-lg"
+          />
+          
+          {/* Áreas clicáveis invisíveis sobre cada plano */}
+          {/* A imagem tem 3 planos lado a lado: Mensal | Trimestral | Semestral */}
+          <div className="absolute inset-0 grid grid-cols-3 gap-0">
             <a
-              key={plan.id}
-              href={plan.link}
+              href={planLinks.mensal}
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative block rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-[1.02] bg-card border border-border hover:border-primary/50"
-            >
-              <div className="relative aspect-[3/4] overflow-hidden">
-                <img
-                  src={plan.image}
-                  alt={plan.name}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-                {/* Overlay on hover */}
-                <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/10 transition-colors duration-300 flex items-center justify-center">
-                  <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <Button className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold uppercase tracking-wide px-6 py-3 rounded-full text-sm shadow-lg">
-                      <ExternalLink className="w-4 h-4 mr-2" />
-                      Ver Plano
-                    </Button>
-                  </div>
-                </div>
-              </div>
-            </a>
-          ))}
+              className="block w-full h-full hover:bg-primary/10 transition-colors duration-300 rounded-l-2xl cursor-pointer"
+              aria-label="Plano Mensal"
+            />
+            <a
+              href={planLinks.trimestral}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block w-full h-full hover:bg-primary/10 transition-colors duration-300 cursor-pointer"
+              aria-label="Plano Trimestral"
+            />
+            <a
+              href={planLinks.semestral}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block w-full h-full hover:bg-primary/10 transition-colors duration-300 rounded-r-2xl cursor-pointer"
+              aria-label="Plano Semestral"
+            />
+          </div>
         </div>
       </div>
     </section>
