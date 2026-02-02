@@ -17,9 +17,11 @@ const ContactSection = () => {
 
         {/* Contact Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-          {/* Phone */}
+          {/* Phone / WhatsApp */}
           <a 
-            href="tel:+5543991080383"
+            href="https://wa.me/5543991080383?text=Olá! Gostaria de mais informações sobre a CrossFit Arapongas."
+            target="_blank"
+            rel="noopener noreferrer"
             className="group bg-card border border-border rounded-2xl p-8 text-center hover:border-primary/50 transition-all duration-300"
           >
             <div className="w-16 h-16 mx-auto bg-primary/10 rounded-full flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
