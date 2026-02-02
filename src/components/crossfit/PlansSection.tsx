@@ -22,8 +22,8 @@ const PlansSection = () => {
           </p>
         </div>
 
-        {/* Plans Image with clickable areas - 30% menor */}
-        <div className="relative max-w-3xl mx-auto">
+        {/* Plans Image with clickable areas - 45% menor */}
+        <div className="relative max-w-2xl mx-auto">
           <img
             src={planosTodos}
             alt="Planos CFA"
