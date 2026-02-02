@@ -3,9 +3,9 @@ import planosTodos from "@/assets/planos-todos.png";
 const PlansSection = () => {
   // Links dos planos - serão atualizados com os links reais
   const planLinks = {
-    mensal: "#", // LINK 1 - Plano Mensal
-    trimestral: "#", // LINK 3 - Plano Trimestral
-    semestral: "#", // LINK 2 - Plano Semestral
+    mensal: "https://venda.nextfit.com.br/413736c1-7369-4af0-8a6c-838118fbb371/contratos",
+    trimestral: "https://venda.nextfit.com.br/413736c1-7369-4af0-8a6c-838118fbb371/contratos",
+    semestral: "https://venda.nextfit.com.br/413736c1-7369-4af0-8a6c-838118fbb371/contratos",
   };
 
   return (
