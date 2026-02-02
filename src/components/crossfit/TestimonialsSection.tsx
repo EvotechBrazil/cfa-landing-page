@@ -2,6 +2,7 @@ import { useState } from "react";
 import { ChevronLeft, ChevronRight, Quote, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import beforeAfter1 from "@/assets/before-after-1.png";
+import beforeAfter2 from "@/assets/before-after-2.png";
 
 const testimonials = [
   {
@@ -14,11 +15,11 @@ const testimonials = [
   },
   {
     id: 2,
-    name: "João Santos",
-    age: 28,
-    text: "Nunca imaginei que conseguiria resultados tão rápidos. O CrossFit mudou minha vida e minha autoestima.",
+    name: "Aluno CFA",
+    age: null,
+    text: "Resultado incrível com treino e disciplina. O CrossFit transforma corpo e mente!",
     rating: 5,
-    compositeImage: null,
+    compositeImage: beforeAfter2,
   },
   {
     id: 3,
