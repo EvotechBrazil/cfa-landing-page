@@ -2,6 +2,8 @@ import { Button } from "@/components/ui/button";
 import { Dumbbell, Target, Heart, Baby, User, Zap, ImageIcon } from "lucide-react";
 import cfaKids1 from "@/assets/cfa-kids-1.jpg";
 import cfaKids2 from "@/assets/cfa-kids-2.jpg";
+import cfa4girls1 from "@/assets/cfa4girls-1.jpg";
+import cfa4girls2 from "@/assets/cfa4girls-2.jpg";
 
 const WHATSAPP_LINK = "https://wa.me/5543991080383?text=Olá! Gostaria de experimentar uma aula.";
 
@@ -23,7 +25,7 @@ const ClassesSection = () => {
       icon: Heart,
       name: "CFA4Girls",
       description: "Turma exclusiva feminina às 13h10. Ambiente acolhedor e motivador.",
-      images: null,
+      images: [cfa4girls1, cfa4girls2],
     },
     {
       icon: Baby,
