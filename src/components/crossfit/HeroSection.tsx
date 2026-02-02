@@ -33,7 +33,7 @@ const HeroSection = () => {
 
           {/* Subtitle */}
           <p className="text-xl md:text-2xl lg:text-3xl text-primary font-display font-bold uppercase tracking-wider mb-8 animate-fade-in" style={{ animationDelay: '0.2s' }}>
-            Você é bem-vindo(a) aqui!
+            SEJAM BEM VINDOS
           </p>
 
           {/* Description */}
