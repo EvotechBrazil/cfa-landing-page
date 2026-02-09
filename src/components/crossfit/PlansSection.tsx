@@ -1,23 +1,12 @@
-import { useState } from "react";
-import planos1 from "@/assets/planos-1.jpg";
-import planos2 from "@/assets/planos-2.png";
+import planosTodos from "@/assets/planos-todos.png";
 
-const plans = [
-  {
-    image: planos1,
-    label: "Plano Mensal",
-    link: "https://venda.nextfit.com.br/413736c1-7369-4af0-8a6c-838118fbb371/contratos",
-  },
-  {
-    image: planos2,
-    label: "Plano Trimestral / Semestral",
-    link: "https://venda.nextfit.com.br/413736c1-7369-4af0-8a6c-838118fbb371/contratos",
-  },
-];
+const planLinks = {
+  mensal: "https://venda.nextfit.com.br/413736c1-7369-4af0-8a6c-838118fbb371/contratos",
+  trimestral: "https://venda.nextfit.com.br/413736c1-7369-4af0-8a6c-838118fbb371/contratos",
+  semestral: "https://venda.nextfit.com.br/413736c1-7369-4af0-8a6c-838118fbb371/contratos",
+};
 
 const PlansSection = () => {
-  const [zoomedPlan, setZoomedPlan] = useState<number | null>(null);
-
   return (
     <section id="planos" className="py-20 md:py-28 bg-secondary/30">
       <div className="container mx-auto px-4 lg:px-8">
@@ -31,59 +20,42 @@ const PlansSection = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-          {plans.map((plan, index) => (
+        <div className="relative max-w-2xl mx-auto">
+          <img
+            src={planosTodos}
+            alt="Planos CFA"
+            className="w-full h-auto rounded-2xl shadow-lg object-contain"
+          />
+
+          {/* Áreas clicáveis com hover zoom individual */}
+          <div className="absolute inset-0 grid grid-cols-3 gap-0">
             <a
-              key={index}
-              href={plan.link}
+              href={planLinks.mensal}
               target="_blank"
               rel="noopener noreferrer"
-              className="group block rounded-2xl overflow-hidden shadow-card transition-all duration-500 hover:shadow-glow hover:-translate-y-2 hover:scale-[1.03] cursor-pointer"
-              onClick={(e) => {
-                e.preventDefault();
-                setZoomedPlan(index);
-              }}
-            >
-              <img
-                src={plan.image}
-                alt={plan.label}
-                className="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-105"
-              />
-            </a>
-          ))}
-        </div>
-      </div>
-
-      {/* Zoom Modal */}
-      {zoomedPlan !== null && (
-        <div
-          className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 animate-fade-in cursor-pointer"
-          onClick={() => setZoomedPlan(null)}
-        >
-          <div className="relative max-w-3xl w-full animate-scale-in" onClick={(e) => e.stopPropagation()}>
-            <img
-              src={plans[zoomedPlan].image}
-              alt={plans[zoomedPlan].label}
-              className="w-full h-auto rounded-2xl shadow-2xl"
+              className="block w-full h-full rounded-l-2xl cursor-pointer transition-transform duration-300 hover:scale-110 hover:z-10 hover:shadow-glow"
+              style={{ transformOrigin: "center center" }}
+              aria-label="Plano Mensal"
             />
             <a
-              href={plans[zoomedPlan].link}
+              href={planLinks.trimestral}
               target="_blank"
               rel="noopener noreferrer"
-              className="cta-button inline-block mt-6 text-center w-full"
-            >
-              Contratar Agora
-            </a>
-            <button
-              onClick={() => setZoomedPlan(null)}
-              className="absolute -top-3 -right-3 bg-card text-foreground w-10 h-10 rounded-full flex items-center justify-center shadow-lg hover:bg-primary hover:text-primary-foreground transition-colors"
-              aria-label="Fechar"
-            >
-              ✕
-            </button>
+              className="block w-full h-full cursor-pointer transition-transform duration-300 hover:scale-110 hover:z-10 hover:shadow-glow"
+              style={{ transformOrigin: "center center" }}
+              aria-label="Plano Trimestral"
+            />
+            <a
+              href={planLinks.semestral}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block w-full h-full rounded-r-2xl cursor-pointer transition-transform duration-300 hover:scale-110 hover:z-10 hover:shadow-glow"
+              style={{ transformOrigin: "center center" }}
+              aria-label="Plano Semestral"
+            />
           </div>
         </div>
-      )}
+      </div>
     </section>
   );
 };
