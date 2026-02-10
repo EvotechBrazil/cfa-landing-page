@@ -8,10 +8,13 @@ import crossfit1 from "@/assets/crossfit-1.jpg";
 import crossfit2 from "@/assets/crossfit-2.jpg";
 import crossfit3 from "@/assets/crossfit-3.jpg";
 import crossfit4 from "@/assets/crossfit-4.jpg";
+import { useWhatsAppForm } from "./WhatsAppFormContext";
 
 const WHATSAPP_LINK = "https://wa.me/5543991080383?text=Olá! Gostaria de experimentar uma aula.";
 
 const ClassesSection = () => {
+  const { openForm } = useWhatsAppForm();
+
   const classes = [
     {
       icon: Dumbbell,
@@ -111,11 +114,12 @@ const ClassesSection = () => {
 
         {/* CTA */}
         <div className="text-center">
-          <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
-            <Button className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold uppercase tracking-wide px-8 py-3 rounded-full text-sm">
-              Agendar Aula Experimental
-            </Button>
-          </a>
+          <Button
+            onClick={() => openForm(WHATSAPP_LINK)}
+            className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold uppercase tracking-wide px-8 py-3 rounded-full text-sm"
+          >
+            Agendar Aula Experimental
+          </Button>
         </div>
       </div>
     </section>

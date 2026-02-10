@@ -2,12 +2,14 @@ import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import logoCFA from "@/assets/logo-cfa.png";
+import { useWhatsAppForm } from "./WhatsAppFormContext";
 
 const WHATSAPP_LINK = "https://wa.me/5543991080383?text=Olá! Gostaria de agendar uma aula experimental gratuita.";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const { openForm } = useWhatsAppForm();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -35,7 +37,6 @@ const Header = () => {
     >
       <div className="container mx-auto px-4 lg:px-8">
         <div className="flex items-center justify-between h-20">
-          {/* Logo */}
           <a href="#inicio" className="flex items-center">
             <img 
               src={logoCFA} 
@@ -44,7 +45,6 @@ const Header = () => {
             />
           </a>
 
-          {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-8">
             {navItems.map((item) => (
               <a
@@ -58,16 +58,15 @@ const Header = () => {
             ))}
           </nav>
 
-          {/* CTA Button */}
           <div className="hidden lg:block">
-            <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
-              <Button className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold uppercase tracking-wide px-6 py-2 rounded-full">
-                7 Dias Grátis
-              </Button>
-            </a>
+            <Button
+              onClick={() => openForm(WHATSAPP_LINK)}
+              className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold uppercase tracking-wide px-6 py-2 rounded-full"
+            >
+              7 Dias Grátis
+            </Button>
           </div>
 
-          {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             className="lg:hidden p-2 text-foreground"
@@ -77,7 +76,6 @@ const Header = () => {
           </button>
         </div>
 
-        {/* Mobile Menu */}
         {isMenuOpen && (
           <div className="lg:hidden absolute top-full left-0 right-0 bg-background border-t border-border animate-fade-in">
             <nav className="flex flex-col p-4">
@@ -91,16 +89,12 @@ const Header = () => {
                   {item.label}
                 </a>
               ))}
-              <a
-                href={WHATSAPP_LINK}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-4"
+              <Button
+                onClick={() => { setIsMenuOpen(false); openForm(WHATSAPP_LINK); }}
+                className="mt-4 w-full bg-primary hover:bg-primary/90 text-primary-foreground font-bold uppercase tracking-wide rounded-full"
               >
-                <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-bold uppercase tracking-wide rounded-full">
-                  7 Dias Grátis
-                </Button>
-              </a>
+                7 Dias Grátis
+              </Button>
             </nav>
           </div>
         )}

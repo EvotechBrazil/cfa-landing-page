@@ -1,10 +1,14 @@
 import { Phone, MapPin, Clock, Instagram, Facebook } from "lucide-react";
+import { useWhatsAppForm } from "./WhatsAppFormContext";
+
+const WHATSAPP_LINK = "https://wa.me/5543991080383?text=Olá! Gostaria de mais informações sobre a CrossFit Arapongas.";
 
 const ContactSection = () => {
+  const { openForm } = useWhatsAppForm();
+
   return (
     <section id="contato" className="py-20 md:py-28 bg-background">
       <div className="container mx-auto px-4 lg:px-8">
-        {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="text-primary font-bold uppercase tracking-wider text-sm">Contato</span>
           <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold mt-4 mb-6 text-foreground">
@@ -15,13 +19,9 @@ const ContactSection = () => {
           </p>
         </div>
 
-        {/* Contact Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-          {/* Phone / WhatsApp */}
-          <a 
-            href="https://wa.me/5543991080383?text=Olá! Gostaria de mais informações sobre a CrossFit Arapongas."
-            target="_blank"
-            rel="noopener noreferrer"
+          <button 
+            onClick={() => openForm(WHATSAPP_LINK)}
             className="group bg-card border border-border rounded-2xl p-8 text-center hover:border-primary/50 transition-all duration-300"
           >
             <div className="w-16 h-16 mx-auto bg-primary/10 rounded-full flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
@@ -29,9 +29,8 @@ const ContactSection = () => {
             </div>
             <h3 className="font-display text-xl font-bold text-foreground mb-2">Telefone</h3>
             <p className="text-foreground/70">(43) 9 9108-0383</p>
-          </a>
+          </button>
 
-          {/* Location */}
           <a 
             href="https://www.google.com/maps/search/?api=1&query=Av+Sanhaço+Rei+140+Arapongas+PR"
             target="_blank"
@@ -45,7 +44,6 @@ const ContactSection = () => {
             <p className="text-foreground/70">Av Sanhaço Rei, 140<br />Arapongas - PR</p>
           </a>
 
-          {/* Hours */}
           <div className="bg-card border border-border rounded-2xl p-8 text-center">
             <div className="w-16 h-16 mx-auto bg-primary/10 rounded-full flex items-center justify-center mb-6">
               <Clock className="w-7 h-7 text-primary" />
@@ -55,7 +53,6 @@ const ContactSection = () => {
           </div>
         </div>
 
-        {/* Social Links */}
         <div className="flex items-center justify-center gap-4 mt-12">
           <a
             href="https://www.instagram.com/crossfitarapongas"

@@ -10,25 +10,28 @@ import CTASection from "@/components/crossfit/CTASection";
 import ContactSection from "@/components/crossfit/ContactSection";
 import Footer from "@/components/crossfit/Footer";
 import WhatsAppFloatingButton from "@/components/crossfit/WhatsAppFloatingButton";
+import { WhatsAppFormProvider } from "@/components/crossfit/WhatsAppFormContext";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background">
-      <Header />
-      <main>
-        <HeroSection />
-        <AboutSection />
-        <ClassesSection />
-        <PlansSection />
-        <TourSection />
-        <ScheduleSection />
-        <TestimonialsSection />
-        <CTASection />
-        <ContactSection />
-      </main>
-      <Footer />
-      <WhatsAppFloatingButton />
-    </div>
+    <WhatsAppFormProvider>
+      <div className="min-h-screen bg-background">
+        <Header />
+        <main>
+          <HeroSection />
+          <AboutSection />
+          <ClassesSection />
+          <PlansSection />
+          <TourSection />
+          <ScheduleSection />
+          <TestimonialsSection />
+          <CTASection />
+          <ContactSection />
+        </main>
+        <Footer />
+        <WhatsAppFloatingButton />
+      </div>
+    </WhatsAppFormProvider>
   );
 };
 
