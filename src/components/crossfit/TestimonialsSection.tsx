@@ -33,7 +33,7 @@ const testimonials = [
   },
   {
     id: 4,
-    name: "Juci",
+    name: "Aluna CFA",
     age: null,
     text: "Transformação incrível com dedicação e os treinos do CFA. O resultado fala por si!",
     rating: 5,
