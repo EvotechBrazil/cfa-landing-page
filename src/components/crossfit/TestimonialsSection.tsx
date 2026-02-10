@@ -4,7 +4,6 @@ import { Button } from "@/components/ui/button";
 import beforeAfter1 from "@/assets/before-after-1.png";
 import beforeAfter2 from "@/assets/before-after-2.png";
 import beforeAfter3 from "@/assets/before-after-3.png";
-import beforeAfterJuci from "@/assets/before-after-juci.jpeg";
 
 const testimonials = [
   {
@@ -33,14 +32,6 @@ const testimonials = [
   },
   {
     id: 4,
-    name: "Aluna CFA",
-    age: null,
-    text: "Transformação incrível com dedicação e os treinos do CFA. O resultado fala por si!",
-    rating: 5,
-    compositeImage: beforeAfterJuci,
-  },
-  {
-    id: 5,
     name: "Pedro Oliveira",
     age: 35,
     text: "O suporte dos coaches é fantástico. Eles adaptam os treinos para cada pessoa e isso faz toda a diferença.",
