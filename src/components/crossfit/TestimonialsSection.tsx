@@ -4,6 +4,8 @@ import { Button } from "@/components/ui/button";
 import beforeAfter1 from "@/assets/before-after-1.png";
 import beforeAfter2 from "@/assets/before-after-2.png";
 import beforeAfter3 from "@/assets/before-after-3.png";
+import beforeAfter4 from "@/assets/before-after-4.png";
+import beforeAfter5 from "@/assets/before-after-5.png";
 
 const testimonials = [
   {
@@ -32,6 +34,22 @@ const testimonials = [
   },
   {
     id: 4,
+    name: "Aluno CFA",
+    age: null,
+    text: "Dedicação e disciplina trazem resultados reais. O CFA transforma vidas!",
+    rating: 5,
+    compositeImage: beforeAfter4,
+  },
+  {
+    id: 5,
+    name: "Aluno CFA",
+    age: null,
+    text: "Cada dia é uma nova conquista. O CrossFit mudou minha vida!",
+    rating: 5,
+    compositeImage: beforeAfter5,
+  },
+  {
+    id: 6,
     name: "Pedro Oliveira",
     age: 35,
     text: "O suporte dos coaches é fantástico. Eles adaptam os treinos para cada pessoa e isso faz toda a diferença.",
