@@ -24,8 +24,20 @@ const WhatsAppFormModal = ({ isOpen, onClose, whatsappUrl }: WhatsAppFormModalPr
     treinando: "",
   });
 
+  const formatPhone = (value: string) => {
+    const digits = value.replace(/\D/g, "").slice(0, 11);
+    if (digits.length <= 2) return digits.length ? `(${digits}` : "";
+    if (digits.length <= 3) return `(${digits.slice(0, 2)})${digits.slice(2)}`;
+    if (digits.length <= 7) return `(${digits.slice(0, 2)})${digits.slice(2, 3)}.${digits.slice(3)}`;
+    return `(${digits.slice(0, 2)})${digits.slice(2, 3)}.${digits.slice(3, 7)}-${digits.slice(7)}`;
+  };
+
   const handleChange = (field: string, value: string) => {
-    setFormData((prev) => ({ ...prev, [field]: value }));
+    if (field === "telefone") {
+      setFormData((prev) => ({ ...prev, telefone: formatPhone(value) }));
+    } else {
+      setFormData((prev) => ({ ...prev, [field]: value }));
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
