@@ -4,8 +4,8 @@ import { Button } from "@/components/ui/button";
 import beforeAfter1 from "@/assets/before-after-1.png";
 import beforeAfter2 from "@/assets/before-after-2.png";
 import beforeAfter3 from "@/assets/before-after-3.png";
-import beforeAfter4 from "@/assets/before-after-4.png";
-import beforeAfter5 from "@/assets/before-after-5.png";
+import beforePhoto from "@/assets/before-after-4.png";
+import afterPhoto from "@/assets/before-after-5.png";
 
 const testimonials = [
   {
@@ -38,25 +38,22 @@ const testimonials = [
     age: null,
     text: "Dedicação e disciplina trazem resultados reais. O CFA transforma vidas!",
     rating: 5,
-    compositeImage: beforeAfter4,
+    compositeImage: null,
+    beforeImage: beforePhoto,
+    afterImage: afterPhoto,
   },
   {
     id: 5,
-    name: "Aluno CFA",
-    age: null,
-    text: "Cada dia é uma nova conquista. O CrossFit mudou minha vida!",
-    rating: 5,
-    compositeImage: beforeAfter5,
-  },
-  {
-    id: 6,
     name: "Pedro Oliveira",
     age: 35,
     text: "O suporte dos coaches é fantástico. Eles adaptam os treinos para cada pessoa e isso faz toda a diferença.",
     rating: 5,
     compositeImage: null,
+    beforeImage: null,
+    afterImage: null,
   },
 ];
+
 
 const TestimonialsSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -92,7 +89,7 @@ const TestimonialsSection = () => {
           <div className="bg-card border border-border rounded-2xl p-6 md:p-8 relative shadow-card">
             <div className="grid md:grid-cols-2 gap-8 items-center">
               {/* Before/After Images */}
-              <div className="relative">
+               <div className="relative">
                 {currentTestimonial.compositeImage ? (
                   <div className="bg-muted rounded-xl overflow-hidden flex items-center justify-center">
                     <img
@@ -101,9 +98,27 @@ const TestimonialsSection = () => {
                       className="w-[90%] h-auto object-contain"
                     />
                   </div>
+                ) : currentTestimonial.beforeImage && currentTestimonial.afterImage ? (
+                  <div className="grid grid-cols-2 gap-3">
+                    <div className="relative">
+                      <div className="aspect-[3/4] bg-muted rounded-xl overflow-hidden">
+                        <img src={currentTestimonial.beforeImage} alt="Antes" className="w-full h-full object-cover" />
+                      </div>
+                      <span className="absolute bottom-2 left-2 bg-background/90 text-foreground text-[10px] font-bold px-2 py-1 rounded">
+                        ANTES
+                      </span>
+                    </div>
+                    <div className="relative">
+                      <div className="aspect-[3/4] bg-muted rounded-xl overflow-hidden border-2 border-primary">
+                        <img src={currentTestimonial.afterImage} alt="Depois" className="w-full h-full object-cover" />
+                      </div>
+                      <span className="absolute bottom-2 left-2 bg-primary text-primary-foreground text-[10px] font-bold px-2 py-1 rounded">
+                        DEPOIS
+                      </span>
+                    </div>
+                  </div>
                 ) : (
                   <div className="grid grid-cols-2 gap-3">
-                    {/* Before */}
                     <div className="relative">
                       <div className="aspect-[3/4] bg-muted rounded-xl overflow-hidden flex items-center justify-center">
                         <span className="text-muted-foreground text-xs">Foto antes</span>
@@ -112,8 +127,6 @@ const TestimonialsSection = () => {
                         ANTES
                       </span>
                     </div>
-                    
-                    {/* After */}
                     <div className="relative">
                       <div className="aspect-[3/4] bg-muted rounded-xl overflow-hidden border-2 border-primary flex items-center justify-center">
                         <span className="text-muted-foreground text-xs">Foto depois</span>
