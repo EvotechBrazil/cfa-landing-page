@@ -63,7 +63,7 @@ const Header = () => {
               onClick={() => openForm(WHATSAPP_LINK)}
               className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold uppercase tracking-wide px-6 py-2 rounded-full"
             >
-              7 Dias Grátis
+              3 Dias Grátis
             </Button>
           </div>
 
@@ -93,7 +93,7 @@ const Header = () => {
                 onClick={() => { setIsMenuOpen(false); openForm(WHATSAPP_LINK); }}
                 className="mt-4 w-full bg-primary hover:bg-primary/90 text-primary-foreground font-bold uppercase tracking-wide rounded-full"
               >
-                7 Dias Grátis
+                3 Dias Grátis
               </Button>
             </nav>
           </div>

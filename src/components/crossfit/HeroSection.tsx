@@ -48,7 +48,7 @@ const HeroSection = () => {
               onClick={() => openForm(WHATSAPP_LINK)}
               className="bg-primary hover:bg-primary/90 text-primary-foreground font-display text-lg md:text-xl font-bold uppercase tracking-wider px-10 md:px-14 py-5 md:py-6 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
             >
-              Treine 7 dias grátis!
+              Treine 3 dias grátis!
             </Button>
           </div>
         </div>

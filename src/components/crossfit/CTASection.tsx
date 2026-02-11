@@ -29,7 +29,7 @@ const CTASection = () => {
           Começar Agora
         </Button>
         <p className="mt-6 text-foreground/50 text-sm">
-          7 dias grátis • Sem compromisso • Resultados garantidos
+          3 dias grátis • Sem compromisso • Resultados garantidos
         </p>
       </div>
     </section>
