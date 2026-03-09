@@ -3,6 +3,7 @@ import { ChevronDown } from "lucide-react";
 import { useWhatsAppForm } from "./WhatsAppFormContext";
 
 const WHATSAPP_LINK = "https://wa.me/5543991080383?text=Olá! Gostaria de agendar uma aula experimental gratuita.";
+const HERO_VIDEO_URL = "https://ssmiynhzwcalaswcsjsy.supabase.co/storage/v1/object/public/videos/hero-bg.mp4";
 
 const HeroSection = () => {
   const { openForm } = useWhatsAppForm();
@@ -12,19 +13,20 @@ const HeroSection = () => {
       id="inicio" 
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
-      {/* Background with overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-background to-secondary z-10" />
-      
-      {/* Animated background pattern */}
-      <div className="absolute inset-0 opacity-30">
-        <div 
-          className="absolute inset-0"
-          style={{
-            backgroundImage: `radial-gradient(circle at 25% 25%, hsl(var(--primary) / 0.15) 0%, transparent 50%),
-                             radial-gradient(circle at 75% 75%, hsl(var(--primary) / 0.1) 0%, transparent 50%)`,
-          }}
-        />
-      </div>
+      {/* Background video */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        preload="auto"
+        className="absolute inset-0 w-full h-full object-cover z-0"
+      >
+        <source src={HERO_VIDEO_URL} type="video/mp4" />
+      </video>
+
+      {/* Dark overlay for text readability */}
+      <div className="absolute inset-0 bg-background/70 z-[1]" />
 
       {/* Content */}
       <div className="relative z-20 container mx-auto px-4 lg:px-8 text-center">
