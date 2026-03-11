@@ -23,6 +23,7 @@ const Header = () => {
     { label: "Início", href: "#inicio" },
     { label: "Sobre", href: "#sobre" },
     { label: "Modalidades", href: "#modalidades" },
+    { label: "Planos", href: "#planos" },
     { label: "Horários", href: "#horarios" },
     { label: "Contato", href: "#contato" },
   ];
