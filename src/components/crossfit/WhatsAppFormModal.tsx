@@ -26,6 +26,8 @@ const initialFormData = {
   disponibilidade: "",
   turno: "",
   treinando: "",
+  modalidades: [] as string[],
+  modalidadesOutro: "",
   comoEncontrou: "",
   comoEncontrouOutro: "",
 };
@@ -75,7 +77,7 @@ const WhatsAppFormModal = ({ isOpen, onClose, whatsappUrl }: WhatsAppFormModalPr
     setFormData((prev) => ({ ...prev, [field]: value }));
   };
 
-  const toggleMulti = (field: "objetivos" | "obstaculos", value: string) => {
+  const toggleMulti = (field: "objetivos" | "obstaculos" | "modalidades", value: string) => {
     setFormData((prev) => {
       const arr = prev[field];
       return { ...prev, [field]: arr.includes(value) ? arr.filter((v) => v !== value) : [...arr, value] };
@@ -115,6 +117,7 @@ const WhatsAppFormModal = ({ isOpen, onClose, whatsappUrl }: WhatsAppFormModalPr
           ...formData,
           objetivos: [...formData.objetivos, formData.objetivosOutro ? `Outro: ${formData.objetivosOutro}` : ""].filter(Boolean).join(", "),
           obstaculos: [...formData.obstaculos, formData.obstaculosOutro ? `Outro: ${formData.obstaculosOutro}` : ""].filter(Boolean).join(", "),
+          modalidades: [...formData.modalidades, formData.modalidadesOutro ? `Outros: ${formData.modalidadesOutro}` : ""].filter(Boolean).join(", "),
           comoEncontrou: formData.comoEncontrou === "Outro" && formData.comoEncontrouOutro ? `Outro: ${formData.comoEncontrouOutro}` : formData.comoEncontrou,
           timestamp: new Date().toISOString(),
           origem: window.location.href,
@@ -241,6 +244,21 @@ const WhatsAppFormModal = ({ isOpen, onClose, whatsappUrl }: WhatsAppFormModalPr
               ))}
             </div>
           </div>
+
+          {/* Modalidades - condicional */}
+          {formData.treinando === "Sim, treino regularmente" && (
+            <div>
+              <label className="text-xs font-medium text-foreground mb-1 block">Quais modalidades você pratica?</label>
+              <div className="space-y-1.5">
+                {["Musculação", "CrossTraining", "Corrida de rua", "Caminhada", "Outros"].map((opt) => (
+                  <CheckboxOption key={opt} label={opt} checked={formData.modalidades.includes(opt)} onChange={() => toggleMulti("modalidades", opt)} />
+                ))}
+                {formData.modalidades.includes("Outros") && (
+                  <Input className="h-8 text-sm mt-1" placeholder="Descreva..." value={formData.modalidadesOutro} onChange={(e) => handleChange("modalidadesOutro", e.target.value)} maxLength={200} />
+                )}
+              </div>
+            </div>
+          )}
 
           {/* Como encontrou */}
           <div>
