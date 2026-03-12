@@ -76,12 +76,16 @@ const WhatsAppFormModal = ({ isOpen, onClose, whatsappUrl }: WhatsAppFormModalPr
     });
   };
 
-  const toggleSingle = (field: keyof FormData, value: string) => {
+    const toggleSingle = (field: keyof FormData, value: string) => {
     setFormData((prev) => {
       const updated = { ...prev, [field]: prev[field] === value ? "" : value };
-      if (field === "frequencia") updated.disponibilidade = "";
+      if (field === "frequencia") {
+        updated.disponibilidade = "";
+        if (updated.frequencia === "CrossFit Kids" && updated.turno === "Noite") updated.turno = "";
+      }
       return updated;
     });
+  };
   };
 
   const validateForm = (): boolean => {
