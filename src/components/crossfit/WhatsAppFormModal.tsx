@@ -55,20 +55,8 @@ const WhatsAppFormModal = ({ isOpen, onClose, whatsappUrl }: WhatsAppFormModalPr
   const [step, setStep] = useState(0);
   const [formData, setFormData] = useState<FormData>({ ...initialFormData });
 
-  const formatPhone = (value: string) => {
-    const digits = value.replace(/\D/g, "").slice(0, 11);
-    if (digits.length <= 2) return digits.length ? `(${digits}` : "";
-    if (digits.length <= 3) return `(${digits.slice(0, 2)})${digits.slice(2)}`;
-    if (digits.length <= 7) return `(${digits.slice(0, 2)})${digits.slice(2, 3)}.${digits.slice(3)}`;
-    return `(${digits.slice(0, 2)})${digits.slice(2, 3)}.${digits.slice(3, 7)}-${digits.slice(7)}`;
-  };
-
   const handleChange = (field: keyof FormData, value: string) => {
-    if (field === "telefone") {
-      setFormData((prev) => ({ ...prev, telefone: formatPhone(value) }));
-    } else {
-      setFormData((prev) => ({ ...prev, [field]: value }));
-    }
+    setFormData((prev) => ({ ...prev, [field]: value }));
   };
 
   const toggleMulti = (field: "objetivos" | "obstaculos", value: string) => {
@@ -87,8 +75,8 @@ const WhatsAppFormModal = ({ isOpen, onClose, whatsappUrl }: WhatsAppFormModalPr
 
   const validateStep = (): boolean => {
     if (step === 0) {
-      if (!formData.nome.trim() || !formData.telefone.trim() || !formData.email.trim()) {
-        toast({ title: "Campos obrigatórios", description: "Preencha nome, telefone e e-mail.", variant: "destructive" });
+      if (!formData.nome.trim()) {
+        toast({ title: "Campo obrigatório", description: "Preencha seu nome.", variant: "destructive" });
         return false;
       }
     }
