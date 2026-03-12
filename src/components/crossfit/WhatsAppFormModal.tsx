@@ -120,7 +120,7 @@ const WhatsAppFormModal = ({ isOpen, onClose, whatsappUrl }: WhatsAppFormModalPr
           objetivos: [...formData.objetivos, formData.objetivosOutro ? `Outro: ${formData.objetivosOutro}` : ""].filter(Boolean).join(", "),
           obstaculos: [...formData.obstaculos, formData.obstaculosOutro ? `Outro: ${formData.obstaculosOutro}` : ""].filter(Boolean).join(", "),
           modalidades: [...formData.modalidades, formData.modalidadesOutro ? `Outros: ${formData.modalidadesOutro}` : ""].filter(Boolean).join(", "),
-          comoEncontrou: formData.comoEncontrou === "Outro" && formData.comoEncontrouOutro ? `Outro: ${formData.comoEncontrouOutro}` : formData.comoEncontrou,
+          comoEncontrou: formData.comoEncontrou === "Indicação de amigo/conhecido" && formData.indicacaoAmigo ? `Indicação: ${formData.indicacaoAmigo}` : formData.comoEncontrou === "Outro" && formData.comoEncontrouOutro ? `Outro: ${formData.comoEncontrouOutro}` : formData.comoEncontrou,
           timestamp: new Date().toISOString(),
           origem: window.location.href,
         }),
