@@ -190,6 +190,18 @@ const WhatsAppFormModal = ({ isOpen, onClose, whatsappUrl }: WhatsAppFormModalPr
             </div>
           </div>
 
+          {/* Disponibilidade condicional */}
+          {formData.frequencia && frequenciaOptions[formData.frequencia] && (
+            <div>
+              <label className="text-xs font-medium text-foreground mb-1 block">Qual a sua disponibilidade?</label>
+              <div className="space-y-1.5">
+                {frequenciaOptions[formData.frequencia].map((opt) => (
+                  <RadioOption key={opt} label={opt} checked={formData.disponibilidade === opt} onChange={() => toggleSingle("disponibilidade", opt)} />
+                ))}
+              </div>
+            </div>
+          )}
+
           {/* Turno */}
           <div>
             <label className="text-xs font-medium text-foreground mb-1 block">Qual turno você prefere?</label>
