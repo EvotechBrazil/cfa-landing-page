@@ -173,7 +173,7 @@ const WhatsAppFormModal = ({ isOpen, onClose, whatsappUrl }: WhatsAppFormModalPr
           <div>
             <label className="text-xs font-medium text-foreground mb-1 block">Qual programa você está buscando?</label>
             <div className="space-y-1.5">
-              {["CrossFit Regular", "Cfa4Girls", "CrossFit Kids"].map((opt) => (
+              {["CrossFit Regular", "Turma exclusiva para mulheres", "CrossFit Kids"].map((opt) => (
                 <RadioOption key={opt} label={opt} checked={formData.frequencia === opt} onChange={() => toggleSingle("frequencia", opt)} />
               ))}
             </div>
