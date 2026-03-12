@@ -128,7 +128,16 @@ const WhatsAppFormModal = ({ isOpen, onClose, whatsappUrl }: WhatsAppFormModalPr
             <Input className="h-8 text-sm" placeholder="Seu nome completo" value={formData.nome} onChange={(e) => handleChange("nome", e.target.value)} maxLength={100} />
           </div>
 
-          {/* Objetivos */}
+          {/* Telefone */}
+          <div>
+            <label className="text-xs font-medium text-foreground mb-1 block">Telefone (WhatsApp) *</label>
+            <Input className="h-8 text-sm" placeholder="(00) 00000-0000" value={formData.telefone} onChange={(e) => {
+              const raw = e.target.value.replace(/\D/g, "").slice(0, 11);
+              const formatted = raw.length > 6 ? `(${raw.slice(0,2)}) ${raw.slice(2,7)}-${raw.slice(7)}` : raw.length > 2 ? `(${raw.slice(0,2)}) ${raw.slice(2)}` : raw;
+              handleChange("telefone", formatted);
+            }} maxLength={15} />
+          </div>
+
           <div>
             <label className="text-xs font-medium text-foreground mb-1 block">O que você quer melhorar?</label>
             <div className="space-y-1.5">
