@@ -28,8 +28,10 @@ const initialFormData = {
   treinando: "",
   modalidades: [] as string[],
   modalidadesOutro: "",
+  experienciaCrossfit: "",
   comoEncontrou: "",
   comoEncontrouOutro: "",
+  indicacaoAmigo: "",
 };
 
 const frequenciaOptions: Record<string, string[]> = {
