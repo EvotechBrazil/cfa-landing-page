@@ -239,6 +239,9 @@ const WhatsAppFormModal = ({ isOpen, onClose, whatsappUrl }: WhatsAppFormModalPr
               {["Instagram", "Indicação de amigo/conhecido", "Vi a academia na cidade", "Outro"].map((opt) => (
                 <RadioOption key={opt} label={opt} checked={formData.comoEncontrou === opt} onChange={() => toggleSingle("comoEncontrou", opt)} />
               ))}
+              {formData.comoEncontrou === "Outro" && (
+                <Input className="h-8 text-sm mt-1" placeholder="Descreva..." value={formData.comoEncontrouOutro} onChange={(e) => handleChange("comoEncontrouOutro", e.target.value)} maxLength={200} />
+              )}
             </div>
           </div>
 
