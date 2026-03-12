@@ -17,14 +17,17 @@ const initialFormData = {
   nome: "",
   telefone: "",
   objetivos: [] as string[],
+  objetivosOutro: "",
   rotina: "",
   meta: "",
   obstaculos: [] as string[],
+  obstaculosOutro: "",
   frequencia: "",
   disponibilidade: "",
   turno: "",
   treinando: "",
   comoEncontrou: "",
+  comoEncontrouOutro: "",
 };
 
 const frequenciaOptions: Record<string, string[]> = {
