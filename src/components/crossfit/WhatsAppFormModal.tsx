@@ -77,7 +77,7 @@ const WhatsAppFormModal = ({ isOpen, onClose, whatsappUrl }: WhatsAppFormModalPr
     setFormData((prev) => ({ ...prev, [field]: value }));
   };
 
-  const toggleMulti = (field: "objetivos" | "obstaculos", value: string) => {
+  const toggleMulti = (field: "objetivos" | "obstaculos" | "modalidades", value: string) => {
     setFormData((prev) => {
       const arr = prev[field];
       return { ...prev, [field]: arr.includes(value) ? arr.filter((v) => v !== value) : [...arr, value] };
