@@ -10,7 +10,7 @@ import crossfit3 from "@/assets/crossfit-3.jpg";
 import crossfit4 from "@/assets/crossfit-4.jpg";
 import { useWhatsAppForm } from "./WhatsAppFormContext";
 
-const WHATSAPP_LINK = "https://wa.me/5543991080383?text=Olá! Gostaria de experimentar uma aula.";
+const WHATSAPP_LINK = "https://wa.me/5543991796835?text=Olá! Gostaria de experimentar uma aula.";
 
 const ClassesSection = () => {
   const { openForm } = useWhatsAppForm();

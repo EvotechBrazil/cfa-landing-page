@@ -1,7 +1,7 @@
 import { Phone, MapPin, Clock, Instagram, Facebook } from "lucide-react";
 import { useWhatsAppForm } from "./WhatsAppFormContext";
 
-const WHATSAPP_LINK = "https://wa.me/5543991080383?text=Olá! Gostaria de mais informações sobre a CrossFit Arapongas.";
+const WHATSAPP_LINK = "https://wa.me/5543991796835?text=Olá! Gostaria de mais informações sobre a CrossFit Arapongas.";
 
 const ContactSection = () => {
   const { openForm } = useWhatsAppForm();

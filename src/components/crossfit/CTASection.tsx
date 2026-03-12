@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { MessageCircle } from "lucide-react";
 import { useWhatsAppForm } from "./WhatsAppFormContext";
 
-const WHATSAPP_LINK = "https://wa.me/5543991080383?text=Olá! Quero começar a treinar na CrossFit Arapongas!";
+const WHATSAPP_LINK = "https://wa.me/5543991796835?text=Olá! Quero começar a treinar na CrossFit Arapongas!";
 
 const CTASection = () => {
   const { openForm } = useWhatsAppForm();
