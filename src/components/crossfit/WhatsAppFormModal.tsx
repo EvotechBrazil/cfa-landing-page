@@ -181,9 +181,12 @@ const WhatsAppFormModal = ({ isOpen, onClose, whatsappUrl }: WhatsAppFormModalPr
           <div>
             <label className="text-xs font-medium text-foreground mb-1 block">O que mais te atrapalha hoje?</label>
             <div className="space-y-1.5">
-              {["Falta de tempo", "Insegurança / nunca treinei", "Dores ou limitações físicas", "Custo", "Distância"].map((opt) => (
+              {["Falta de tempo", "Insegurança / nunca treinei", "Dores ou limitações físicas", "Custo", "Distância", "Outro"].map((opt) => (
                 <CheckboxOption key={opt} label={opt} checked={formData.obstaculos.includes(opt)} onChange={() => toggleMulti("obstaculos", opt)} />
               ))}
+              {formData.obstaculos.includes("Outro") && (
+                <Input className="h-8 text-sm mt-1" placeholder="Descreva..." value={formData.obstaculosOutro} onChange={(e) => handleChange("obstaculosOutro", e.target.value)} maxLength={200} />
+              )}
             </div>
           </div>
 
