@@ -32,8 +32,14 @@ const initialFormData = {
 
 const frequenciaOptions: Record<string, string[]> = {
   "CrossFit Kids": ["2x na semana", "3x na semana"],
-  "CrossFit Regular": ["4x na semana", "6x na semana"],
-  "Turma exclusiva para mulheres": ["4x na semana", "6x na semana"],
+  "CrossFit Regular": ["3-4x na semana", "5-6x na semana"],
+  "Turma exclusiva para mulheres": ["3-4x na semana", "5-6x na semana"],
+};
+
+const turnoOptions: Record<string, string[]> = {
+  "CrossFit Kids": ["Manhã", "Tarde"],
+  "CrossFit Regular": ["Manhã", "Tarde", "Noite"],
+  "Turma exclusiva para mulheres": ["Tarde"],
 };
 
 type FormData = typeof initialFormData;
@@ -81,7 +87,8 @@ const WhatsAppFormModal = ({ isOpen, onClose, whatsappUrl }: WhatsAppFormModalPr
       const updated = { ...prev, [field]: prev[field] === value ? "" : value };
       if (field === "frequencia") {
         updated.disponibilidade = "";
-        if (updated.frequencia === "CrossFit Kids" && updated.turno === "Noite") updated.turno = "";
+        const validTurnos = turnoOptions[updated.frequencia] || ["Manhã", "Tarde", "Noite"];
+        if (updated.turno && !validTurnos.includes(updated.turno)) updated.turno = "";
       }
       return updated;
     });
@@ -219,7 +226,7 @@ const WhatsAppFormModal = ({ isOpen, onClose, whatsappUrl }: WhatsAppFormModalPr
           <div>
             <label className="text-xs font-medium text-foreground mb-1 block">Qual turno você prefere?</label>
             <div className="space-y-1.5">
-              {(formData.frequencia === "CrossFit Kids" ? ["Manhã", "Tarde"] : ["Manhã", "Tarde", "Noite"]).map((opt) => (
+              {(turnoOptions[formData.frequencia] || ["Manhã", "Tarde", "Noite"]).map((opt) => (
                 <RadioOption key={opt} label={opt} checked={formData.turno === opt} onChange={() => toggleSingle("turno", opt)} />
               ))}
             </div>
