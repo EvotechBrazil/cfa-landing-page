@@ -83,7 +83,7 @@ const WhatsAppFormModal = ({ isOpen, onClose, whatsappUrl }: WhatsAppFormModalPr
 
   const validateForm = (): boolean => {
     if (!formData.nome.trim()) {
-      toast({ title: "Campo obrigatório", description: "Preencha seu nome completo.", variant: "destructive" });
+      toast({ title: "Campo obrigatório", description: "Preencha seu primeiro nome.", variant: "destructive" });
       return false;
     }
     return true;
