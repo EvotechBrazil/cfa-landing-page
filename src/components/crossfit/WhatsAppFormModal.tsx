@@ -141,7 +141,7 @@ const WhatsAppFormModal = ({ isOpen, onClose, whatsappUrl }: WhatsAppFormModalPr
           <div>
             <label className="text-xs font-medium text-foreground mb-1 block">O que você quer melhorar?</label>
             <div className="space-y-1.5">
-              {["Emagrecer", "Condicionamento físico", "Ganhar força", "Performance esportiva"].map((opt) => (
+              {["Emagrecer", "Condicionamento físico", "Ganhar força", "Performance esportiva", "Saúde / Qualidade de vida"].map((opt) => (
                 <CheckboxOption key={opt} label={opt} checked={formData.objetivos.includes(opt)} onChange={() => toggleMulti("objetivos", opt)} />
               ))}
             </div>
@@ -155,7 +155,7 @@ const WhatsAppFormModal = ({ isOpen, onClose, whatsappUrl }: WhatsAppFormModalPr
 
           {/* Meta */}
           <div>
-            <label className="text-xs font-medium text-foreground mb-1 block">Qual é sua meta?</label>
+            <label className="text-xs font-medium text-foreground mb-1 block">Qual a sua meta, o que você espera conosco?</label>
             <Textarea placeholder="Conte um pouco..." value={formData.meta} onChange={(e) => handleChange("meta", e.target.value)} maxLength={500} className="min-h-[50px] text-sm" />
           </div>
 
@@ -171,9 +171,9 @@ const WhatsAppFormModal = ({ isOpen, onClose, whatsappUrl }: WhatsAppFormModalPr
 
           {/* Frequência */}
           <div>
-            <label className="text-xs font-medium text-foreground mb-1 block">Qual a sua disponibilidade para treinar?</label>
+            <label className="text-xs font-medium text-foreground mb-1 block">Qual programa você está buscando?</label>
             <div className="space-y-1.5">
-              {["2x", "3x", "4x ou mais"].map((opt) => (
+              {["CrossFit Regular", "Cfa4Girls", "CrossFit Kids"].map((opt) => (
                 <RadioOption key={opt} label={opt} checked={formData.frequencia === opt} onChange={() => toggleSingle("frequencia", opt)} />
               ))}
             </div>
