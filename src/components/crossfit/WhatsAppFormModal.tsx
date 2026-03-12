@@ -216,7 +216,7 @@ const WhatsAppFormModal = ({ isOpen, onClose, whatsappUrl }: WhatsAppFormModalPr
           <div>
             <label className="text-xs font-medium text-foreground mb-1 block">Qual turno você prefere?</label>
             <div className="space-y-1.5">
-              {["Manhã", "Tarde", "Noite"].map((opt) => (
+              {(formData.frequencia === "CrossFit Kids" ? ["Manhã", "Tarde"] : ["Manhã", "Tarde", "Noite"]).map((opt) => (
                 <RadioOption key={opt} label={opt} checked={formData.turno === opt} onChange={() => toggleSingle("turno", opt)} />
               ))}
             </div>
