@@ -32,8 +32,14 @@ const initialFormData = {
 
 const frequenciaOptions: Record<string, string[]> = {
   "CrossFit Kids": ["2x na semana", "3x na semana"],
-  "CrossFit Regular": ["4x na semana", "6x na semana"],
-  "Turma exclusiva para mulheres": ["4x na semana", "6x na semana"],
+  "CrossFit Regular": ["3-4x na semana", "5-6x na semana"],
+  "Turma exclusiva para mulheres": ["3-4x na semana", "5-6x na semana"],
+};
+
+const turnoOptions: Record<string, string[]> = {
+  "CrossFit Kids": ["Manhã", "Tarde"],
+  "CrossFit Regular": ["Manhã", "Tarde", "Noite"],
+  "Turma exclusiva para mulheres": ["Tarde"],
 };
 
 type FormData = typeof initialFormData;
