@@ -242,11 +242,19 @@ const WhatsAppFormModal = ({ isOpen, onClose, whatsappUrl }: WhatsAppFormModalPr
           <div>
             <label className="text-xs font-medium text-foreground mb-1 block">Você já treina atualmente?</label>
             <div className="space-y-1.5">
-              {["Sim, treino regularmente", "Treinei antes, mas parei", "Estou começando do zero"].map((opt) => (
+              {["Sim, treino regularmente", "Estou parado(a)", "Estou começando do zero"].map((opt) => (
                 <RadioOption key={opt} label={opt} checked={formData.treinando === opt} onChange={() => toggleSingle("treinando", opt)} />
               ))}
             </div>
           </div>
+
+          {/* Período de inatividade - condicional */}
+          {formData.treinando === "Estou parado(a)" && (
+            <div>
+              <label className="text-xs font-medium text-foreground mb-1 block">Há quanto tempo está parado(a)?</label>
+              <Input className="h-8 text-sm" placeholder="Ex: 6 meses, 1 ano..." value={formData.periodoInatividade} onChange={(e) => handleChange("periodoInatividade", e.target.value)} maxLength={100} />
+            </div>
+          )}
 
           {/* Modalidades - condicional */}
           {formData.treinando === "Sim, treino regularmente" && (
