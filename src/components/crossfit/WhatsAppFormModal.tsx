@@ -15,9 +15,6 @@ interface WhatsAppFormModalProps {
 
 const initialFormData = {
   nome: "",
-  telefone: "",
-  email: "",
-  idade: "",
   objetivos: [] as string[],
   rotina: "",
   meta: "",
