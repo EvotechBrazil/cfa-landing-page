@@ -86,7 +86,6 @@ const WhatsAppFormModal = ({ isOpen, onClose, whatsappUrl }: WhatsAppFormModalPr
       return updated;
     });
   };
-  };
 
   const validateForm = (): boolean => {
     if (!formData.nome.trim()) {
