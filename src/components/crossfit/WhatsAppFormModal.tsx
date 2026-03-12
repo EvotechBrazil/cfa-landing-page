@@ -157,26 +157,9 @@ const WhatsAppFormModal = ({ isOpen, onClose, whatsappUrl }: WhatsAppFormModalPr
           {step === 0 && (
             <>
               <div>
-                <label className="text-sm font-medium text-foreground mb-1 block">Nome *</label>
+                <label className="text-sm font-medium text-foreground mb-1 block">Nome completo *</label>
                 <Input placeholder="Seu nome completo" value={formData.nome} onChange={(e) => handleChange("nome", e.target.value)} maxLength={100} required />
               </div>
-              <div>
-                <label className="text-sm font-medium text-foreground mb-1 block">Telefone *</label>
-                <Input placeholder="(43) 9 9999-9999" value={formData.telefone} onChange={(e) => handleChange("telefone", e.target.value)} maxLength={20} required />
-              </div>
-              <div>
-                <label className="text-sm font-medium text-foreground mb-1 block">E-mail *</label>
-                <Input type="email" placeholder="seu@email.com" value={formData.email} onChange={(e) => handleChange("email", e.target.value)} maxLength={255} required />
-              </div>
-              <div>
-                <label className="text-sm font-medium text-foreground mb-1 block">Idade</label>
-                <Input type="number" placeholder="Sua idade" value={formData.idade} onChange={(e) => handleChange("idade", e.target.value)} min={5} max={120} />
-              </div>
-            </>
-          )}
-
-          {step === 1 && (
-            <>
               <div>
                 <label className="text-sm font-medium text-foreground mb-1.5 block">O que você quer melhorar? (pode marcar várias)</label>
                 <div className="flex flex-wrap gap-2">
@@ -204,7 +187,7 @@ const WhatsAppFormModal = ({ isOpen, onClose, whatsappUrl }: WhatsAppFormModalPr
             </>
           )}
 
-          {step === 2 && (
+          {step === 1 && (
             <>
               <div>
                 <label className="text-sm font-medium text-foreground mb-1.5 block">Quantas vezes por semana você conseguiria treinar?</label>
