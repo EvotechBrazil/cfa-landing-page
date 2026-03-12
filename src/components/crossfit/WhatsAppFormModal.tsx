@@ -26,6 +26,7 @@ const initialFormData = {
   disponibilidade: "",
   turno: "",
   treinando: "",
+  periodoInatividade: "",
   modalidades: [] as string[],
   modalidadesOutro: "",
   experienciaCrossfit: "",
