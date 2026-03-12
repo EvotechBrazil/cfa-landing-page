@@ -21,9 +21,16 @@ const initialFormData = {
   meta: "",
   obstaculos: [] as string[],
   frequencia: "",
+  disponibilidade: "",
   turno: "",
   treinando: "",
   comoEncontrou: "",
+};
+
+const frequenciaOptions: Record<string, string[]> = {
+  "CrossFit Kids": ["2x na semana", "3x na semana"],
+  "CrossFit Regular": ["4x na semana", "6x na semana"],
+  "Turma exclusiva para mulheres": ["4x na semana", "6x na semana"],
 };
 
 type FormData = typeof initialFormData;
@@ -67,7 +74,11 @@ const WhatsAppFormModal = ({ isOpen, onClose, whatsappUrl }: WhatsAppFormModalPr
   };
 
   const toggleSingle = (field: keyof FormData, value: string) => {
-    setFormData((prev) => ({ ...prev, [field]: prev[field] === value ? "" : value }));
+    setFormData((prev) => {
+      const updated = { ...prev, [field]: prev[field] === value ? "" : value };
+      if (field === "frequencia") updated.disponibilidade = "";
+      return updated;
+    });
   };
 
   const validateForm = (): boolean => {
@@ -178,6 +189,18 @@ const WhatsAppFormModal = ({ isOpen, onClose, whatsappUrl }: WhatsAppFormModalPr
               ))}
             </div>
           </div>
+
+          {/* Disponibilidade condicional */}
+          {formData.frequencia && frequenciaOptions[formData.frequencia] && (
+            <div>
+              <label className="text-xs font-medium text-foreground mb-1 block">Qual a sua disponibilidade?</label>
+              <div className="space-y-1.5">
+                {frequenciaOptions[formData.frequencia].map((opt) => (
+                  <RadioOption key={opt} label={opt} checked={formData.disponibilidade === opt} onChange={() => toggleSingle("disponibilidade", opt)} />
+                ))}
+              </div>
+            </div>
+          )}
 
           {/* Turno */}
           <div>
