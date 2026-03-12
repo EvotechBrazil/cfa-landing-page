@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { X, Loader2, MessageCircle, ChevronRight, ChevronLeft } from "lucide-react";
+import { X, Loader2, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -52,7 +52,6 @@ const ToggleChip = ({
 const WhatsAppFormModal = ({ isOpen, onClose, whatsappUrl }: WhatsAppFormModalProps) => {
   const { toast } = useToast();
   const [isLoading, setIsLoading] = useState(false);
-  const [step, setStep] = useState(0);
   const [formData, setFormData] = useState<FormData>({ ...initialFormData });
 
   const handleChange = (field: keyof FormData, value: string) => {
@@ -73,22 +72,49 @@ const WhatsAppFormModal = ({ isOpen, onClose, whatsappUrl }: WhatsAppFormModalPr
     setFormData((prev) => ({ ...prev, [field]: prev[field] === value ? "" : value }));
   };
 
-  const validateStep = (): boolean => {
-    if (step === 0) {
-      if (!formData.nome.trim()) {
-        toast({ title: "Campo obrigatório", description: "Preencha seu nome.", variant: "destructive" });
-        return false;
-      }
+  const validateForm = (): boolean => {
+    if (!formData.nome.trim()) {
+      toast({ title: "Campo obrigatório", description: "Preencha seu nome completo.", variant: "destructive" });
+      return false;
     }
-    return true;
-  };
 
-  const handleNext = () => {
-    if (validateStep()) setStep((s) => s + 1);
+    if (!formData.objetivos.length) {
+      toast({ title: "Campo obrigatório", description: "Selecione pelo menos um objetivo.", variant: "destructive" });
+      return false;
+    }
+
+    if (!formData.rotina.trim()) {
+      toast({ title: "Campo obrigatório", description: "Preencha sua rotina de trabalho.", variant: "destructive" });
+      return false;
+    }
+
+    if (!formData.meta.trim()) {
+      toast({ title: "Campo obrigatório", description: "Preencha sua meta.", variant: "destructive" });
+      return false;
+    }
+
+    if (!formData.obstaculos.length) {
+      toast({ title: "Campo obrigatório", description: "Selecione pelo menos um obstáculo.", variant: "destructive" });
+      return false;
+    }
+
+    if (!formData.frequencia || !formData.turno || !formData.treinando || !formData.comoEncontrou) {
+      toast({
+        title: "Campos obrigatórios",
+        description: "Preencha frequência, turno, status de treino e como encontrou.",
+        variant: "destructive",
+      });
+      return false;
+    }
+
+    return true;
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (!validateForm()) return;
+
     setIsLoading(true);
 
     try {
@@ -107,7 +133,6 @@ const WhatsAppFormModal = ({ isOpen, onClose, whatsappUrl }: WhatsAppFormModalPr
 
       toast({ title: "Dados enviados!", description: "Você será redirecionado para o WhatsApp." });
       setFormData({ ...initialFormData });
-      setStep(0);
       onClose();
       setTimeout(() => window.open(whatsappUrl, "_blank"), 500);
     } catch {
@@ -119,8 +144,6 @@ const WhatsAppFormModal = ({ isOpen, onClose, whatsappUrl }: WhatsAppFormModalPr
 
   if (!isOpen) return null;
 
-  const totalSteps = 2;
-
   return (
     <div
       className="fixed inset-0 z-[60] bg-black/70 backdrop-blur-sm flex items-center justify-center p-4 animate-fade-in"
@@ -130,19 +153,9 @@ const WhatsAppFormModal = ({ isOpen, onClose, whatsappUrl }: WhatsAppFormModalPr
         className="relative w-full max-w-lg bg-card border border-border rounded-2xl shadow-2xl animate-scale-in overflow-hidden max-h-[90vh] flex flex-col"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Header */}
         <div className="bg-primary/10 px-6 py-4 border-b border-border shrink-0">
           <h3 className="font-display text-xl font-bold text-foreground">Quase lá! 💪</h3>
-          <p className="text-foreground/60 text-sm mt-1">
-            Etapa {step + 1} de {totalSteps} — Preencha para continuarmos no WhatsApp.
-          </p>
-          {/* Progress bar */}
-          <div className="mt-3 h-1.5 bg-muted rounded-full overflow-hidden">
-            <div
-              className="h-full bg-primary rounded-full transition-all duration-300"
-              style={{ width: `${((step + 1) / totalSteps) * 100}%` }}
-            />
-          </div>
+          <p className="text-foreground/60 text-sm mt-1">Preencha para continuarmos no WhatsApp.</p>
           <button
             onClick={onClose}
             className="absolute top-4 right-4 w-8 h-8 rounded-full bg-background/50 flex items-center justify-center text-foreground/60 hover:text-foreground hover:bg-background transition-colors"
@@ -152,100 +165,91 @@ const WhatsAppFormModal = ({ isOpen, onClose, whatsappUrl }: WhatsAppFormModalPr
           </button>
         </div>
 
-        {/* Form */}
-        <form onSubmit={handleSubmit} onKeyDown={(e) => { if (e.key === "Enter") e.preventDefault(); }} className="p-6 space-y-4 overflow-y-auto flex-1">
-          {step === 0 && (
-            <>
-              <div>
-                <label className="text-sm font-medium text-foreground mb-1 block">Nome completo *</label>
-                <Input placeholder="Seu nome completo" value={formData.nome} onChange={(e) => handleChange("nome", e.target.value)} maxLength={100} />
-              </div>
-              <div>
-                <label className="text-sm font-medium text-foreground mb-1.5 block">O que você quer melhorar? (pode marcar várias)</label>
-                <div className="flex flex-wrap gap-2">
-                  {["Emagrecer", "Condicionamento físico", "Ganhar força", "Performance esportiva"].map((opt) => (
-                    <ToggleChip key={opt} label={opt} selected={formData.objetivos.includes(opt)} onClick={() => toggleMulti("objetivos", opt)} />
-                  ))}
-                </div>
-              </div>
-              <div>
-                <label className="text-sm font-medium text-foreground mb-1 block">Como é sua rotina de trabalho?</label>
-                <Input placeholder="Ex: trabalho das 8h às 17h" value={formData.rotina} onChange={(e) => handleChange("rotina", e.target.value)} maxLength={200} />
-              </div>
-              <div>
-                <label className="text-sm font-medium text-foreground mb-1 block">Qual é sua meta e por que ela importa pra você agora?</label>
-                <Textarea placeholder="Conte um pouco sobre sua meta..." value={formData.meta} onChange={(e) => handleChange("meta", e.target.value)} maxLength={500} className="min-h-[70px]" />
-              </div>
-              <div>
-                <label className="text-sm font-medium text-foreground mb-1.5 block">O que mais te atrapalha hoje? (pode marcar várias)</label>
-                <div className="flex flex-wrap gap-2">
-                  {["Falta de tempo", "Insegurança / nunca treinei", "Dores ou limitações físicas", "Custo", "Distância"].map((opt) => (
-                    <ToggleChip key={opt} label={opt} selected={formData.obstaculos.includes(opt)} onClick={() => toggleMulti("obstaculos", opt)} />
-                  ))}
-                </div>
-              </div>
-            </>
-          )}
-
-          {step === 1 && (
-            <>
-              <div>
-                <label className="text-sm font-medium text-foreground mb-1.5 block">Quantas vezes por semana você conseguiria treinar?</label>
-                <div className="flex gap-2">
-                  {["2x", "3x", "4x ou mais"].map((opt) => (
-                    <ToggleChip key={opt} label={opt} selected={formData.frequencia === opt} onClick={() => toggleSingle("frequencia", opt)} />
-                  ))}
-                </div>
-              </div>
-              <div>
-                <label className="text-sm font-medium text-foreground mb-1.5 block">Qual turno você prefere?</label>
-                <div className="flex gap-2">
-                  {["Manhã", "Tarde", "Noite"].map((opt) => (
-                    <ToggleChip key={opt} label={opt} selected={formData.turno === opt} onClick={() => toggleSingle("turno", opt)} />
-                  ))}
-                </div>
-              </div>
-              <div>
-                <label className="text-sm font-medium text-foreground mb-1.5 block">Você já treina atualmente?</label>
-                <div className="flex flex-wrap gap-2">
-                  {["Sim, treino regularmente", "Treinei antes, mas parei", "Estou começando do zero"].map((opt) => (
-                    <ToggleChip key={opt} label={opt} selected={formData.treinando === opt} onClick={() => toggleSingle("treinando", opt)} />
-                  ))}
-                </div>
-              </div>
-              <div>
-                <label className="text-sm font-medium text-foreground mb-1.5 block">Como você nos encontrou?</label>
-                <div className="flex flex-wrap gap-2">
-                  {["Instagram", "Indicação de amigo/conhecido", "Vi a academia na cidade", "Outro"].map((opt) => (
-                    <ToggleChip key={opt} label={opt} selected={formData.comoEncontrou === opt} onClick={() => toggleSingle("comoEncontrou", opt)} />
-                  ))}
-                </div>
-              </div>
-            </>
-          )}
-
-          {/* Navigation */}
-          <div className="flex gap-3 pt-2">
-            {step > 0 && (
-              <Button type="button" variant="outline" onClick={() => setStep((s) => s - 1)} className="flex-1">
-                <ChevronLeft className="w-4 h-4 mr-1" /> Voltar
-              </Button>
-            )}
-            {step < totalSteps - 1 ? (
-              <Button type="button" onClick={handleNext} className="flex-1 bg-primary hover:bg-primary/90">
-                Próximo <ChevronRight className="w-4 h-4 ml-1" />
-              </Button>
-            ) : (
-              <Button
-                type="submit"
-                disabled={isLoading}
-                className="flex-1 bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold uppercase tracking-wide py-3 rounded-full text-base"
-              >
-                {isLoading ? <Loader2 className="w-5 h-5 animate-spin mr-2" /> : <MessageCircle className="w-5 h-5 mr-2" />}
-                {isLoading ? "Enviando..." : "Continuar no WhatsApp"}
-              </Button>
-            )}
+        <form
+          onSubmit={handleSubmit}
+          onKeyDown={(e) => {
+            if (e.key === "Enter" && !(e.target instanceof HTMLTextAreaElement)) e.preventDefault();
+          }}
+          className="p-6 space-y-4 overflow-y-auto flex-1"
+        >
+          <div>
+            <label className="text-sm font-medium text-foreground mb-1 block">Nome completo *</label>
+            <Input placeholder="Seu nome completo" value={formData.nome} onChange={(e) => handleChange("nome", e.target.value)} maxLength={100} />
           </div>
+
+          <div>
+            <label className="text-sm font-medium text-foreground mb-1.5 block">O que você quer melhorar? (pode marcar várias)</label>
+            <div className="flex flex-wrap gap-2">
+              {["Emagrecer", "Condicionamento físico", "Ganhar força", "Performance esportiva"].map((opt) => (
+                <ToggleChip key={opt} label={opt} selected={formData.objetivos.includes(opt)} onClick={() => toggleMulti("objetivos", opt)} />
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <label className="text-sm font-medium text-foreground mb-1 block">Como é sua rotina de trabalho?</label>
+            <Input placeholder="Ex: trabalho das 8h às 17h" value={formData.rotina} onChange={(e) => handleChange("rotina", e.target.value)} maxLength={200} />
+          </div>
+
+          <div>
+            <label className="text-sm font-medium text-foreground mb-1 block">Qual é sua meta e por que ela importa pra você agora?</label>
+            <Textarea placeholder="Conte um pouco sobre sua meta..." value={formData.meta} onChange={(e) => handleChange("meta", e.target.value)} maxLength={500} className="min-h-[70px]" />
+          </div>
+
+          <div>
+            <label className="text-sm font-medium text-foreground mb-1.5 block">O que mais te atrapalha hoje? (pode marcar várias)</label>
+            <div className="flex flex-wrap gap-2">
+              {["Falta de tempo", "Insegurança / nunca treinei", "Dores ou limitações físicas", "Custo", "Distância"].map((opt) => (
+                <ToggleChip key={opt} label={opt} selected={formData.obstaculos.includes(opt)} onClick={() => toggleMulti("obstaculos", opt)} />
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <label className="text-sm font-medium text-foreground mb-1.5 block">Quantas vezes por semana você conseguiria treinar?</label>
+            <div className="flex flex-wrap gap-2">
+              {["2x", "3x", "4x ou mais"].map((opt) => (
+                <ToggleChip key={opt} label={opt} selected={formData.frequencia === opt} onClick={() => toggleSingle("frequencia", opt)} />
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <label className="text-sm font-medium text-foreground mb-1.5 block">Qual turno você prefere?</label>
+            <div className="flex flex-wrap gap-2">
+              {["Manhã", "Tarde", "Noite"].map((opt) => (
+                <ToggleChip key={opt} label={opt} selected={formData.turno === opt} onClick={() => toggleSingle("turno", opt)} />
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <label className="text-sm font-medium text-foreground mb-1.5 block">Você já treina atualmente?</label>
+            <div className="flex flex-wrap gap-2">
+              {["Sim, treino regularmente", "Treinei antes, mas parei", "Estou começando do zero"].map((opt) => (
+                <ToggleChip key={opt} label={opt} selected={formData.treinando === opt} onClick={() => toggleSingle("treinando", opt)} />
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <label className="text-sm font-medium text-foreground mb-1.5 block">Como você nos encontrou?</label>
+            <div className="flex flex-wrap gap-2">
+              {["Instagram", "Indicação de amigo/conhecido", "Vi a academia na cidade", "Outro"].map((opt) => (
+                <ToggleChip key={opt} label={opt} selected={formData.comoEncontrou === opt} onClick={() => toggleSingle("comoEncontrou", opt)} />
+              ))}
+            </div>
+          </div>
+
+          <Button
+            type="submit"
+            variant="whatsapp"
+            disabled={isLoading}
+            className="w-full font-bold uppercase tracking-wide py-3 rounded-full text-base"
+          >
+            {isLoading ? <Loader2 className="w-5 h-5 animate-spin mr-2" /> : <MessageCircle className="w-5 h-5 mr-2" />}
+            {isLoading ? "Enviando..." : "Continuar no WhatsApp"}
+          </Button>
         </form>
       </div>
     </div>
