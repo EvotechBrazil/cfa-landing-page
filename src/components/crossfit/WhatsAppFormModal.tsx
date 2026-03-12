@@ -17,14 +17,17 @@ const initialFormData = {
   nome: "",
   telefone: "",
   objetivos: [] as string[],
+  objetivosOutro: "",
   rotina: "",
   meta: "",
   obstaculos: [] as string[],
+  obstaculosOutro: "",
   frequencia: "",
   disponibilidade: "",
   turno: "",
   treinando: "",
   comoEncontrou: "",
+  comoEncontrouOutro: "",
 };
 
 const frequenciaOptions: Record<string, string[]> = {
@@ -73,10 +76,13 @@ const WhatsAppFormModal = ({ isOpen, onClose, whatsappUrl }: WhatsAppFormModalPr
     });
   };
 
-  const toggleSingle = (field: keyof FormData, value: string) => {
+    const toggleSingle = (field: keyof FormData, value: string) => {
     setFormData((prev) => {
       const updated = { ...prev, [field]: prev[field] === value ? "" : value };
-      if (field === "frequencia") updated.disponibilidade = "";
+      if (field === "frequencia") {
+        updated.disponibilidade = "";
+        if (updated.frequencia === "CrossFit Kids" && updated.turno === "Noite") updated.turno = "";
+      }
       return updated;
     });
   };
@@ -100,8 +106,9 @@ const WhatsAppFormModal = ({ isOpen, onClose, whatsappUrl }: WhatsAppFormModalPr
         mode: "no-cors",
         body: JSON.stringify({
           ...formData,
-          objetivos: formData.objetivos.join(", "),
-          obstaculos: formData.obstaculos.join(", "),
+          objetivos: [...formData.objetivos, formData.objetivosOutro ? `Outro: ${formData.objetivosOutro}` : ""].filter(Boolean).join(", "),
+          obstaculos: [...formData.obstaculos, formData.obstaculosOutro ? `Outro: ${formData.obstaculosOutro}` : ""].filter(Boolean).join(", "),
+          comoEncontrou: formData.comoEncontrou === "Outro" && formData.comoEncontrouOutro ? `Outro: ${formData.comoEncontrouOutro}` : formData.comoEncontrou,
           timestamp: new Date().toISOString(),
           origem: window.location.href,
         }),
@@ -152,9 +159,12 @@ const WhatsAppFormModal = ({ isOpen, onClose, whatsappUrl }: WhatsAppFormModalPr
           <div>
             <label className="text-xs font-medium text-foreground mb-1 block">O que você quer melhorar?</label>
             <div className="space-y-1.5">
-              {["Emagrecer", "Condicionamento físico", "Ganhar força", "Performance esportiva", "Saúde / Qualidade de vida"].map((opt) => (
+              {["Emagrecer", "Condicionamento físico", "Ganhar força", "Performance esportiva", "Saúde / Qualidade de vida", "Outro"].map((opt) => (
                 <CheckboxOption key={opt} label={opt} checked={formData.objetivos.includes(opt)} onChange={() => toggleMulti("objetivos", opt)} />
               ))}
+              {formData.objetivos.includes("Outro") && (
+                <Input className="h-8 text-sm mt-1" placeholder="Descreva..." value={formData.objetivosOutro} onChange={(e) => handleChange("objetivosOutro", e.target.value)} maxLength={200} />
+              )}
             </div>
           </div>
 
@@ -174,9 +184,12 @@ const WhatsAppFormModal = ({ isOpen, onClose, whatsappUrl }: WhatsAppFormModalPr
           <div>
             <label className="text-xs font-medium text-foreground mb-1 block">O que mais te atrapalha hoje?</label>
             <div className="space-y-1.5">
-              {["Falta de tempo", "Insegurança / nunca treinei", "Dores ou limitações físicas", "Custo", "Distância"].map((opt) => (
+              {["Falta de tempo", "Insegurança / nunca treinei", "Dores ou limitações físicas", "Custo", "Distância", "Outro"].map((opt) => (
                 <CheckboxOption key={opt} label={opt} checked={formData.obstaculos.includes(opt)} onChange={() => toggleMulti("obstaculos", opt)} />
               ))}
+              {formData.obstaculos.includes("Outro") && (
+                <Input className="h-8 text-sm mt-1" placeholder="Descreva..." value={formData.obstaculosOutro} onChange={(e) => handleChange("obstaculosOutro", e.target.value)} maxLength={200} />
+              )}
             </div>
           </div>
 
@@ -206,7 +219,7 @@ const WhatsAppFormModal = ({ isOpen, onClose, whatsappUrl }: WhatsAppFormModalPr
           <div>
             <label className="text-xs font-medium text-foreground mb-1 block">Qual turno você prefere?</label>
             <div className="space-y-1.5">
-              {["Manhã", "Tarde", "Noite"].map((opt) => (
+              {(formData.frequencia === "CrossFit Kids" ? ["Manhã", "Tarde"] : ["Manhã", "Tarde", "Noite"]).map((opt) => (
                 <RadioOption key={opt} label={opt} checked={formData.turno === opt} onChange={() => toggleSingle("turno", opt)} />
               ))}
             </div>
@@ -229,6 +242,9 @@ const WhatsAppFormModal = ({ isOpen, onClose, whatsappUrl }: WhatsAppFormModalPr
               {["Instagram", "Indicação de amigo/conhecido", "Vi a academia na cidade", "Outro"].map((opt) => (
                 <RadioOption key={opt} label={opt} checked={formData.comoEncontrou === opt} onChange={() => toggleSingle("comoEncontrou", opt)} />
               ))}
+              {formData.comoEncontrou === "Outro" && (
+                <Input className="h-8 text-sm mt-1" placeholder="Descreva..." value={formData.comoEncontrouOutro} onChange={(e) => handleChange("comoEncontrouOutro", e.target.value)} maxLength={200} />
+              )}
             </div>
           </div>
 
