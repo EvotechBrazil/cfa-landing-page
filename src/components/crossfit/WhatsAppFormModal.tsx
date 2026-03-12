@@ -155,7 +155,7 @@ const WhatsAppFormModal = ({ isOpen, onClose, whatsappUrl }: WhatsAppFormModalPr
 
           {/* Meta */}
           <div>
-            <label className="text-xs font-medium text-foreground mb-1 block">Qual é sua meta?</label>
+            <label className="text-xs font-medium text-foreground mb-1 block">Qual a sua meta, o que você espera conosco?</label>
             <Textarea placeholder="Conte um pouco..." value={formData.meta} onChange={(e) => handleChange("meta", e.target.value)} maxLength={500} className="min-h-[50px] text-sm" />
           </div>
 
