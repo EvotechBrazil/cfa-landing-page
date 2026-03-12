@@ -87,7 +87,8 @@ const WhatsAppFormModal = ({ isOpen, onClose, whatsappUrl }: WhatsAppFormModalPr
       const updated = { ...prev, [field]: prev[field] === value ? "" : value };
       if (field === "frequencia") {
         updated.disponibilidade = "";
-        if (updated.frequencia === "CrossFit Kids" && updated.turno === "Noite") updated.turno = "";
+        const validTurnos = turnoOptions[updated.frequencia] || ["Manhã", "Tarde", "Noite"];
+        if (updated.turno && !validTurnos.includes(updated.turno)) updated.turno = "";
       }
       return updated;
     });
