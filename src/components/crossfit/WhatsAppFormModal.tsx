@@ -15,9 +15,6 @@ interface WhatsAppFormModalProps {
 
 const initialFormData = {
   nome: "",
-  telefone: "",
-  email: "",
-  idade: "",
   objetivos: [] as string[],
   rotina: "",
   meta: "",
@@ -58,20 +55,8 @@ const WhatsAppFormModal = ({ isOpen, onClose, whatsappUrl }: WhatsAppFormModalPr
   const [step, setStep] = useState(0);
   const [formData, setFormData] = useState<FormData>({ ...initialFormData });
 
-  const formatPhone = (value: string) => {
-    const digits = value.replace(/\D/g, "").slice(0, 11);
-    if (digits.length <= 2) return digits.length ? `(${digits}` : "";
-    if (digits.length <= 3) return `(${digits.slice(0, 2)})${digits.slice(2)}`;
-    if (digits.length <= 7) return `(${digits.slice(0, 2)})${digits.slice(2, 3)}.${digits.slice(3)}`;
-    return `(${digits.slice(0, 2)})${digits.slice(2, 3)}.${digits.slice(3, 7)}-${digits.slice(7)}`;
-  };
-
   const handleChange = (field: keyof FormData, value: string) => {
-    if (field === "telefone") {
-      setFormData((prev) => ({ ...prev, telefone: formatPhone(value) }));
-    } else {
-      setFormData((prev) => ({ ...prev, [field]: value }));
-    }
+    setFormData((prev) => ({ ...prev, [field]: value }));
   };
 
   const toggleMulti = (field: "objetivos" | "obstaculos", value: string) => {
@@ -90,8 +75,8 @@ const WhatsAppFormModal = ({ isOpen, onClose, whatsappUrl }: WhatsAppFormModalPr
 
   const validateStep = (): boolean => {
     if (step === 0) {
-      if (!formData.nome.trim() || !formData.telefone.trim() || !formData.email.trim()) {
-        toast({ title: "Campos obrigatórios", description: "Preencha nome, telefone e e-mail.", variant: "destructive" });
+      if (!formData.nome.trim()) {
+        toast({ title: "Campo obrigatório", description: "Preencha seu nome.", variant: "destructive" });
         return false;
       }
     }
@@ -134,7 +119,7 @@ const WhatsAppFormModal = ({ isOpen, onClose, whatsappUrl }: WhatsAppFormModalPr
 
   if (!isOpen) return null;
 
-  const totalSteps = 3;
+  const totalSteps = 2;
 
   return (
     <div
@@ -172,26 +157,9 @@ const WhatsAppFormModal = ({ isOpen, onClose, whatsappUrl }: WhatsAppFormModalPr
           {step === 0 && (
             <>
               <div>
-                <label className="text-sm font-medium text-foreground mb-1 block">Nome *</label>
+                <label className="text-sm font-medium text-foreground mb-1 block">Nome completo *</label>
                 <Input placeholder="Seu nome completo" value={formData.nome} onChange={(e) => handleChange("nome", e.target.value)} maxLength={100} required />
               </div>
-              <div>
-                <label className="text-sm font-medium text-foreground mb-1 block">Telefone *</label>
-                <Input placeholder="(43) 9 9999-9999" value={formData.telefone} onChange={(e) => handleChange("telefone", e.target.value)} maxLength={20} required />
-              </div>
-              <div>
-                <label className="text-sm font-medium text-foreground mb-1 block">E-mail *</label>
-                <Input type="email" placeholder="seu@email.com" value={formData.email} onChange={(e) => handleChange("email", e.target.value)} maxLength={255} required />
-              </div>
-              <div>
-                <label className="text-sm font-medium text-foreground mb-1 block">Idade</label>
-                <Input type="number" placeholder="Sua idade" value={formData.idade} onChange={(e) => handleChange("idade", e.target.value)} min={5} max={120} />
-              </div>
-            </>
-          )}
-
-          {step === 1 && (
-            <>
               <div>
                 <label className="text-sm font-medium text-foreground mb-1.5 block">O que você quer melhorar? (pode marcar várias)</label>
                 <div className="flex flex-wrap gap-2">
@@ -219,7 +187,7 @@ const WhatsAppFormModal = ({ isOpen, onClose, whatsappUrl }: WhatsAppFormModalPr
             </>
           )}
 
-          {step === 2 && (
+          {step === 1 && (
             <>
               <div>
                 <label className="text-sm font-medium text-foreground mb-1.5 block">Quantas vezes por semana você conseguiria treinar?</label>
