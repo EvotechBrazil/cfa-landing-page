@@ -103,8 +103,9 @@ const WhatsAppFormModal = ({ isOpen, onClose, whatsappUrl }: WhatsAppFormModalPr
         mode: "no-cors",
         body: JSON.stringify({
           ...formData,
-          objetivos: formData.objetivos.join(", "),
-          obstaculos: formData.obstaculos.join(", "),
+          objetivos: [...formData.objetivos, formData.objetivosOutro ? `Outro: ${formData.objetivosOutro}` : ""].filter(Boolean).join(", "),
+          obstaculos: [...formData.obstaculos, formData.obstaculosOutro ? `Outro: ${formData.obstaculosOutro}` : ""].filter(Boolean).join(", "),
+          comoEncontrou: formData.comoEncontrou === "Outro" && formData.comoEncontrouOutro ? `Outro: ${formData.comoEncontrouOutro}` : formData.comoEncontrou,
           timestamp: new Date().toISOString(),
           origem: window.location.href,
         }),
