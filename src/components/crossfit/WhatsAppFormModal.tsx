@@ -74,7 +74,11 @@ const WhatsAppFormModal = ({ isOpen, onClose, whatsappUrl }: WhatsAppFormModalPr
   };
 
   const toggleSingle = (field: keyof FormData, value: string) => {
-    setFormData((prev) => ({ ...prev, [field]: prev[field] === value ? "" : value }));
+    setFormData((prev) => {
+      const updated = { ...prev, [field]: prev[field] === value ? "" : value };
+      if (field === "frequencia") updated.disponibilidade = "";
+      return updated;
+    });
   };
 
   const validateForm = (): boolean => {
