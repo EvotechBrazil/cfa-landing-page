@@ -153,12 +153,12 @@ const WhatsAppFormModal = ({ isOpen, onClose, whatsappUrl }: WhatsAppFormModalPr
         </div>
 
         {/* Form */}
-        <form onSubmit={handleSubmit} className="p-6 space-y-4 overflow-y-auto flex-1">
+        <form onSubmit={handleSubmit} onKeyDown={(e) => { if (e.key === "Enter") e.preventDefault(); }} className="p-6 space-y-4 overflow-y-auto flex-1">
           {step === 0 && (
             <>
               <div>
                 <label className="text-sm font-medium text-foreground mb-1 block">Nome completo *</label>
-                <Input placeholder="Seu nome completo" value={formData.nome} onChange={(e) => handleChange("nome", e.target.value)} maxLength={100} required />
+                <Input placeholder="Seu nome completo" value={formData.nome} onChange={(e) => handleChange("nome", e.target.value)} maxLength={100} />
               </div>
               <div>
                 <label className="text-sm font-medium text-foreground mb-1.5 block">O que você quer melhorar? (pode marcar várias)</label>
