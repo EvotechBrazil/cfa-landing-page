@@ -135,8 +135,8 @@ const WhatsAppFormModal = ({ isOpen, onClose, whatsappUrl }: WhatsAppFormModalPr
         <form onSubmit={handleSubmit} onKeyDown={(e) => { if (e.key === "Enter" && !(e.target instanceof HTMLTextAreaElement)) e.preventDefault(); }} className="px-4 py-3 space-y-3 overflow-y-auto flex-1">
           {/* Nome */}
           <div>
-            <label className="text-xs font-medium text-foreground mb-1 block">Nome completo *</label>
-            <Input className="h-8 text-sm" placeholder="Seu nome completo" value={formData.nome} onChange={(e) => handleChange("nome", e.target.value)} maxLength={100} />
+            <label className="text-xs font-medium text-foreground mb-1 block">Primeiro nome *</label>
+            <Input className="h-8 text-sm" placeholder="Seu primeiro nome" value={formData.nome} onChange={(e) => handleChange("nome", e.target.value)} maxLength={100} />
           </div>
 
           {/* Telefone */}
