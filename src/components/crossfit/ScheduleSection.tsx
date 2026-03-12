@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Clock } from "lucide-react";
 
-const WHATSAPP_LINK = "https://wa.me/5543991080383?text=Olá! Gostaria de saber mais sobre os horários.";
+const WHATSAPP_LINK = "https://wa.me/5543991796835?text=Olá! Gostaria de saber mais sobre os horários.";
 
 const ScheduleSection = () => {
   const schedule = {

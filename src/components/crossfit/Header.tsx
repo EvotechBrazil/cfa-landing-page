@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import logoCFA from "@/assets/logo-cfa.png";
 import { useWhatsAppForm } from "./WhatsAppFormContext";
 
-const WHATSAPP_LINK = "https://wa.me/5543991080383?text=Olá! Gostaria de agendar uma aula experimental gratuita.";
+const WHATSAPP_LINK = "https://wa.me/5543991796835?text=Olá! Gostaria de agendar uma aula experimental gratuita.";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

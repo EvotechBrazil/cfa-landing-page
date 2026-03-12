@@ -1,7 +1,7 @@
 import { MessageCircle } from "lucide-react";
 import { useWhatsAppForm } from "./WhatsAppFormContext";
 
-const WHATSAPP_LINK = "https://wa.me/5543991080383?text=Olá! Gostaria de agendar uma aula experimental.";
+const WHATSAPP_LINK = "https://wa.me/5543991796835?text=Olá! Gostaria de agendar uma aula experimental.";
 
 const WhatsAppFloatingButton = () => {
   const { openForm } = useWhatsAppForm();

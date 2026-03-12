@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { ChevronDown } from "lucide-react";
 import { useWhatsAppForm } from "./WhatsAppFormContext";
 
-const WHATSAPP_LINK = "https://wa.me/5543991080383?text=Olá! Gostaria de agendar uma aula experimental gratuita.";
+const WHATSAPP_LINK = "https://wa.me/5543991796835?text=Olá! Gostaria de agendar uma aula experimental gratuita.";
 const HERO_VIDEO_URL = "https://ssmiynhzwcalaswcsjsy.supabase.co/storage/v1/object/public/videos/hero-bg.mp4";
 
 const HeroSection = () => {

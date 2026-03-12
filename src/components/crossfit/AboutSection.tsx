@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import lionWatermark from "@/assets/lion-watermark.png";
 import { useWhatsAppForm } from "./WhatsAppFormContext";
 
-const WHATSAPP_LINK = "https://wa.me/5543991080383?text=Olá! Gostaria de conhecer mais sobre a CrossFit Arapongas.";
+const WHATSAPP_LINK = "https://wa.me/5543991796835?text=Olá! Gostaria de conhecer mais sobre a CrossFit Arapongas.";
 
 const AboutSection = () => {
   const { openForm } = useWhatsAppForm();
