@@ -171,7 +171,7 @@ const WhatsAppFormModal = ({ isOpen, onClose, whatsappUrl }: WhatsAppFormModalPr
 
           {/* Frequência */}
           <div>
-            <label className="text-xs font-medium text-foreground mb-1 block">Quantas vezes por semana?</label>
+            <label className="text-xs font-medium text-foreground mb-1 block">Qual a sua disponibilidade para treinar?</label>
             <div className="space-y-1.5">
               {["2x", "3x", "4x ou mais"].map((opt) => (
                 <RadioOption key={opt} label={opt} checked={formData.frequencia === opt} onChange={() => toggleSingle("frequencia", opt)} />
