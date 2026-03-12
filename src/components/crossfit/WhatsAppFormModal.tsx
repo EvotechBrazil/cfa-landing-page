@@ -262,6 +262,16 @@ const WhatsAppFormModal = ({ isOpen, onClose, whatsappUrl }: WhatsAppFormModalPr
             </div>
           )}
 
+          {/* Experiência com CrossFit */}
+          <div>
+            <label className="text-xs font-medium text-foreground mb-1 block">Já teve alguma experiência com CrossFit antes?</label>
+            <div className="space-y-1.5">
+              {["Sim", "Não"].map((opt) => (
+                <RadioOption key={opt} label={opt} checked={formData.experienciaCrossfit === opt} onChange={() => toggleSingle("experienciaCrossfit", opt)} />
+              ))}
+            </div>
+          </div>
+
           {/* Como encontrou */}
           <div>
             <label className="text-xs font-medium text-foreground mb-1 block">Como você nos encontrou?</label>
@@ -269,6 +279,9 @@ const WhatsAppFormModal = ({ isOpen, onClose, whatsappUrl }: WhatsAppFormModalPr
               {["Instagram", "Indicação de amigo/conhecido", "Vi a academia na cidade", "Outro"].map((opt) => (
                 <RadioOption key={opt} label={opt} checked={formData.comoEncontrou === opt} onChange={() => toggleSingle("comoEncontrou", opt)} />
               ))}
+              {formData.comoEncontrou === "Indicação de amigo/conhecido" && (
+                <Input className="h-8 text-sm mt-1" placeholder="Qual amigo?" value={formData.indicacaoAmigo} onChange={(e) => handleChange("indicacaoAmigo", e.target.value)} maxLength={100} />
+              )}
               {formData.comoEncontrou === "Outro" && (
                 <Input className="h-8 text-sm mt-1" placeholder="Descreva..." value={formData.comoEncontrouOutro} onChange={(e) => handleChange("comoEncontrouOutro", e.target.value)} maxLength={200} />
               )}
