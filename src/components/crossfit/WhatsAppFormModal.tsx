@@ -21,9 +21,16 @@ const initialFormData = {
   meta: "",
   obstaculos: [] as string[],
   frequencia: "",
+  disponibilidade: "",
   turno: "",
   treinando: "",
   comoEncontrou: "",
+};
+
+const frequenciaOptions: Record<string, string[]> = {
+  "CrossFit Kids": ["2x na semana", "3x na semana"],
+  "CrossFit Regular": ["4x na semana", "6x na semana"],
+  "Turma exclusiva para mulheres": ["4x na semana", "6x na semana"],
 };
 
 type FormData = typeof initialFormData;
