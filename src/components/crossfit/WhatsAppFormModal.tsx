@@ -257,7 +257,7 @@ const WhatsAppFormModal = ({ isOpen, onClose, whatsappUrl }: WhatsAppFormModalPr
                 )}
               </div>
             </div>
-          )
+          )}
 
           {/* Como encontrou */}
           <div>
