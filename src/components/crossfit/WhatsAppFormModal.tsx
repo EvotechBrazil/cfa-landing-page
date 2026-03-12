@@ -119,7 +119,7 @@ const WhatsAppFormModal = ({ isOpen, onClose, whatsappUrl }: WhatsAppFormModalPr
 
   if (!isOpen) return null;
 
-  const totalSteps = 3;
+  const totalSteps = 2;
 
   return (
     <div
