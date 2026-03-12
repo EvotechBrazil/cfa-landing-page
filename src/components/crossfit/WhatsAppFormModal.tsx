@@ -28,25 +28,25 @@ const initialFormData = {
 type FormData = typeof initialFormData;
 
 const CheckboxOption = ({ label, checked, onChange }: { label: string; checked: boolean; onChange: () => void }) => (
-  <label className="flex items-center gap-2 cursor-pointer group">
+  <button type="button" onClick={onChange} className="flex items-center gap-2 cursor-pointer group w-full text-left">
     <div className={`w-4 h-4 rounded border flex items-center justify-center shrink-0 transition-colors ${
       checked ? "bg-primary border-primary" : "border-muted-foreground/40 group-hover:border-primary/60"
     }`}>
       {checked && <Check className="w-3 h-3 text-primary-foreground" />}
     </div>
     <span className="text-xs text-foreground/80">{label}</span>
-  </label>
+  </button>
 );
 
 const RadioOption = ({ label, checked, onChange }: { label: string; checked: boolean; onChange: () => void }) => (
-  <label className="flex items-center gap-2 cursor-pointer group">
+  <button type="button" onClick={onChange} className="flex items-center gap-2 cursor-pointer group w-full text-left">
     <div className={`w-4 h-4 rounded-full border flex items-center justify-center shrink-0 transition-colors ${
       checked ? "border-primary" : "border-muted-foreground/40 group-hover:border-primary/60"
     }`}>
       {checked && <div className="w-2 h-2 rounded-full bg-primary" />}
     </div>
     <span className="text-xs text-foreground/80">{label}</span>
-  </label>
+  </button>
 );
 
 const WhatsAppFormModal = ({ isOpen, onClose, whatsappUrl }: WhatsAppFormModalProps) => {
