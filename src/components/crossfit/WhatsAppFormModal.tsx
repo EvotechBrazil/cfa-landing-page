@@ -14,8 +14,12 @@ interface WhatsAppFormModalProps {
 }
 
 const initialFormData = {
+  experienciaCrossfit: "",
   nome: "",
   telefone: "",
+  treinando: "",
+  periodoInatividade: "",
+  modalidadesPraticadas: "",
   objetivos: [] as string[],
   objetivosOutro: "",
   rotina: "",
@@ -25,11 +29,6 @@ const initialFormData = {
   frequencia: "",
   disponibilidade: "",
   turno: "",
-  treinando: "",
-  periodoInatividade: "",
-  modalidades: [] as string[],
-  modalidadesOutro: "",
-  experienciaCrossfit: "",
   comoEncontrou: "",
   comoEncontrouOutro: "",
   indicacaoAmigo: "",
