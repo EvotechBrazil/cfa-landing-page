@@ -151,13 +151,23 @@ const WhatsAppFormModal = ({ isOpen, onClose, whatsappUrl }: WhatsAppFormModalPr
 
         {/* Form */}
         <form onSubmit={handleSubmit} onKeyDown={(e) => { if (e.key === "Enter" && !(e.target instanceof HTMLTextAreaElement)) e.preventDefault(); }} className="px-4 py-3 space-y-3 overflow-y-auto flex-1">
-          {/* Nome */}
+          {/* 1. Experiência com CrossFit */}
+          <div>
+            <label className="text-xs font-medium text-foreground mb-1 block">Já teve alguma experiência com CrossFit antes?</label>
+            <div className="space-y-1.5">
+              {["Sim", "Não"].map((opt) => (
+                <RadioOption key={opt} label={opt} checked={formData.experienciaCrossfit === opt} onChange={() => toggleSingle("experienciaCrossfit", opt)} />
+              ))}
+            </div>
+          </div>
+
+          {/* 2. Nome */}
           <div>
             <label className="text-xs font-medium text-foreground mb-1 block">Primeiro nome *</label>
             <Input className="h-8 text-sm" placeholder="Seu primeiro nome" value={formData.nome} onChange={(e) => handleChange("nome", e.target.value)} maxLength={100} />
           </div>
 
-          {/* Telefone */}
+          {/* 3. Telefone */}
           <div>
             <label className="text-xs font-medium text-foreground mb-1 block">Telefone (WhatsApp) *</label>
             <Input className="h-8 text-sm" placeholder="(00) 00000-0000" value={formData.telefone} onChange={(e) => {
@@ -167,6 +177,33 @@ const WhatsAppFormModal = ({ isOpen, onClose, whatsappUrl }: WhatsAppFormModalPr
             }} maxLength={15} />
           </div>
 
+          {/* 4. Treina atualmente */}
+          <div>
+            <label className="text-xs font-medium text-foreground mb-1 block">Você já treina atualmente?</label>
+            <div className="space-y-1.5">
+              {["Sim, treino regularmente", "Estou parado(a)", "Estou buscando novos ares", "Estou começando do zero"].map((opt) => (
+                <RadioOption key={opt} label={opt} checked={formData.treinando === opt} onChange={() => toggleSingle("treinando", opt)} />
+              ))}
+            </div>
+          </div>
+
+          {/* Período de inatividade - condicional */}
+          {formData.treinando === "Estou parado(a)" && (
+            <div>
+              <label className="text-xs font-medium text-foreground mb-1 block">Há quanto tempo está parado(a)?</label>
+              <Input className="h-8 text-sm" placeholder="Ex: 6 meses, 1 ano..." value={formData.periodoInatividade} onChange={(e) => handleChange("periodoInatividade", e.target.value)} maxLength={100} />
+            </div>
+          )}
+
+          {/* Quais modalidades pratica - campo texto aberto */}
+          {(formData.treinando === "Sim, treino regularmente" || formData.treinando === "Estou buscando novos ares") && (
+            <div>
+              <label className="text-xs font-medium text-foreground mb-1 block">Quais modalidades pratica?</label>
+              <Input className="h-8 text-sm" placeholder="Ex: Musculação, Corrida, Natação..." value={formData.modalidadesPraticadas} onChange={(e) => handleChange("modalidadesPraticadas", e.target.value)} maxLength={200} />
+            </div>
+          )}
+
+          {/* Objetivos */}
           <div>
             <label className="text-xs font-medium text-foreground mb-1 block">O que você quer melhorar?</label>
             <div className="space-y-1.5">
@@ -204,7 +241,7 @@ const WhatsAppFormModal = ({ isOpen, onClose, whatsappUrl }: WhatsAppFormModalPr
             </div>
           </div>
 
-          {/* Frequência */}
+          {/* Programa */}
           <div>
             <label className="text-xs font-medium text-foreground mb-1 block">Qual programa você está buscando?</label>
             <div className="space-y-1.5">
@@ -228,53 +265,10 @@ const WhatsAppFormModal = ({ isOpen, onClose, whatsappUrl }: WhatsAppFormModalPr
 
           {/* Turno */}
           <div>
-            <label className="text-xs font-medium text-foreground mb-1 block">Qual turno você prefere?</label>
+            <label className="text-xs font-medium text-foreground mb-1 block">Qual período prefere?</label>
             <div className="space-y-1.5">
               {(turnoOptions[formData.frequencia] || ["Manhã", "Tarde", "Noite"]).map((opt) => (
                 <RadioOption key={opt} label={opt} checked={formData.turno === opt} onChange={() => toggleSingle("turno", opt)} />
-              ))}
-            </div>
-          </div>
-
-          {/* Treina atualmente */}
-          <div>
-            <label className="text-xs font-medium text-foreground mb-1 block">Você já treina atualmente?</label>
-            <div className="space-y-1.5">
-              {["Sim, treino regularmente", "Estou parado(a)", "Estou começando do zero"].map((opt) => (
-                <RadioOption key={opt} label={opt} checked={formData.treinando === opt} onChange={() => toggleSingle("treinando", opt)} />
-              ))}
-            </div>
-          </div>
-
-          {/* Período de inatividade - condicional */}
-          {formData.treinando === "Estou parado(a)" && (
-            <div>
-              <label className="text-xs font-medium text-foreground mb-1 block">Há quanto tempo está parado(a)?</label>
-              <Input className="h-8 text-sm" placeholder="Ex: 6 meses, 1 ano..." value={formData.periodoInatividade} onChange={(e) => handleChange("periodoInatividade", e.target.value)} maxLength={100} />
-            </div>
-          )}
-
-          {/* Modalidades - condicional */}
-          {formData.treinando === "Sim, treino regularmente" && (
-            <div>
-              <label className="text-xs font-medium text-foreground mb-1 block">Quais modalidades você pratica?</label>
-              <div className="space-y-1.5">
-                {["Musculação", "CrossTraining", "Corrida de rua", "Caminhada", "Outros"].map((opt) => (
-                  <CheckboxOption key={opt} label={opt} checked={formData.modalidades.includes(opt)} onChange={() => toggleMulti("modalidades", opt)} />
-                ))}
-                {formData.modalidades.includes("Outros") && (
-                  <Input className="h-8 text-sm mt-1" placeholder="Descreva..." value={formData.modalidadesOutro} onChange={(e) => handleChange("modalidadesOutro", e.target.value)} maxLength={200} />
-                )}
-              </div>
-            </div>
-          )}
-
-          {/* Experiência com CrossFit */}
-          <div>
-            <label className="text-xs font-medium text-foreground mb-1 block">Já teve alguma experiência com CrossFit antes?</label>
-            <div className="space-y-1.5">
-              {["Sim", "Não"].map((opt) => (
-                <RadioOption key={opt} label={opt} checked={formData.experienciaCrossfit === opt} onChange={() => toggleSingle("experienciaCrossfit", opt)} />
               ))}
             </div>
           </div>
