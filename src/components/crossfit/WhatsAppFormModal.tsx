@@ -106,6 +106,8 @@ const WhatsAppFormModal = ({ isOpen, onClose, whatsappUrl }: WhatsAppFormModalPr
     return true;
   };
 
+  const NEXTFIT_URL = "https://agendamento.nextfit.com.br/91c65473-3162-4da5-a3c3-d1e5768d7a07";
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validateForm()) return;
@@ -122,12 +124,13 @@ const WhatsAppFormModal = ({ isOpen, onClose, whatsappUrl }: WhatsAppFormModalPr
           comoEncontrou: formData.comoEncontrou === "Indicação de amigo/conhecido" && formData.indicacaoAmigo ? `Indicação: ${formData.indicacaoAmigo}` : formData.comoEncontrou === "Outro" && formData.comoEncontrouOutro ? `Outro: ${formData.comoEncontrouOutro}` : formData.comoEncontrou,
           timestamp: new Date().toISOString(),
           origem: window.location.href,
+          destino: "agendamento",
         }),
       });
-      toast({ title: "Dados enviados!", description: "Você será redirecionado para o WhatsApp." });
+      toast({ title: "Dados enviados!", description: "Você será redirecionado para o agendamento." });
       setFormData({ ...initialFormData });
       onClose();
-      setTimeout(() => window.open(whatsappUrl, "_blank"), 500);
+      setTimeout(() => window.open(NEXTFIT_URL, "_blank"), 500);
     } catch {
       toast({ title: "Erro", description: "Não foi possível enviar. Tente novamente.", variant: "destructive" });
     } finally {
