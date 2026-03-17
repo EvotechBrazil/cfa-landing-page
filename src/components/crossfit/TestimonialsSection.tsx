@@ -58,6 +58,7 @@ const testimonials = [
 
 const TestimonialsSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const { openForm } = useWhatsAppForm();
 
   const nextSlide = () => {
     setCurrentIndex((prev) => (prev + 1) % testimonials.length);
