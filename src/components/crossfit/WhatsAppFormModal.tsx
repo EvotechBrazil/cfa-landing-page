@@ -106,6 +106,8 @@ const WhatsAppFormModal = ({ isOpen, onClose, whatsappUrl }: WhatsAppFormModalPr
     return true;
   };
 
+  const NEXTFIT_URL = "https://agendamento.nextfit.com.br/91c65473-3162-4da5-a3c3-d1e5768d7a07";
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validateForm()) return;
@@ -122,12 +124,13 @@ const WhatsAppFormModal = ({ isOpen, onClose, whatsappUrl }: WhatsAppFormModalPr
           comoEncontrou: formData.comoEncontrou === "Indicação de amigo/conhecido" && formData.indicacaoAmigo ? `Indicação: ${formData.indicacaoAmigo}` : formData.comoEncontrou === "Outro" && formData.comoEncontrouOutro ? `Outro: ${formData.comoEncontrouOutro}` : formData.comoEncontrou,
           timestamp: new Date().toISOString(),
           origem: window.location.href,
+          destino: "agendamento",
         }),
       });
-      toast({ title: "Dados enviados!", description: "Você será redirecionado para o WhatsApp." });
+      toast({ title: "Dados enviados!", description: "Você será redirecionado para o agendamento." });
       setFormData({ ...initialFormData });
       onClose();
-      setTimeout(() => window.open(whatsappUrl, "_blank"), 500);
+      setTimeout(() => window.open(NEXTFIT_URL, "_blank"), 500);
     } catch {
       toast({ title: "Erro", description: "Não foi possível enviar. Tente novamente.", variant: "destructive" });
     } finally {
@@ -289,10 +292,44 @@ const WhatsAppFormModal = ({ isOpen, onClose, whatsappUrl }: WhatsAppFormModalPr
             </div>
           </div>
 
-          <Button type="submit" variant="whatsapp" disabled={isLoading} className="w-full font-bold uppercase tracking-wide py-2.5 rounded-full text-sm">
-            {isLoading ? <Loader2 className="w-4 h-4 animate-spin mr-2" /> : <MessageCircle className="w-4 h-4 mr-2" />}
-            {isLoading ? "Enviando..." : "Continuar no WhatsApp"}
-          </Button>
+          <div className="flex flex-col gap-2">
+            <Button type="submit" disabled={isLoading} className="w-full font-bold uppercase tracking-wide py-2.5 rounded-full text-sm bg-primary hover:bg-primary/90 text-primary-foreground">
+              {isLoading ? <Loader2 className="w-4 h-4 animate-spin mr-2" /> : <span className="mr-2">📅</span>}
+              {isLoading ? "Enviando..." : "Agendar Aula Experimental"}
+            </Button>
+            <Button type="button" variant="whatsapp" disabled={isLoading} className="w-full font-bold uppercase tracking-wide py-2.5 rounded-full text-sm" onClick={async (e) => {
+              e.preventDefault();
+              if (!validateForm()) return;
+              setIsLoading(true);
+              try {
+                await fetch(WEBHOOK_URL, {
+                  method: "POST",
+                  headers: { "Content-Type": "application/json" },
+                  mode: "no-cors",
+                  body: JSON.stringify({
+                    ...formData,
+                    objetivos: [...formData.objetivos, formData.objetivosOutro ? `Outro: ${formData.objetivosOutro}` : ""].filter(Boolean).join(", "),
+                    obstaculos: [...formData.obstaculos, formData.obstaculosOutro ? `Outro: ${formData.obstaculosOutro}` : ""].filter(Boolean).join(", "),
+                    comoEncontrou: formData.comoEncontrou === "Indicação de amigo/conhecido" && formData.indicacaoAmigo ? `Indicação: ${formData.indicacaoAmigo}` : formData.comoEncontrou === "Outro" && formData.comoEncontrouOutro ? `Outro: ${formData.comoEncontrouOutro}` : formData.comoEncontrou,
+                    timestamp: new Date().toISOString(),
+                    origem: window.location.href,
+                    destino: "whatsapp",
+                  }),
+                });
+                toast({ title: "Dados enviados!", description: "Você será redirecionado para o WhatsApp." });
+                setFormData({ ...initialFormData });
+                onClose();
+                setTimeout(() => window.open(whatsappUrl, "_blank"), 500);
+              } catch {
+                toast({ title: "Erro", description: "Não foi possível enviar. Tente novamente.", variant: "destructive" });
+              } finally {
+                setIsLoading(false);
+              }
+            }}>
+              {isLoading ? <Loader2 className="w-4 h-4 animate-spin mr-2" /> : <MessageCircle className="w-4 h-4 mr-2" />}
+              Falar com Atendente
+            </Button>
+          </div>
         </form>
       </div>
     </div>
