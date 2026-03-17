@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { ChevronLeft, ChevronRight, Quote, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useWhatsAppForm } from "./WhatsAppFormContext";
 import beforeAfter1 from "@/assets/before-after-1.png";
 import beforeAfter2 from "@/assets/before-after-2.png";
 import beforeAfter3 from "@/assets/before-after-3.png";
@@ -57,6 +58,7 @@ const testimonials = [
 
 const TestimonialsSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const { openForm } = useWhatsAppForm();
 
   const nextSlide = () => {
     setCurrentIndex((prev) => (prev + 1) % testimonials.length);
@@ -211,15 +213,12 @@ const TestimonialsSection = () => {
           <p className="text-muted-foreground text-xs mb-4">
             Pronto para sua transformação?
           </p>
-          <a
-            href="https://wa.me/5511999999999?text=Olá! Quero começar minha transformação no CFA!"
-            target="_blank"
-            rel="noopener noreferrer"
+          <Button
+            onClick={() => openForm("https://wa.me/5543991796835?text=Olá! Quero começar minha transformação no CFA!")}
+            className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold uppercase tracking-wide px-8 py-3 rounded-full text-sm"
           >
-            <Button className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold uppercase tracking-wide px-8 py-3 rounded-full text-sm">
-              Começar Agora
-            </Button>
-          </a>
+            Começar Agora
+          </Button>
         </div>
       </div>
     </section>
