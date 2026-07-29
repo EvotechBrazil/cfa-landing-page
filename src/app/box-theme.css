@@ -1,0 +1,103 @@
+/* Theme tokens + utilities for the CrossFit Arapongas box home (/) */
+
+.box-theme {
+  /* Map TW color tokens (hex/hsl color values — not space-separated HSL components) */
+  --background: hsl(0 0% 95%);
+  --foreground: hsl(0 0% 10%);
+  --card: hsl(0 0% 100%);
+  --card-foreground: hsl(0 0% 10%);
+  --popover: hsl(0 0% 100%);
+  --popover-foreground: hsl(0 0% 10%);
+  --primary: hsl(24 100% 50%);
+  --primary-foreground: hsl(0 0% 100%);
+  --secondary: hsl(0 0% 90%);
+  --secondary-foreground: hsl(0 0% 15%);
+  --muted: hsl(0 0% 85%);
+  --muted-foreground: hsl(0 0% 40%);
+  --accent: hsl(24 100% 50%);
+  --accent-foreground: hsl(0 0% 100%);
+  --destructive: hsl(0 84% 60%);
+  --destructive-foreground: hsl(0 0% 98%);
+  --border: hsl(0 0% 85%);
+  --input: hsl(0 0% 85%);
+  --ring: hsl(24 100% 50%);
+  --radius: 0.5rem;
+
+  --shadow-card: 0 4px 24px -4px hsl(0 0% 0% / 0.1);
+  --shadow-glow: 0 0 60px hsl(24 100% 50% / 0.2);
+  --shadow-button: 0 4px 20px hsl(24 100% 50% / 0.3);
+
+  color: var(--foreground);
+  background-color: var(--background);
+  font-family: var(--font-box-sans), system-ui, sans-serif;
+}
+
+.box-theme h1,
+.box-theme h2,
+.box-theme h3,
+.box-theme h4,
+.box-theme h5,
+.box-theme h6,
+.box-theme .font-display {
+  font-family: var(--font-box-display), system-ui, sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  text-transform: uppercase;
+}
+
+.box-theme .shadow-card {
+  box-shadow: var(--shadow-card);
+}
+
+.box-theme .shadow-button {
+  box-shadow: var(--shadow-button);
+}
+
+.box-theme .shadow-glow {
+  box-shadow: var(--shadow-glow);
+}
+
+.box-theme .animate-fade-in {
+  animation: boxFadeIn 0.6s ease-out forwards;
+  opacity: 0;
+}
+
+.box-theme .animate-scale-in {
+  animation: boxScaleIn 0.4s ease-out forwards;
+}
+
+.box-theme .animate-pulse-glow {
+  animation: boxPulseGlow 2s ease-in-out infinite;
+}
+
+@keyframes boxFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes boxScaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes boxPulseGlow {
+  0%,
+  100% {
+    box-shadow: 0 0 20px hsl(24 100% 50% / 0.4);
+  }
+  50% {
+    box-shadow: 0 0 40px hsl(24 100% 50% / 0.6);
+  }
+}
