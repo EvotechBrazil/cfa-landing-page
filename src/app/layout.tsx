@@ -35,6 +35,14 @@ export const metadata: Metadata = {
   },
   description:
     "A CrossFit Arapongas une pessoas de todas as idades e níveis em volta do melhor programa de condicionamento físico do mundo. Venha treinar 3 dias grátis.",
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon-32.png", type: "image/png", sizes: "32x32" },
+      { url: "/favicon-48.png", type: "image/png", sizes: "48x48" },
+    ],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
+  },
   openGraph: {
     title: "CrossFit Arapongas",
     description:
