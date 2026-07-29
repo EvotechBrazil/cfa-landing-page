@@ -1,6 +1,6 @@
 # CFA — App unificado (`cfa-lp`)
 
-**Status: 100% no `main`.** Merge do PR #1 concluído.
+**Status: filé / 100%** no `main` @ `047519c`.
 
 Master: `/Volumes/Dados/Projetos/CFA-HANDOFF.md`
 
@@ -16,15 +16,26 @@ Master: `/Volumes/Dados/Projetos/CFA-HANDOFF.md`
 ```bash
 cd /Volumes/Dados/Projetos/Site-Cfa/cfa-lp
 npm install && npm run dev
+# http://localhost:3000/ · http://localhost:3000/clinica
 ```
 
 ## Produção
 
+- https://www.crossfitarapongas.com.br/
+- https://www.crossfitarapongas.com.br/clinica
 - https://site-cfa-gray.vercel.app/
-- https://site-cfa-gray.vercel.app/clinica
 
 ## Git
 
-- Branch: `main` @ `1cef8d8`
-- Original backup: `lovable-original` @ `7aeb470`
+- Branch: `main` @ `047519c`
+- Backup original: `lovable-original` @ `7aeb470`
 - Working tree: limpo
+- Favicon: logo leão CFA na aba
+
+## Entregue
+
+- [x] Mescla box + clínica (Next.js)
+- [x] PR #1 merged
+- [x] Deploy production (www + Vercel)
+- [x] Favicon / ícones
+- [x] Original preservado no remoto
