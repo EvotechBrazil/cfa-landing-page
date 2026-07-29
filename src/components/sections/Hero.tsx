@@ -21,14 +21,14 @@ export function Hero() {
 
       tl.fromTo(
         ".hero-watermark",
-        { autoAlpha: 0, scale: 1.08 },
-        { autoAlpha: 1, scale: 1, duration: 1.4, stagger: 0.1 },
+        { autoAlpha: 0, x: (i) => (i === 0 ? -24 : 24) },
+        { autoAlpha: 1, x: 0, duration: 1.1, stagger: 0.08 },
       )
         .fromTo(
           ".hero-main",
-          { autoAlpha: 0, y: 32 },
+          { autoAlpha: 0, y: 28 },
           { autoAlpha: 1, y: 0, duration: 1.05 },
-          "-=0.95",
+          "-=0.85",
         )
         .fromTo(
           ".hero-eyebrow",
@@ -55,19 +55,8 @@ export function Hero() {
           "-=0.35",
         );
 
-      gsap.to(".hero-watermark-img", {
-        yPercent: 10,
-        ease: "none",
-        scrollTrigger: {
-          trigger: el,
-          start: "top top",
-          end: "bottom top",
-          scrub: true,
-        },
-      });
-
-      gsap.to(".hero-main", {
-        y: -24,
+      gsap.to(".hero-photos", {
+        y: -18,
         ease: "none",
         scrollTrigger: {
           trigger: el,
@@ -87,64 +76,68 @@ export function Hero() {
       ref={root}
       className="relative min-h-[100svh] overflow-hidden bg-background"
     >
-      {/* Fundo cenário — Paty | Chan como marca d'água */}
       <div className="pointer-events-none absolute inset-0">
-        <div className="hero-watermark absolute inset-y-0 left-0 w-1/2 overflow-hidden opacity-[0.16] sm:opacity-[0.2]">
-          <div className="hero-watermark-img absolute inset-0 scale-110">
+        <div className="absolute inset-0 bg-gradient-to-b from-background via-background/60 to-background" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_15%,rgb(44_48_54_/_0.55)_75%,rgb(44_48_54_/_0.97)_100%)]" />
+        <div className="absolute left-1/4 top-1/3 h-64 w-64 -translate-x-1/2 rounded-full bg-accent/8 blur-[100px]" />
+        <div className="absolute right-1/4 top-1/3 h-64 w-64 translate-x-1/2 rounded-full bg-accent/8 blur-[100px]" />
+      </div>
+
+      <div className="relative z-10 mx-auto flex min-h-[100svh] max-w-6xl flex-col items-center px-4 pb-16 pt-28 text-center sm:px-6 sm:pb-20 sm:pt-32">
+        {/*
+          Laterais coladas no centro (margem negativa = sem vão).
+          Centro maior e em cor; laterais menores, P&B, 2º plano.
+        */}
+        <div className="hero-photos flex w-full max-w-6xl items-center justify-center gap-1 sm:gap-2 md:gap-3">
+          {/* Laterais: próximas, sem cobrir o centro */}
+          <div className="hero-watermark relative z-0 h-[200px] w-[72px] shrink-0 overflow-hidden opacity-25 grayscale sm:h-[280px] sm:w-[110px] sm:opacity-30 md:h-[340px] md:w-[140px]">
             <Image
               src="/images/paty.jpg"
               alt=""
               fill
               priority
-              sizes="50vw"
-              className="object-cover object-[center_20%] grayscale"
+              sizes="140px"
+              className="object-cover object-[center_15%]"
             />
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-background/60 to-transparent" />
           </div>
-        </div>
-        <div className="hero-watermark absolute inset-y-0 right-0 w-1/2 overflow-hidden opacity-[0.16] sm:opacity-[0.2]">
-          <div className="hero-watermark-img absolute inset-0 scale-110">
+
+          {/* Centro maior — foco principal, acima das laterais */}
+          <div className="hero-main relative z-10 w-[min(72%,520px)] shrink-0 sm:w-[min(64%,580px)] md:w-[640px]">
+            <div
+              className="relative aspect-[4/5] w-full overflow-hidden sm:aspect-[5/4]"
+              style={{
+                maskImage:
+                  "radial-gradient(ellipse 82% 86% at 50% 45%, black 58%, transparent 88%)",
+                WebkitMaskImage:
+                  "radial-gradient(ellipse 82% 86% at 50% 45%, black 58%, transparent 88%)",
+              }}
+            >
+              <Image
+                src="/images/speakers.png"
+                alt="Paty Moura e Chan — i.R.C Stronger Together"
+                fill
+                priority
+                sizes="(max-width: 768px) 72vw, 640px"
+                className="object-cover object-[center_18%]"
+              />
+            </div>
+          </div>
+
+          <div className="hero-watermark relative z-0 h-[200px] w-[72px] shrink-0 overflow-hidden opacity-25 grayscale sm:h-[280px] sm:w-[110px] sm:opacity-30 md:h-[340px] md:w-[140px]">
             <Image
               src="/images/chan.jpg"
               alt=""
               fill
               priority
-              sizes="50vw"
-              className="object-cover object-[center_15%] grayscale"
+              sizes="140px"
+              className="object-cover object-[center_12%]"
             />
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-l from-background/60 to-transparent" />
           </div>
         </div>
 
-        <div className="absolute inset-0 bg-gradient-to-b from-background via-background/50 to-background" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_10%,rgb(44_48_54_/_0.4)_60%,rgb(44_48_54_/_0.95)_100%)]" />
-        <div className="absolute left-1/4 top-1/3 h-64 w-64 -translate-x-1/2 rounded-full bg-accent/8 blur-[100px]" />
-        <div className="absolute right-1/4 top-1/3 h-64 w-64 translate-x-1/2 rounded-full bg-accent/8 blur-[100px]" />
-      </div>
-
-      <div className="relative z-10 mx-auto flex min-h-[100svh] max-w-5xl flex-col items-center px-5 pb-16 pt-28 text-center sm:px-8 sm:pb-20 sm:pt-32">
-        {/* Foto central speakers.png — integrada, sem moldura/marcações */}
-        <div className="hero-main relative w-full max-w-lg sm:max-w-xl md:max-w-2xl">
-          <div
-            className="relative mx-auto aspect-[4/5] w-full overflow-hidden sm:aspect-[5/4]"
-            style={{
-              maskImage:
-                "radial-gradient(ellipse 72% 78% at 50% 45%, black 42%, transparent 78%)",
-              WebkitMaskImage:
-                "radial-gradient(ellipse 72% 78% at 50% 45%, black 42%, transparent 78%)",
-            }}
-          >
-            <Image
-              src="/images/speakers.png"
-              alt="Paty Moura e Chan — i.R.C Stronger Together"
-              fill
-              priority
-              sizes="(max-width: 768px) 90vw, 720px"
-              className="object-cover object-[center_18%]"
-            />
-          </div>
-        </div>
-
-        {/* Texto centralizado abaixo */}
-        <div className="relative z-10 -mt-6 w-full max-w-3xl sm:-mt-4 md:mt-2">
+        <div className="relative z-10 mt-6 w-full max-w-3xl sm:mt-8">
           <p className="hero-eyebrow mb-4 inline-flex items-center justify-center gap-3 text-xs font-semibold uppercase tracking-[0.28em] text-accent">
             <span className="inline-block h-1.5 w-1.5 rounded-full bg-accent shadow-[0_0_12px_#FF4D00]" />
             {course.partner} apresenta · {course.brand}
