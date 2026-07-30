@@ -18,6 +18,14 @@ export const course = {
   format: "Presencial · Prático",
 };
 
+/** Quando a clínica acontece. Um lugar só — hero, contagem e FAQ leem daqui. */
+export const event = {
+  dateLabel: "08 de agosto de 2026",
+  dateShort: "08/08",
+  weekday: "sábado",
+  place: "CrossFit Arapongas",
+};
+
 /**
  * Abertura das inscrições — o contador do site sai daqui.
  *
@@ -185,7 +193,7 @@ export const faq = [
   },
   {
     q: "As duas clínicas são no mesmo dia?",
-    a: "O formato e a agenda serão confirmados pela CFA. As abordagens são complementares e podem ser ofertadas juntas ou em blocos.",
+    a: "Sim. As duas acontecem em 08 de agosto de 2026, um sábado, na CrossFit Arapongas. As abordagens são complementares e o dia é organizado em blocos.",
   },
   {
     q: "É indicado para iniciantes?",

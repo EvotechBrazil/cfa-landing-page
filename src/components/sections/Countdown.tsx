@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { enrollment } from "@/lib/data";
+import { enrollment, event } from "@/lib/data";
 import { Button } from "@/components/ui/Button";
 
 const ABERTURA = new Date(enrollment.opensAt).getTime();
@@ -199,6 +199,17 @@ export function Countdown({
             </p>
           </>
         )}
+
+        {/* Fora do bloco acima de propósito: aquele some quando as inscrições
+            abrem, e a data da clínica tem de continuar na tela. Duas datas
+            convivem na seção — a de cima é a da abertura, esta é a do evento. */}
+        <p className="mt-2 text-sm text-white/60 sm:text-base">
+          A clínica acontece em{" "}
+          <strong className="text-white">
+            {event.dateLabel} ({event.weekday})
+          </strong>
+          , na {event.place}.
+        </p>
 
         <p className="mx-auto mt-3 max-w-lg text-sm leading-relaxed text-white/60 sm:text-base">
           A inscrição acontece pelo <strong className="text-white">grupo do WhatsApp</strong>.

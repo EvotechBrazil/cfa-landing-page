@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react";
 import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { course, ctaInscricao } from "@/lib/data";
+import { course, ctaInscricao, event } from "@/lib/data";
 import { Button } from "@/components/ui/Button";
 import { Countdown } from "@/components/sections/Countdown";
 
@@ -208,7 +208,22 @@ export function Hero() {
             </span>
           </h1>
 
-          <p className="hero-copy mx-auto mt-5 max-w-xl text-base leading-relaxed text-white/70 sm:mt-6 sm:text-lg">
+          {/* Data do evento — o dado que a pessoa procura primeiro. Fica logo
+              abaixo do título, antes do texto de apoio. */}
+          <div className="hero-line mt-5 flex flex-wrap items-center justify-center gap-x-3 gap-y-1 sm:mt-6">
+            <span className="font-display text-[clamp(1.35rem,3.4vw,2rem)] leading-none text-accent">
+              {event.dateShort}
+            </span>
+            <span className="text-sm font-semibold uppercase tracking-[0.16em] text-white sm:text-base">
+              {event.weekday}
+            </span>
+            <span aria-hidden className="h-1 w-1 rounded-full bg-white/30" />
+            <span className="text-sm font-semibold uppercase tracking-[0.16em] text-white/60 sm:text-base">
+              {event.place}
+            </span>
+          </div>
+
+          <p className="hero-copy mx-auto mt-4 max-w-xl text-base leading-relaxed text-white/70 sm:mt-5 sm:text-lg">
             {course.description}
           </p>
 
