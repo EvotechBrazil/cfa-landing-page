@@ -9,6 +9,8 @@ type Props = {
   variant?: "primary" | "ghost" | "lime";
   className?: string;
   onClick?: () => void;
+  /** Abre em outra aba (grupo do WhatsApp, redes) — já com rel de segurança. */
+  external?: boolean;
 };
 
 export function Button({
@@ -17,6 +19,7 @@ export function Button({
   variant = "primary",
   className,
   onClick,
+  external,
 }: Props) {
   const base =
     "inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 text-sm font-semibold uppercase tracking-[0.14em] transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2";
@@ -37,6 +40,8 @@ export function Button({
         href={href}
         className={classes}
         onClick={onClick}
+        target={external ? "_blank" : undefined}
+        rel={external ? "noopener noreferrer" : undefined}
         whileHover={{ scale: 1.03 }}
         whileTap={{ scale: 0.98 }}
       >

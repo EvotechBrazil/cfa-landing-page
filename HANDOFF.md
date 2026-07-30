@@ -45,6 +45,35 @@ npm install && npm run dev
       fundo e 15% maior, luz neon + fumaça atrás, título mais para cima,
       "Clínica" + os dois nomes com contorno vazado
 
+## Contagem para a abertura das inscrições
+
+`src/components/sections/Countdown.tsx` · config em `enrollment` (`src/lib/data.ts`).
+
+**Tudo se controla por `enrollment`** — data, rótulo e link do grupo. Não há
+data escrita no meio do componente.
+
+- `opensAt` **precisa** do fuso (`-03:00`). Sem ele, a contagem sai errada para
+  quem acessa de outro fuso — o navegador assumiria o fuso local.
+- `whatsappGroupUrl` vazio esconde os botões sozinho e troca o texto para "o
+  link será divulgado". É a rede de proteção para nunca ir ao ar um botão que
+  não leva a lugar nenhum.
+- Quando a hora chega, o componente troca sozinho para "Inscrições abertas" e
+  o relógio some — **ninguém precisa mexer no site na hora**.
+
+Aparece em dois lugares (decisão do gestor em 30/07):
+
+| Onde | Variante | Por quê |
+|------|----------|---------|
+| Topo do hero | `hero` — tarja de 1 linha | Em bloco abaixo dos botões ela terminava em 1226px e ficava fora da primeira tela de qualquer notebook: a foto grande come o espaço. Na tarja aparece sem rolar. |
+| Antes do `Pricing` | `band` — faixa completa | Números grandes, texto e o botão cheio, encostada na seção de inscrição. |
+
+A tarja do hero traz só um link de texto — o botão cheio fica para a faixa,
+para não repetir o mesmo botão duas vezes na página.
+
+Detalhe de render: a contagem só começa depois de montar no navegador
+(`useState(null)` + `useEffect`). Se calculasse no servidor, os segundos
+sairiam diferentes dos do cliente e a hidratação acusaria divergência.
+
 ## Hero da clínica — como funciona
 
 `src/components/sections/Hero.tsx` + bloco "Hero da clínica" em

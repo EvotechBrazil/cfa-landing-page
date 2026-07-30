@@ -18,6 +18,21 @@ export const course = {
   format: "Presencial · Prático",
 };
 
+/**
+ * Abertura das inscrições — o contador do site sai daqui.
+ *
+ * ⚠️ `whatsappGroupUrl` é o único lugar para colar o link do grupo. Enquanto
+ * estiver vazio, o site esconde o botão sozinho e mostra só a contagem: melhor
+ * não ter botão do que ter um que leva a lugar nenhum.
+ */
+export const enrollment = {
+  /** Data/hora da abertura em horário de Brasília (o -03:00 é obrigatório:
+      sem ele, quem acessa de outro fuso vê a contagem errada). */
+  opensAt: "2026-07-31T12:00:00-03:00",
+  opensAtLabel: "31 de julho, às 12h",
+  whatsappGroupUrl: "https://chat.whatsapp.com/CsLmxznb7bEAvrPO2aqMSb",
+};
+
 export const stats = [
   { value: "02", label: "Clínicas técnicas" },
   { value: "13+", label: "Blocos de conteúdo" },

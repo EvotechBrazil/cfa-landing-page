@@ -6,6 +6,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { course } from "@/lib/data";
 import { Button } from "@/components/ui/Button";
+import { Countdown } from "@/components/sections/Countdown";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -111,12 +112,16 @@ export function Hero() {
         <div className="absolute right-1/4 top-1/3 h-64 w-64 translate-x-1/2 rounded-full bg-accent/8 blur-[100px]" />
       </div>
 
-      <div className="relative z-10 mx-auto flex min-h-[100svh] max-w-6xl flex-col items-center px-4 pb-16 pt-28 text-center sm:px-6 sm:pb-20 sm:pt-32">
+      <div className="relative z-10 mx-auto flex min-h-[100svh] max-w-6xl flex-col items-center px-4 pb-16 pt-24 text-center sm:px-6 sm:pb-20 sm:pt-28">
         {/*
           Centro: recorte sem fundo, sobre luz neon — é ele que separa as três
           fotos e tira o ar de colagem. Laterais em marca d'água, entrando por
           baixo (margem negativa = sem vão).
         */}
+        <div className="hero-eyebrow mb-6 w-full sm:mb-7">
+          <Countdown variant="hero" />
+        </div>
+
         <div className="hero-photos flex w-full max-w-6xl items-center justify-center">
           {/* Laterais: marca d'água, encostando por baixo do centro (sem vão) */}
           <div
