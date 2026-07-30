@@ -2,8 +2,12 @@ export const course = {
   brand: "i.R.C",
   partner: "CrossFit Arapongas",
   partnerShort: "CFA",
-  title: "Clínicas de Ginástica",
+  title: "Clínica",
   subtitle: "Toes to Bar & Bar Muscle Up",
+  /* Os dois nomes separados: o hero desenha cada um com contorno próprio,
+     por isso não dá para reaproveitar o `subtitle` (que é texto corrido). */
+  clinicOne: "Toes to Bar",
+  clinicTwo: "Bar Muscle Up",
   tagline: "Stronger Together",
   headline: "Domine a barra com técnica, força e segurança",
   description:

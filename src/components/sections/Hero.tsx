@@ -19,10 +19,16 @@ const maskEdges = (x: [number, number], y: [number, number]) =>
   `linear-gradient(to right, transparent 0%, black ${x[0]}%, black ${x[1]}%, transparent 100%), ` +
   `linear-gradient(to bottom, transparent 0%, black ${y[0]}%, black ${y[1]}%, transparent 100%)`;
 
-/** Centro: fade curto — a foto continua inteira e nítida. */
-const CENTER_MASK = maskEdges([13, 87], [9, 84]);
 /** Laterais: fade longo — vira marca d'água derretendo no fundo. */
 const WATERMARK_MASK = maskEdges([26, 74], [18, 82]);
+
+/**
+ * Centro: a foto é um PNG recortado, então não existe mais retângulo para
+ * esconder — só a base precisa sumir, onde o corpo é cortado na altura do
+ * quadril. Máscara única, sem `intersect`.
+ */
+const CENTER_BASE_FADE =
+  "linear-gradient(to bottom, black 0%, black 76%, transparent 97%)";
 
 const maskStyle = (mask: string) => ({
   maskImage: mask,
@@ -107,13 +113,14 @@ export function Hero() {
 
       <div className="relative z-10 mx-auto flex min-h-[100svh] max-w-6xl flex-col items-center px-4 pb-16 pt-28 text-center sm:px-6 sm:pb-20 sm:pt-32">
         {/*
-          Laterais coladas no centro (margem negativa = sem vão).
-          Centro maior e em cor; laterais menores, P&B, 2º plano.
+          Centro: recorte sem fundo, sobre luz neon — é ele que separa as três
+          fotos e tira o ar de colagem. Laterais em marca d'água, entrando por
+          baixo (margem negativa = sem vão).
         */}
         <div className="hero-photos flex w-full max-w-6xl items-center justify-center">
           {/* Laterais: marca d'água, encostando por baixo do centro (sem vão) */}
           <div
-            className="hero-watermark relative z-0 -mr-8 h-[270px] w-[98px] shrink-0 sm:-mr-12 sm:h-[380px] sm:w-[170px] md:-mr-16 md:h-[470px] md:w-[250px]"
+            className="hero-watermark relative z-0 -mr-10 h-[270px] w-[98px] shrink-0 sm:-mr-16 sm:h-[380px] sm:w-[170px] md:-mr-20 md:h-[470px] md:w-[250px]"
             style={maskStyle(WATERMARK_MASK)}
           >
             {/* opacidade na imagem, não no wrapper: o GSAP anima o wrapper e
@@ -124,35 +131,43 @@ export function Hero() {
               fill
               priority
               sizes="250px"
-              className="object-cover object-[center_15%] opacity-45 grayscale"
+              className="object-cover object-[center_15%] opacity-[0.38] grayscale"
             />
             <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-background/40 to-transparent" />
           </div>
 
-          {/* Centro maior — foco principal, acima das laterais */}
-          <div className="hero-main relative z-10 w-[min(70%,520px)] shrink-0 sm:w-[min(64%,580px)] md:w-[640px]">
-            {/* Glow atrás do centro: puxa o olho e clareia o miolo do fundo */}
-            <div className="pointer-events-none absolute inset-0 -z-10 scale-110">
-              <div className="absolute inset-x-[10%] inset-y-[8%] rounded-[50%] bg-accent/20 blur-[90px]" />
-              <div className="absolute inset-x-[20%] inset-y-[16%] rounded-[50%] bg-white/15 blur-[70px]" />
+          {/* Centro — foco principal, acima das laterais */}
+          <div className="hero-main relative z-10 w-[min(76%,560px)] shrink-0 sm:w-[min(72%,667px)] md:w-[735px]">
+            {/* Luz atrás dos dois — contida dentro do box: se vazar para os
+                lados, tinge as laterais e o hero inteiro fica sépia. */}
+            <div className="pointer-events-none absolute inset-0 -z-10">
+              <div className="hero-neon absolute -inset-x-[3%] -inset-y-[4%]" />
+              <div className="hero-smoke hero-smoke-a absolute inset-x-[10%] inset-y-[12%]" />
+              <div className="hero-smoke hero-smoke-b absolute inset-x-[4%] inset-y-[6%]" />
+              <div className="hero-floor absolute inset-x-[16%] bottom-[6%] h-[22%]" />
             </div>
             <div
               className="relative aspect-[4/5] w-full sm:aspect-[5/4]"
-              style={maskStyle(CENTER_MASK)}
+              style={{
+                maskImage: CENTER_BASE_FADE,
+                WebkitMaskImage: CENTER_BASE_FADE,
+              }}
             >
+              {/* drop-shadow (e não box-shadow) porque segue o recorte:
+                  contorno quente colado na silhueta + sombra de apoio */}
               <Image
-                src="/images/speakers.png"
+                src="/images/speakers-nobg.png"
                 alt="Paty Moura e Chan — i.R.C Stronger Together"
                 fill
                 priority
-                sizes="(max-width: 768px) 70vw, 640px"
-                className="object-cover object-[center_18%] [filter:saturate(1.28)_contrast(1.06)_brightness(1.3)]"
+                sizes="(max-width: 768px) 76vw, 735px"
+                className="object-cover object-[center_18%] [filter:saturate(1.18)_contrast(1.05)_brightness(1.12)_drop-shadow(0_0_24px_rgb(255_77_0_/_0.4))_drop-shadow(0_18px_36px_rgb(0_0_0_/_0.5))]"
               />
             </div>
           </div>
 
           <div
-            className="hero-watermark relative z-0 -ml-8 h-[270px] w-[98px] shrink-0 sm:-ml-12 sm:h-[380px] sm:w-[170px] md:-ml-16 md:h-[470px] md:w-[250px]"
+            className="hero-watermark relative z-0 -ml-10 h-[270px] w-[98px] shrink-0 sm:-ml-16 sm:h-[380px] sm:w-[170px] md:-ml-20 md:h-[470px] md:w-[250px]"
             style={maskStyle(WATERMARK_MASK)}
           >
             <Image
@@ -161,13 +176,15 @@ export function Hero() {
               fill
               priority
               sizes="250px"
-              className="object-cover object-[center_12%] opacity-45 grayscale"
+              className="object-cover object-[center_12%] opacity-[0.38] grayscale"
             />
             <div className="pointer-events-none absolute inset-0 bg-gradient-to-l from-background/40 to-transparent" />
           </div>
         </div>
 
-        <div className="relative z-10 mt-6 w-full max-w-3xl sm:mt-8">
+        {/* Margem negativa: o título sobe para dentro da base desvanecida da
+            foto, colando o bloco de texto nos apresentadores. */}
+        <div className="relative z-10 -mt-3 w-full max-w-3xl sm:-mt-6 md:-mt-10">
           <p className="hero-eyebrow mb-4 inline-flex items-center justify-center gap-3 text-xs font-semibold uppercase tracking-[0.28em] text-accent">
             <span className="inline-block h-1.5 w-1.5 rounded-full bg-accent shadow-[0_0_12px_#FF4D00]" />
             {course.partner} apresenta · {course.brand}
@@ -175,8 +192,11 @@ export function Hero() {
 
           <h1 className="font-display text-[clamp(2.35rem,7vw,5rem)] leading-[0.9] tracking-tight text-white">
             <span className="hero-line block">{course.title}</span>
-            <span className="hero-line mt-1 block text-white/90">
-              {course.subtitle}
+            {/* Os dois nomes vazados; só o "&" fica cheio, para separar */}
+            <span className="hero-line mt-1 block">
+              <span className="hero-clinic-name">{course.clinicOne}</span>
+              <span className="mx-[0.18em] text-white/45">&amp;</span>
+              <span className="hero-clinic-name">{course.clinicTwo}</span>
             </span>
           </h1>
 

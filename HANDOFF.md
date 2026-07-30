@@ -41,20 +41,66 @@ npm install && npm run dev
 - [x] Original preservado no remoto
 - [x] Hero `/clinica`: proporção invertida (centro grande · laterais marca
       d'água), fotos integradas sem vão e centro com mais brilho
+- [x] Hero `/clinica` v2 (pedido do gestor 30/07): foto do centro recortada sem
+      fundo e 15% maior, luz neon + fumaça atrás, título mais para cima,
+      "Clínica" + os dois nomes com contorno vazado
 
 ## Hero da clínica — como funciona
 
-`src/components/sections/Hero.tsx`
+`src/components/sections/Hero.tsx` + bloco "Hero da clínica" em
+`src/app/globals.css`.
 
-- **Sem vão:** as laterais usam margem negativa (`-mr-16` / `-ml-16`) e ficam
-  em `z-0`, entrando por baixo do centro (`z-10`).
+### Foto do centro (recortada)
+
+- `public/images/speakers-nobg.png` — recorte sem fundo, feito pelo
+  `image_background_remover` do Higgsfield a partir de `speakers.png`
+  (a original com a sala fica no repo, é a fonte).
+- O PNG passou por **alpha bleed** antes de ser salvo: a cor da silhueta é
+  espalhada alguns pixels para fora e só depois o resto vira preto. Sem isso o
+  redimensionamento mistura o vazio e aparece franja escura em volta do
+  recorte. Isso também derrubou o arquivo de 1,6 MB para 559 KB.
+- ⚠️ **A perna direita do Chan está cortada no recorte** (estava atrás de uma
+  cadeira que saiu junto). O enquadramento do hero corta acima disso e o resto
+  cai na zona do fade — se mudar `object-position` ou o aspect, conferir.
+- **Máscara:** só a base desvanece (`CENTER_BASE_FADE`, gradiente único). As
+  máscaras cruzadas continuam valendo para as laterais, que ainda são fotos
+  retangulares.
+
+### Luz atrás (neon + fumaça)
+
+Quatro camadas em `-z-10` dentro do `.hero-main`: `.hero-neon` (halo),
+`.hero-smoke-a` / `.hero-smoke-b` (manchas que derivam devagar) e `.hero-floor`
+(base acesa sob os pés). Mais o `drop-shadow` laranja na própria `<Image>` —
+esse é o que gruda o contorno quente na silhueta, e só funciona porque a foto
+tem alpha.
+
+Dois cuidados aprendidos ajustando:
+
+1. **Conter a luz dentro do box.** Com inset negativo grande o halo passa por
+   cima das laterais e o hero inteiro fica sépia — o preto e branco delas some.
+2. **Só uma das manchas pode ser laranja.** As duas laranjas dão o mesmo
+   problema; a `-b` é quase neutra de propósito.
+
+### Laterais
+
+- **Sem vão:** margem negativa (`-mr-20` / `-ml-20` no `md`), em `z-0`,
+  entrando por baixo do centro (`z-10`).
 - **Integração:** `maskEdges()` cruza duas máscaras lineares
   (`mask-composite: intersect`) — miolo sólido, bordas desvanecem. Um radial
   único **não** resolve: o raio que cobre o box joga o fade para fora da área
   visível (foi o que dava o retângulo de borda dura).
-- **Opacidade das laterais vai na `<Image>`, não no wrapper** — o GSAP anima
-  `autoAlpha` do wrapper e sobrescreveria a classe com `opacity:1` inline.
-- **Brilho do centro:** `filter: saturate/contrast/brightness` na imagem + dois
-  glows (laranja e branco) atrás, em `-z-10`.
-- Ajuste fino de tamanho: `w-[250px] h-[470px]` (laterais, em `md`) ·
-  `w-[640px]` (centro).
+- **Opacidade vai na `<Image>`, não no wrapper** — o GSAP anima `autoAlpha` do
+  wrapper e sobrescreveria a classe com `opacity:1` inline.
+
+### Título
+
+- `course.title` = **"Clínica"**; os dois nomes saem de `clinicOne` /
+  `clinicTwo` porque cada um é desenhado com contorno próprio (`subtitle`
+  continua existindo — é o texto corrido que o `StickyCTA` usa).
+- `.hero-clinic-name`: letra vazada. Espessura do traço em `em` para acompanhar
+  o `clamp()` da fonte, `paint-order: stroke fill` para o traço não comer o
+  miolo, e glow laranja para o vazado não sumir no fundo escuro.
+
+### Tamanhos
+
+`w-[250px] h-[470px]` (laterais, `md`) · `w-[735px]` (centro, `md`).

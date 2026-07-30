@@ -134,6 +134,111 @@ body {
   }
 }
 
+/* ---------------------------------------------------------------------------
+   Hero da clínica — luz atrás dos apresentadores
+
+   A foto do centro é um PNG recortado (sem fundo), então tudo que fica atrás
+   dela aparece de verdade. São três camadas, de trás para frente:
+   halo neon → fumaça em deriva → base acesa no chão.
+   Todas ficam em -z-10 dentro do .hero-main e são pointer-events:none.
+--------------------------------------------------------------------------- */
+
+/* Halo neon: dois gradientes sobrepostos — o quente por dentro, o laranja
+   aberto por fora. O blur arredonda o que sobra das bordas do elemento. */
+.hero-neon {
+  background:
+    radial-gradient(
+      ellipse 30% 26% at 50% 40%,
+      rgb(255 138 51 / 0.3),
+      transparent 72%
+    ),
+    radial-gradient(
+      ellipse 46% 44% at 50% 46%,
+      rgb(255 77 0 / 0.26),
+      transparent 74%
+    );
+  filter: blur(30px);
+  animation: heroNeonPulse 9s ease-in-out infinite;
+}
+
+/* Fumaça: manchas de luz que derivam devagar. `screen` soma luz em vez de
+   cobrir — sem ele viram borrões chapados por cima do fundo. */
+.hero-smoke {
+  border-radius: 50%;
+  mix-blend-mode: screen;
+  filter: blur(52px);
+}
+
+.hero-smoke-a {
+  background: radial-gradient(circle, rgb(255 77 0 / 0.24), transparent 68%);
+  animation: heroSmokeA 21s ease-in-out infinite;
+}
+
+/* A segunda mancha é quase neutra: laranja puro nas duas deixa o hero inteiro
+   sépia e come o preto e branco das laterais. */
+.hero-smoke-b {
+  background: radial-gradient(circle, rgb(255 226 200 / 0.14), transparent 66%);
+  animation: heroSmokeB 27s ease-in-out infinite;
+}
+
+/* Base acesa: elipse rasa sob os pés, para os dois não parecerem recortados
+   no vazio e a transição para o título ficar contínua. */
+.hero-floor {
+  background: radial-gradient(
+    ellipse 50% 100% at 50% 100%,
+    rgb(255 77 0 / 0.26),
+    transparent 72%
+  );
+  filter: blur(26px);
+}
+
+@keyframes heroNeonPulse {
+  0%,
+  100% {
+    opacity: 0.8;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.04);
+  }
+}
+
+@keyframes heroSmokeA {
+  0%,
+  100% {
+    transform: translate3d(-5%, 3%, 0) scale(1);
+    opacity: 0.55;
+  }
+  50% {
+    transform: translate3d(6%, -4%, 0) scale(1.2);
+    opacity: 0.9;
+  }
+}
+
+@keyframes heroSmokeB {
+  0%,
+  100% {
+    transform: translate3d(6%, -2%, 0) scale(1.12);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translate3d(-6%, 5%, 0) scale(0.94);
+    opacity: 0.85;
+  }
+}
+
+/* Nomes das clínicas no título: letra vazada com contorno.
+   - a espessura vai em `em` para acompanhar o clamp() do tamanho da fonte;
+   - `paint-order` desenha o traço antes do miolo, senão ele come a letra;
+   - o glow laranja evita que o vazado desapareça no fundo escuro. */
+.hero-clinic-name {
+  color: transparent;
+  -webkit-text-stroke: 0.026em rgb(255 255 255 / 0.78);
+  paint-order: stroke fill;
+  text-shadow: 0 0 26px rgb(255 77 0 / 0.4);
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
