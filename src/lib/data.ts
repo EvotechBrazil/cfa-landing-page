@@ -67,6 +67,7 @@ export const toesToBar = {
   short: "TTB",
   pitch:
     "Do balanço seguro ao toes to bar eficiente — com mobilidade, core, grip e finalização técnica.",
+  schedule: { period: "Manhã", time: "09:00 às 11:30" },
   accent: "#FF4D00",
   modules: [
     {
@@ -103,6 +104,7 @@ export const barMuscleUp = {
   short: "BMU",
   pitch:
     "Da base neural e de força até a entrada na barra e a finalização do muscle-up.",
+  schedule: { period: "Tarde", time: "13:30 às 16:00" },
   accent: "#FF4D00",
   modules: [
     {

@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { toesToBar, barMuscleUp } from "@/lib/data";
+import { toesToBar, barMuscleUp, event } from "@/lib/data";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -37,6 +37,32 @@ function ClinicCard({ clinic, index }: { clinic: Clinic; index: number }) {
             <h3 className="mt-3 font-display text-3xl tracking-tight text-white sm:text-4xl lg:text-5xl">
               {clinic.name}
             </h3>
+
+            {/* Horário no card, junto do conteúdo: é aqui que a pessoa decide
+                de qual clínica quer participar, então precisa saber quando
+                cada uma acontece sem ter de procurar em outra seção. */}
+            <div
+              className="mt-4 inline-flex items-center gap-2.5 rounded-full border px-3.5 py-1.5"
+              style={{
+                borderColor: `${clinic.accent}45`,
+                background: `${clinic.accent}14`,
+              }}
+            >
+              <span
+                className="text-[10px] font-bold uppercase tracking-[0.18em]"
+                style={{ color: clinic.accent }}
+              >
+                {clinic.schedule.period}
+              </span>
+              <span
+                aria-hidden
+                className="h-1 w-1 rounded-full"
+                style={{ background: `${clinic.accent}90` }}
+              />
+              <span className="font-display text-base leading-none text-white sm:text-lg">
+                {clinic.schedule.time}
+              </span>
+            </div>
           </div>
           <span
             className="rounded-full border px-3 py-1 text-[10px] font-bold uppercase tracking-[0.18em]"
@@ -142,7 +168,7 @@ export function Clinics() {
         <SectionHeading
           eyebrow="Duas abordagens"
           title="Clínicas técnicas de barra"
-          description="Programa completo de Toes to Bar e Bar Muscle Up — mobilidade, força, neural e finalização do movimento."
+          description={`As duas no mesmo dia, ${event.dateShort}: Toes to Bar pela manhã e Bar Muscle Up à tarde — mobilidade, força, trabalho neural e finalização do movimento.`}
         />
 
         <div className="mt-14 grid gap-6 lg:grid-cols-2 lg:gap-8">
