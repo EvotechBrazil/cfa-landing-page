@@ -1,6 +1,6 @@
 # CFA — App unificado (`cfa-lp`)
 
-**Status: filé / 100%** no `main` @ `047519c`.
+**Status: filé / 100%** no `main` @ `cf9643e`.
 
 Master: `/Volumes/Dados/Projetos/CFA-HANDOFF.md`
 
@@ -27,7 +27,7 @@ npm install && npm run dev
 
 ## Git
 
-- Branch: `main` @ `047519c`
+- Branch: `main` @ `cf9643e`
 - Backup original: `lovable-original` @ `7aeb470`
 - Working tree: limpo
 - Favicon: logo leão CFA na aba
