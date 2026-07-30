@@ -103,4 +103,11 @@ Dois cuidados aprendidos ajustando:
 
 ### Tamanhos
 
-`w-[250px] h-[470px]` (laterais, `md`) · `w-[735px]` (centro, `md`).
+`w-[250px] h-[470px]` (laterais, `md`) · `w-[882px]` (centro, `md`).
+
+⚠️ **Para aumentar o centro, mexa na largura E no aspect juntos.** Com
+`object-cover` a escala vem da largura, então só alargar já deixa os dois
+maiores — mas o box cresce em altura na mesma proporção e empurra os botões
+para fora da primeira tela. Por isso o desktop usa `aspect-[3/2]` (era `5/4`):
+absorve o aumento na horizontal e a altura do hero não muda. O mobile segue em
+`4/5`, onde sobra altura.

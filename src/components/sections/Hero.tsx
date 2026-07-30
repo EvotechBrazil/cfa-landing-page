@@ -120,7 +120,7 @@ export function Hero() {
         <div className="hero-photos flex w-full max-w-6xl items-center justify-center">
           {/* Laterais: marca d'água, encostando por baixo do centro (sem vão) */}
           <div
-            className="hero-watermark relative z-0 -mr-10 h-[270px] w-[98px] shrink-0 sm:-mr-16 sm:h-[380px] sm:w-[170px] md:-mr-20 md:h-[470px] md:w-[250px]"
+            className="hero-watermark relative z-0 -mr-14 h-[270px] w-[98px] shrink-0 sm:-mr-24 sm:h-[380px] sm:w-[170px] md:-mr-32 md:h-[470px] md:w-[250px]"
             style={maskStyle(WATERMARK_MASK)}
           >
             {/* opacidade na imagem, não no wrapper: o GSAP anima o wrapper e
@@ -137,7 +137,7 @@ export function Hero() {
           </div>
 
           {/* Centro — foco principal, acima das laterais */}
-          <div className="hero-main relative z-10 w-[min(76%,560px)] shrink-0 sm:w-[min(72%,667px)] md:w-[735px]">
+          <div className="hero-main relative z-10 w-[min(84%,672px)] shrink-0 sm:w-[min(80%,800px)] md:w-[882px]">
             {/* Luz atrás dos dois — contida dentro do box: se vazar para os
                 lados, tinge as laterais e o hero inteiro fica sépia. */}
             <div className="pointer-events-none absolute inset-0 -z-10">
@@ -146,8 +146,11 @@ export function Hero() {
               <div className="hero-smoke hero-smoke-b absolute inset-x-[4%] inset-y-[6%]" />
               <div className="hero-floor absolute inset-x-[16%] bottom-[6%] h-[22%]" />
             </div>
+            {/* Moldura mais larga que alta no desktop (3/2): com `object-cover`
+                a escala vem da largura, então os dois crescem junto com o box
+                sem que ele fique alto e empurre os botões para fora da tela. */}
             <div
-              className="relative aspect-[4/5] w-full sm:aspect-[5/4]"
+              className="relative aspect-[4/5] w-full sm:aspect-[3/2]"
               style={{
                 maskImage: CENTER_BASE_FADE,
                 WebkitMaskImage: CENTER_BASE_FADE,
@@ -160,14 +163,14 @@ export function Hero() {
                 alt="Paty Moura e Chan — i.R.C Stronger Together"
                 fill
                 priority
-                sizes="(max-width: 768px) 76vw, 735px"
+                sizes="(max-width: 768px) 84vw, 882px"
                 className="object-cover object-[center_18%] [filter:saturate(1.18)_contrast(1.05)_brightness(1.12)_drop-shadow(0_0_24px_rgb(255_77_0_/_0.4))_drop-shadow(0_18px_36px_rgb(0_0_0_/_0.5))]"
               />
             </div>
           </div>
 
           <div
-            className="hero-watermark relative z-0 -ml-10 h-[270px] w-[98px] shrink-0 sm:-ml-16 sm:h-[380px] sm:w-[170px] md:-ml-20 md:h-[470px] md:w-[250px]"
+            className="hero-watermark relative z-0 -ml-14 h-[270px] w-[98px] shrink-0 sm:-ml-24 sm:h-[380px] sm:w-[170px] md:-ml-32 md:h-[470px] md:w-[250px]"
             style={maskStyle(WATERMARK_MASK)}
           >
             <Image
@@ -184,7 +187,7 @@ export function Hero() {
 
         {/* Margem negativa: o título sobe para dentro da base desvanecida da
             foto, colando o bloco de texto nos apresentadores. */}
-        <div className="relative z-10 -mt-3 w-full max-w-3xl sm:-mt-6 md:-mt-10">
+        <div className="relative z-10 -mt-4 w-full max-w-3xl sm:-mt-6 md:-mt-10">
           <p className="hero-eyebrow mb-4 inline-flex items-center justify-center gap-3 text-xs font-semibold uppercase tracking-[0.28em] text-accent">
             <span className="inline-block h-1.5 w-1.5 rounded-full bg-accent shadow-[0_0_12px_#FF4D00]" />
             {course.partner} apresenta · {course.brand}
