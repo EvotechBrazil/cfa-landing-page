@@ -97,9 +97,16 @@ Dois cuidados aprendidos ajustando:
 - `course.title` = **"Clínica"**; os dois nomes saem de `clinicOne` /
   `clinicTwo` porque cada um é desenhado com contorno próprio (`subtitle`
   continua existindo — é o texto corrido que o `StickyCTA` usa).
-- `.hero-clinic-name`: letra vazada. Espessura do traço em `em` para acompanhar
-  o `clamp()` da fonte, `paint-order: stroke fill` para o traço não comer o
-  miolo, e glow laranja para o vazado não sumir no fundo escuro.
+- `.hero-clinic-name`: letra vazada acesa como **tubo de neon**. Espessura do
+  traço em `em` para acompanhar o `clamp()` da fonte e `paint-order: stroke
+  fill` para o traço não comer o miolo.
+- ⚠️ O brilho do neon é `drop-shadow`, **não `text-shadow`**: drop-shadow segue
+  o alpha do que foi pintado (só o contorno), enquanto text-shadow usa a
+  silhueta da letra cheia e acende o miolo, matando o vazado. São quatro
+  camadas — núcleo branco curto até halo laranja largo; é a soma que lê como
+  neon, uma sombra só não.
+- `.hero-clinic-amp`: o "&" fica cheio (é separador), mas com um brilho fraco —
+  cinza chapado entre dois neons acesos lê como apagado.
 
 ### Tamanhos
 

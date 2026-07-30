@@ -195,10 +195,10 @@ export function Hero() {
 
           <h1 className="font-display text-[clamp(2.35rem,7vw,5rem)] leading-[0.9] tracking-tight text-white">
             <span className="hero-line block">{course.title}</span>
-            {/* Os dois nomes vazados; só o "&" fica cheio, para separar */}
+            {/* Os dois nomes acesos como neon; só o "&" fica cheio, separando */}
             <span className="hero-line mt-1 block">
               <span className="hero-clinic-name">{course.clinicOne}</span>
-              <span className="mx-[0.18em] text-white/45">&amp;</span>
+              <span className="hero-clinic-amp mx-[0.18em]">&amp;</span>
               <span className="hero-clinic-name">{course.clinicTwo}</span>
             </span>
           </h1>
