@@ -120,7 +120,7 @@ export function Hero() {
         <div className="hero-photos flex w-full max-w-6xl items-center justify-center">
           {/* Laterais: marca d'água, encostando por baixo do centro (sem vão) */}
           <div
-            className="hero-watermark relative z-0 -mr-14 h-[270px] w-[98px] shrink-0 sm:-mr-24 sm:h-[380px] sm:w-[170px] md:-mr-32 md:h-[470px] md:w-[250px]"
+            className="hero-watermark relative z-0 -mr-12 h-[240px] w-[86px] shrink-0 sm:-mr-20 sm:h-[336px] sm:w-[150px] md:-mr-28 md:h-[415px] md:w-[220px]"
             style={maskStyle(WATERMARK_MASK)}
           >
             {/* opacidade na imagem, não no wrapper: o GSAP anima o wrapper e
@@ -130,7 +130,7 @@ export function Hero() {
               alt=""
               fill
               priority
-              sizes="250px"
+              sizes="220px"
               className="object-cover object-[center_15%] opacity-[0.38] grayscale"
             />
             <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-background/40 to-transparent" />
@@ -170,7 +170,7 @@ export function Hero() {
           </div>
 
           <div
-            className="hero-watermark relative z-0 -ml-14 h-[270px] w-[98px] shrink-0 sm:-ml-24 sm:h-[380px] sm:w-[170px] md:-ml-32 md:h-[470px] md:w-[250px]"
+            className="hero-watermark relative z-0 -ml-12 h-[240px] w-[86px] shrink-0 sm:-ml-20 sm:h-[336px] sm:w-[150px] md:-ml-28 md:h-[415px] md:w-[220px]"
             style={maskStyle(WATERMARK_MASK)}
           >
             <Image
@@ -178,7 +178,7 @@ export function Hero() {
               alt=""
               fill
               priority
-              sizes="250px"
+              sizes="220px"
               className="object-cover object-[center_12%] opacity-[0.38] grayscale"
             />
             <div className="pointer-events-none absolute inset-0 bg-gradient-to-l from-background/40 to-transparent" />

@@ -103,7 +103,11 @@ Dois cuidados aprendidos ajustando:
 
 ### Tamanhos
 
-`w-[250px] h-[470px]` (laterais, `md`) · `w-[882px]` (centro, `md`).
+`w-[220px] h-[415px]` (laterais, `md`) · `w-[882px]` (centro, `md`).
+
+Ao mudar a largura das laterais, mexa na margem negativa junto: o que aparece
+delas é `largura − margem`, então só encolher a foto tira quase o dobro da
+parte visível.
 
 ⚠️ **Para aumentar o centro, mexa na largura E no aspect juntos.** Com
 `object-cover` a escala vem da largura, então só alargar já deixa os dois
