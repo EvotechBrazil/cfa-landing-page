@@ -173,6 +173,26 @@ export function Clinics() {
 
         <div className="mt-14 grid gap-6 lg:grid-cols-2 lg:gap-8">
           <ClinicCard clinic={toesToBar} index={0} />
+
+          {/*
+            O intervalo vem no meio do DOM porque no celular os cards ficam
+            empilhados (manhã em cima, tarde embaixo) e é ali que ele acontece
+            de verdade. No desktop os dois ficam lado a lado, então
+            `lg:order-last lg:col-span-2` manda a faixa para baixo, ocupando a
+            largura inteira — no meio das colunas ela não faria sentido.
+          */}
+          <div className="flex items-center gap-4 lg:order-last lg:col-span-2">
+            <span aria-hidden className="h-px flex-1 bg-white/10" />
+            <span className="flex flex-wrap items-center justify-center gap-x-2.5 gap-y-1 text-center text-[11px] font-semibold uppercase tracking-[0.2em] text-white/45">
+              {event.lunch.label}
+              <span aria-hidden className="h-1 w-1 rounded-full bg-white/25" />
+              <span className="font-display text-base tracking-normal text-white/75">
+                {event.lunch.time}
+              </span>
+            </span>
+            <span aria-hidden className="h-px flex-1 bg-white/10" />
+          </div>
+
           <ClinicCard clinic={barMuscleUp} index={1} />
         </div>
       </div>

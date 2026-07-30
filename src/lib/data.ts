@@ -24,6 +24,8 @@ export const event = {
   dateShort: "08/08",
   weekday: "sábado",
   place: "CrossFit Arapongas",
+  /** O vão entre a clínica da manhã e a da tarde. */
+  lunch: { label: "Intervalo para almoço", time: "11:30 às 13:30" },
 };
 
 /**
