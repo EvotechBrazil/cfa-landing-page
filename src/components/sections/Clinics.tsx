@@ -25,57 +25,61 @@ function ClinicCard({ clinic, index }: { clinic: Clinic; index: number }) {
         style={{ background: clinic.accent }}
       />
 
+      {/* Cabeçalho centralizado: nome, sigla e horário formam um bloco só, no
+          eixo do card. A lista de módulos abaixo segue alinhada à esquerda —
+          item numerado com descrição não se lê bem centralizado. */}
       <div className="relative">
-        <div className="mb-8 flex items-start justify-between gap-4">
-          <div>
+        <div className="mb-8 flex flex-col items-center text-center">
+          <div className="flex items-center justify-center gap-3">
             <p
-              className="text-xs font-semibold uppercase tracking-[0.28em]"
+              className="text-sm font-semibold uppercase tracking-[0.28em]"
               style={{ color: clinic.accent }}
             >
               Clínica {clinic.code}
             </p>
-            <h3 className="mt-3 font-display text-3xl tracking-tight text-white sm:text-4xl lg:text-5xl">
-              {clinic.name}
-            </h3>
-
-            {/* Horário no card, junto do conteúdo: é aqui que a pessoa decide
-                de qual clínica quer participar, então precisa saber quando
-                cada uma acontece sem ter de procurar em outra seção. */}
-            <div
-              className="mt-4 inline-flex items-center gap-2.5 rounded-full border px-3.5 py-1.5"
+            <span
+              className="rounded-full border px-3 py-1 text-[11px] font-bold uppercase tracking-[0.18em]"
               style={{
-                borderColor: `${clinic.accent}45`,
-                background: `${clinic.accent}14`,
+                borderColor: `${clinic.accent}55`,
+                color: clinic.accent,
               }}
             >
-              <span
-                className="text-[10px] font-bold uppercase tracking-[0.18em]"
-                style={{ color: clinic.accent }}
-              >
-                {clinic.schedule.period}
-              </span>
-              <span
-                aria-hidden
-                className="h-1 w-1 rounded-full"
-                style={{ background: `${clinic.accent}90` }}
-              />
-              <span className="font-display text-base leading-none text-white sm:text-lg">
-                {clinic.schedule.time}
-              </span>
-            </div>
+              {clinic.short}
+            </span>
           </div>
-          <span
-            className="rounded-full border px-3 py-1 text-[10px] font-bold uppercase tracking-[0.18em]"
+
+          <h3 className="mt-3 font-display text-[2.15rem] tracking-tight text-white sm:text-[2.6rem] lg:text-[3.45rem]">
+            {clinic.name}
+          </h3>
+
+          {/* Horário no card, junto do conteúdo: é aqui que a pessoa decide
+              de qual clínica quer participar, então precisa saber quando
+              cada uma acontece sem ter de procurar em outra seção. */}
+          <div
+            className="mt-4 inline-flex items-center gap-2.5 rounded-full border px-4 py-1.5"
             style={{
-              borderColor: `${clinic.accent}55`,
-              color: clinic.accent,
+              borderColor: `${clinic.accent}45`,
+              background: `${clinic.accent}14`,
             }}
           >
-            {clinic.short}
-          </span>
+            <span
+              className="text-[11px] font-bold uppercase tracking-[0.18em]"
+              style={{ color: clinic.accent }}
+            >
+              {clinic.schedule.period}
+            </span>
+            <span
+              aria-hidden
+              className="h-1 w-1 rounded-full"
+              style={{ background: `${clinic.accent}90` }}
+            />
+            <span className="font-display text-lg leading-none text-white sm:text-xl">
+              {clinic.schedule.time}
+            </span>
+          </div>
         </div>
 
-        <p className="max-w-md text-sm leading-relaxed text-white/60 sm:text-base">
+        <p className="mx-auto max-w-md text-center text-base leading-relaxed text-white/60 sm:text-lg">
           {clinic.pitch}
         </p>
 
@@ -86,16 +90,16 @@ function ClinicCard({ clinic, index }: { clinic: Clinic; index: number }) {
               className="module-row flex gap-4 rounded-2xl border border-white/5 bg-black/30 p-4 transition hover:border-white/15"
             >
               <span
-                className="font-display text-lg leading-none"
+                className="font-display text-xl leading-none"
                 style={{ color: clinic.accent }}
               >
                 {String(i + 1).padStart(2, "0")}
               </span>
               <div>
-                <p className="text-sm font-semibold uppercase tracking-[0.12em] text-white">
+                <p className="text-[0.95rem] font-semibold uppercase tracking-[0.12em] text-white">
                   {mod.title}
                 </p>
-                <p className="mt-1 text-sm text-white/50">{mod.desc}</p>
+                <p className="mt-1 text-[0.95rem] text-white/50">{mod.desc}</p>
               </div>
             </li>
           ))}
