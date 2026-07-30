@@ -2,7 +2,7 @@
 
 import { Reveal } from "@/components/ui/Reveal";
 import { Button } from "@/components/ui/Button";
-import { course } from "@/lib/data";
+import { course, ctaInscricao } from "@/lib/data";
 
 const includes = [
   "Clínica Toes to Bar completa",
@@ -71,7 +71,7 @@ export function Pricing() {
               </ul>
 
               <div className="mt-10 flex flex-col gap-3 sm:flex-row">
-                <Button href="#contato" className="w-full sm:flex-1">
+                <Button {...ctaInscricao} className="w-full sm:flex-1">
                   {course.cta}
                 </Button>
                 <Button

@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react";
 import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { course } from "@/lib/data";
+import { course, ctaInscricao } from "@/lib/data";
 import { Button } from "@/components/ui/Button";
 import { Countdown } from "@/components/sections/Countdown";
 
@@ -213,7 +213,7 @@ export function Hero() {
           </p>
 
           <div className="hero-cta mt-8 flex flex-col items-center justify-center gap-3 sm:mt-9 sm:flex-row">
-            <Button href="#inscricao">{course.cta}</Button>
+            <Button {...ctaInscricao}>{course.cta}</Button>
             <Button href="#clinicas" variant="ghost">
               {course.ctaSecondary}
             </Button>

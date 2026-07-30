@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { course } from "@/lib/data";
+import { course, ctaInscricao } from "@/lib/data";
 import { Button } from "@/components/ui/Button";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -58,7 +58,7 @@ export function FinalCTA() {
           Bar Muscle Up com progressão real.
         </p>
         <div className="final-line mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
-          <Button href="#inscricao">{course.cta}</Button>
+          <Button {...ctaInscricao}>{course.cta}</Button>
           <Button href="#palestrantes" variant="ghost">
             Conhecer Paty e Chan
           </Button>

@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { course, nav } from "@/lib/data";
+import { course, nav, ctaInscricao } from "@/lib/data";
 import { Button } from "@/components/ui/Button";
 import { Logo } from "@/components/ui/Logo";
 import { cn } from "@/lib/cn";
@@ -55,7 +55,7 @@ export function Header() {
 
         <div className="flex items-center gap-3">
           <Button
-            href="#inscricao"
+            {...ctaInscricao}
             className="hidden !px-5 !py-2.5 sm:inline-flex"
           >
             Inscrever-se
@@ -104,7 +104,7 @@ export function Header() {
                   {item.label}
                 </a>
               ))}
-              <Button href="#inscricao" onClick={() => setOpen(false)}>
+              <Button {...ctaInscricao} onClick={() => setOpen(false)}>
                 Inscrever-se
               </Button>
             </div>

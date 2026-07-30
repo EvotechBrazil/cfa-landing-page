@@ -33,6 +33,18 @@ export const enrollment = {
   whatsappGroupUrl: "https://chat.whatsapp.com/CsLmxznb7bEAvrPO2aqMSb",
 };
 
+/**
+ * Destino de TODO botão de inscrição do site (header, hero, preço, rodapé e a
+ * barra fixa): o grupo do WhatsApp.
+ *
+ * Use com spread — `<Button {...ctaInscricao}>` — para não espalhar o link
+ * pelos componentes. Sem link configurado, cai para a seção de inscrição da
+ * própria página: um `href` vazio deixaria o botão morto.
+ */
+export const ctaInscricao = enrollment.whatsappGroupUrl
+  ? { href: enrollment.whatsappGroupUrl, external: true }
+  : { href: "#inscricao", external: false };
+
 export const stats = [
   { value: "02", label: "Clínicas técnicas" },
   { value: "13+", label: "Blocos de conteúdo" },

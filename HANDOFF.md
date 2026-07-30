@@ -70,6 +70,21 @@ Aparece em dois lugares (decisão do gestor em 30/07):
 A tarja do hero traz só um link de texto — o botão cheio fica para a faixa,
 para não repetir o mesmo botão duas vezes na página.
 
+### Para onde vão os botões de inscrição
+
+Desde 30/07 **todo CTA de inscrição leva ao grupo do WhatsApp**, não mais às
+âncoras da página: header (desktop e menu mobile), hero, seção de preço, CTA
+final e a barra fixa. São seis.
+
+Todos usam o mesmo objeto — `<Button {...ctaInscricao}>`, de `src/lib/data.ts`.
+**Não escreva o link do grupo direto no componente**: se ele mudar, tem que
+mudar em um lugar só. Sem link configurado, `ctaInscricao` cai para
+`#inscricao` em vez de deixar o botão morto.
+
+Os botões secundários seguem como âncoras internas, de propósito: "Ver o
+programa", "Revisar programa" e "Conhecer Paty e Chan" servem para navegar
+dentro da página, não para inscrever.
+
 Detalhe de render: a contagem só começa depois de montar no navegador
 (`useState(null)` + `useEffect`). Se calculasse no servidor, os segundos
 sairiam diferentes dos do cliente e a hidratação acusaria divergência.
