@@ -48,7 +48,12 @@ npm install && npm run dev
 
 - https://www.crossfitarapongas.com.br/
 - https://www.crossfitarapongas.com.br/clinica
+- https://crossfitarapongas.com.br/ (apex, entrou na Vercel em 03/08/2026)
 - https://site-cfa-gray.vercel.app/
+
+O apex sem `www` está resolvido: certificado Let's Encrypt novo (30/07/2026,
+válido até 28/10) e `http` redirecionando 308 para `https`. **Pode divulgar o
+endereço com ou sem `www`** — a regra antiga de "preferir www" caiu.
 
 ## Git
 
