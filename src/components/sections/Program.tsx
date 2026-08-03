@@ -146,7 +146,7 @@ export function Program() {
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <SectionHeading
           eyebrow="Método"
-          title="Do solo à barra, passo a passo"
+          title="Do solo ao movimento completo, passo a passo"
           description="Uma sequência clara de construção: preparar o corpo, fortalecer a base, programar o padrão motor e executar com precisão."
         />
 

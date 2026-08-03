@@ -54,8 +54,8 @@ export function FinalCTA() {
           Together
         </h2>
         <p className="final-line mx-auto mt-6 max-w-xl text-base text-white/60">
-          Construa balanço, força e técnica com Paty Moura e Chan. Toes to Bar e
-          Bar Muscle Up com progressão real.
+          Construa equilíbrio, força e técnica com Paty Moura e Chan. Bar Muscle
+          Up e Handstand Walk com progressão real.
         </p>
         <div className="final-line mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
           <Button {...ctaInscricao}>{course.cta}</Button>

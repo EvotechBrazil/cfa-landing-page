@@ -4,6 +4,31 @@
 
 Master: `/Volumes/Dados/Projetos/CFA-HANDOFF.md`
 
+## ⚠️ Troca de evento (03/08/2026)
+
+O gestor remarcou e trocou uma das clínicas. Agora é assim:
+
+| O quê | Antes | Agora |
+|-------|-------|-------|
+| Data | 08/08/2026 | **05/09/2026** (também um sábado) |
+| Clínica da manhã | Toes to Bar · 09:00–11:30 | **Bar Muscle Up · 09:30–12:00** |
+| Clínica da tarde | Bar Muscle Up · 13:30–16:00 | **Handstand Walk · 14:00–16:30** |
+| Almoço | 11:30–13:30 | **12:00–14:00** |
+
+**Toes to Bar saiu do site inteiro.** O objeto `toesToBar` virou `handstandWalk`
+em `src/lib/data.ts` e o `barMuscleUp` passou a ser a clínica `01` (manhã). Onde
+havia "TTB" agora se lê "HSW" — hero, Speakers, Pricing, FinalCTA e o SEO da
+`/clinica`.
+
+> **Pendente de revisão do gestor:** os seis blocos do Handstand Walk são
+> proposta nossa (mobilidade de ombro e punho, linha do corpo, força invertida,
+> kick up, equilíbrio, deslocamento). Os blocos do Bar Muscle Up seguem os sete
+> originais, sem tocar. Data e horários vieram confirmados.
+
+A contagem regressiva não precisou de ajuste: `enrollment.opensAt` é 31/07 e já
+passou, então o site mostra "Inscrições abertas" — que é o estado certo para um
+evento em setembro.
+
 ## Rotas
 
 | Rota | Conteúdo |

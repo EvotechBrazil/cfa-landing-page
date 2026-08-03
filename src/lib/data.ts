@@ -3,15 +3,15 @@ export const course = {
   partner: "CrossFit Arapongas",
   partnerShort: "CFA",
   title: "Clínica",
-  subtitle: "Toes to Bar & Bar Muscle Up",
+  subtitle: "Bar Muscle Up & Handstand Walk",
   /* Os dois nomes separados: o hero desenha cada um com contorno próprio,
      por isso não dá para reaproveitar o `subtitle` (que é texto corrido). */
-  clinicOne: "Toes to Bar",
-  clinicTwo: "Bar Muscle Up",
+  clinicOne: "Bar Muscle Up",
+  clinicTwo: "Handstand Walk",
   tagline: "Stronger Together",
-  headline: "Domine a barra com técnica, força e segurança",
+  headline: "Domine a barra e a parada de mão com técnica, força e segurança",
   description:
-    "Duas clínicas intensivas para construir mobilidade, core, grip e a progressão técnica que falta entre o solo e o movimento completo na barra.",
+    "Duas clínicas intensivas para construir mobilidade, core, força e a progressão técnica que falta entre o solo, o movimento completo na barra e o deslocamento invertido.",
   cta: "Quero garantir minha vaga",
   ctaSecondary: "Ver o programa",
   location: "CrossFit Arapongas",
@@ -20,12 +20,12 @@ export const course = {
 
 /** Quando a clínica acontece. Um lugar só — hero, contagem e FAQ leem daqui. */
 export const event = {
-  dateLabel: "08 de agosto de 2026",
-  dateShort: "08/08",
+  dateLabel: "05 de setembro de 2026",
+  dateShort: "05/09",
   weekday: "sábado",
   place: "CrossFit Arapongas",
   /** O vão entre a clínica da manhã e a da tarde. */
-  lunch: { label: "Intervalo para almoço", time: "11:30 às 13:30" },
+  lunch: { label: "Intervalo para almoço", time: "12:00 às 14:00" },
 };
 
 /**
@@ -62,51 +62,14 @@ export const stats = [
   { value: "iRC", label: "Método Stronger Together" },
 ];
 
-export const toesToBar = {
-  id: "toes-to-bar",
-  code: "01",
-  name: "Clínica Toes to Bar",
-  short: "TTB",
-  pitch:
-    "Do balanço seguro ao toes to bar eficiente — com mobilidade, core, grip e finalização técnica.",
-  schedule: { period: "Manhã", time: "09:00 às 11:30" },
-  accent: "#FF4D00",
-  modules: [
-    {
-      title: "Mobilidade e Core",
-      desc: "Preparação ativa para amplitude e controle do tronco.",
-    },
-    {
-      title: "Construção do Balanço",
-      desc: "Balanço seguro e eficiente — base de todo o movimento.",
-    },
-    {
-      title: "Força Hand Grip",
-      desc: "Grip que sustenta volume e qualidade na barra.",
-    },
-    {
-      title: "Base de Força",
-      desc: "Força no solo e suspensa para transferir potência.",
-    },
-    {
-      title: "Trabalho Técnico TTB",
-      desc: "Progressões técnicas específicas do toes to bar.",
-    },
-    {
-      title: "Suspenso e Finalização",
-      desc: "Trabalho suspenso e fechamento limpo do movimento.",
-    },
-  ],
-};
-
 export const barMuscleUp = {
   id: "bar-muscle-up",
-  code: "02",
+  code: "01",
   name: "Clínica Bar Muscle Up",
   short: "BMU",
   pitch:
     "Da base neural e de força até a entrada na barra e a finalização do muscle-up.",
-  schedule: { period: "Tarde", time: "13:30 às 16:00" },
+  schedule: { period: "Manhã", time: "09:30 às 12:00" },
   accent: "#FF4D00",
   modules: [
     {
@@ -140,18 +103,57 @@ export const barMuscleUp = {
   ],
 };
 
+/* ⚠️ Blocos do Handstand Walk: proposta feita pela agência, aguardando a
+   revisão do gestor. Os horários e a data já vieram confirmados. */
+export const handstandWalk = {
+  id: "handstand-walk",
+  code: "02",
+  name: "Clínica Handstand Walk",
+  short: "HSW",
+  pitch:
+    "Da parada de mão firme na parede ao deslocamento invertido com equilíbrio e controle.",
+  schedule: { period: "Tarde", time: "14:00 às 16:30" },
+  accent: "#FF4D00",
+  modules: [
+    {
+      title: "Mobilidade de Ombro e Punho",
+      desc: "Preparação para sustentar o peso do corpo de cabeça para baixo.",
+    },
+    {
+      title: "Linha do Corpo e Core",
+      desc: "Oco ativo e controle da lombar na posição invertida.",
+    },
+    {
+      title: "Base de Força Invertida",
+      desc: "Força de empurrar no solo e na parede para sustentar o apoio.",
+    },
+    {
+      title: "Kick Up e Entrada na Parada",
+      desc: "Subida controlada — nem chute demais, nem de menos.",
+    },
+    {
+      title: "Equilíbrio e Correções",
+      desc: "Dedos, ombro e quadril para achar e segurar o ponto de equilíbrio.",
+    },
+    {
+      title: "Deslocamento e Distância",
+      desc: "Primeiros passos, ritmo e ganho de metros com segurança.",
+    },
+  ],
+};
+
 export const benefits = [
   {
     title: "Progressão real",
-    desc: "Blocos ordenados do solo ao suspenso — sem pular etapas.",
+    desc: "Blocos ordenados do solo ao suspenso e ao invertido — sem pular etapas.",
   },
   {
     title: "Técnica com segurança",
-    desc: "Balanço, grip e posições construídos para proteger articulações.",
+    desc: "Grip, ombro e posições construídos para proteger articulações.",
   },
   {
     title: "Força transferível",
-    desc: "Base de força que alimenta TTB e BMU no treino e na competição.",
+    desc: "Base de força que alimenta BMU e HSW no treino e na competição.",
   },
   {
     title: "Método i.R.C",
@@ -160,7 +162,7 @@ export const benefits = [
 ];
 
 export const forWho = [
-  "Atletas que travam no toes to bar ou muscle-up",
+  "Atletas que travam no muscle-up na barra ou na parada de mão",
   "Praticantes que querem técnica limpa e eficiente",
   "Coaches e alunos que buscam progressões claras",
   "Quem já tem base de força e quer polimento técnico",
@@ -192,16 +194,16 @@ export const speakers = {
 
 export const faq = [
   {
-    q: "Preciso já fazer toes to bar ou muscle-up?",
+    q: "Preciso já fazer bar muscle up ou handstand walk?",
     a: "Não. As clínicas partem de mobilidade, core e base de força. Se você já executa o movimento, aprofunda técnica e eficiência.",
   },
   {
     q: "As duas clínicas são no mesmo dia?",
-    a: "Sim. As duas acontecem em 08 de agosto de 2026, um sábado, na CrossFit Arapongas. As abordagens são complementares e o dia é organizado em blocos.",
+    a: "Sim. As duas acontecem em 05 de setembro de 2026, um sábado, na CrossFit Arapongas. As abordagens são complementares e o dia é organizado em blocos.",
   },
   {
     q: "É indicado para iniciantes?",
-    a: "Sim, desde que você tenha condição mínima de treino com barra e interesse em progressão. O foco é construção segura.",
+    a: "Sim, desde que você tenha condição mínima de treino com barra e no solo, além de interesse em progressão. O foco é construção segura.",
   },
   {
     q: "O que devo levar?",

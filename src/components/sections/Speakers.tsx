@@ -139,15 +139,15 @@ export function Speakers() {
 
           <div className="mt-4 grid grid-cols-2 gap-3">
             <div className="rounded-2xl border border-white/10 bg-surface-elevated/60 p-4">
-              <p className="font-display text-2xl text-white">TTB</p>
-              <p className="mt-1 text-[10px] uppercase tracking-[0.16em] text-white/45">
-                Toes to Bar
-              </p>
-            </div>
-            <div className="rounded-2xl border border-white/10 bg-surface-elevated/60 p-4">
               <p className="font-display text-2xl text-white">BMU</p>
               <p className="mt-1 text-[10px] uppercase tracking-[0.16em] text-white/45">
                 Bar Muscle Up
+              </p>
+            </div>
+            <div className="rounded-2xl border border-white/10 bg-surface-elevated/60 p-4">
+              <p className="font-display text-2xl text-white">HSW</p>
+              <p className="mt-1 text-[10px] uppercase tracking-[0.16em] text-white/45">
+                Handstand Walk
               </p>
             </div>
           </div>

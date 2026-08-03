@@ -5,9 +5,9 @@ import { Button } from "@/components/ui/Button";
 import { course, ctaInscricao } from "@/lib/data";
 
 const includes = [
-  "Clínica Toes to Bar completa",
   "Clínica Bar Muscle Up completa",
-  "Progressões solo → suspenso",
+  "Clínica Handstand Walk completa",
+  "Progressões solo → suspenso → invertido",
   "Trabalho de mobilidade, core e grip",
   "Orientações técnicas com Paty Moura e Chan (i.R.C)",
 ];
@@ -43,7 +43,7 @@ export function Pricing() {
                 Pacote clínicas
               </p>
               <h3 className="mt-3 font-display text-3xl text-white sm:text-4xl">
-                TTB + BMU
+                BMU + HSW
               </h3>
               <p className="mt-2 text-sm text-white/50">
                 Acesso às duas abordagens com o método i.R.C

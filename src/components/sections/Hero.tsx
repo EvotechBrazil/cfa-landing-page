@@ -237,9 +237,9 @@ export function Hero() {
           <div className="hero-copy mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-[11px] font-semibold uppercase tracking-[0.2em] text-white/40">
             <span>{course.format}</span>
             <span className="hidden h-1 w-1 rounded-full bg-white/25 sm:inline-block" />
-            <span>Toes to Bar</span>
-            <span className="hidden h-1 w-1 rounded-full bg-white/25 sm:inline-block" />
             <span>Bar Muscle Up</span>
+            <span className="hidden h-1 w-1 rounded-full bg-white/25 sm:inline-block" />
+            <span>Handstand Walk</span>
             <span className="hidden h-1 w-1 rounded-full bg-white/25 sm:inline-block" />
             <span>Paty Moura & Chan</span>
           </div>

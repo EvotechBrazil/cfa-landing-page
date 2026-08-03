@@ -3,12 +3,12 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { toesToBar, barMuscleUp, event } from "@/lib/data";
+import { barMuscleUp, handstandWalk, event } from "@/lib/data";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
 gsap.registerPlugin(ScrollTrigger);
 
-type Clinic = typeof toesToBar;
+type Clinic = typeof barMuscleUp;
 
 function ClinicCard({ clinic, index }: { clinic: Clinic; index: number }) {
   return (
@@ -171,12 +171,12 @@ export function Clinics() {
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <SectionHeading
           eyebrow="Duas abordagens"
-          title="Clínicas técnicas de barra"
-          description={`As duas no mesmo dia, ${event.dateShort}: Toes to Bar pela manhã e Bar Muscle Up à tarde — mobilidade, força, trabalho neural e finalização do movimento.`}
+          title="Clínicas técnicas de ginástica"
+          description={`As duas no mesmo dia, ${event.dateShort}: Bar Muscle Up pela manhã e Handstand Walk à tarde — mobilidade, força, trabalho neural e finalização do movimento.`}
         />
 
         <div className="mt-14 grid gap-6 lg:grid-cols-2 lg:gap-8">
-          <ClinicCard clinic={toesToBar} index={0} />
+          <ClinicCard clinic={barMuscleUp} index={0} />
 
           {/*
             O intervalo vem no meio do DOM porque no celular os cards ficam
@@ -197,7 +197,7 @@ export function Clinics() {
             <span aria-hidden className="h-px flex-1 bg-white/10" />
           </div>
 
-          <ClinicCard clinic={barMuscleUp} index={1} />
+          <ClinicCard clinic={handstandWalk} index={1} />
         </div>
       </div>
     </section>
