@@ -27,6 +27,24 @@ primeiros passos. Os do Bar Muscle Up seguem os sete originais, sem tocar.
 
 Com isso o total virou **14 blocos** — o `stats` foi de "13+" para "14".
 
+### Altura dos blocos nos cards
+
+Os 14 itens têm todos a mesma altura, e isso depende de duas coisas juntas —
+mexeu numa, confira a outra:
+
+1. `Clinics.tsx`: a `<ol>` é um grid com `grid-auto-rows: 1fr` (nivela dentro do
+   card) e o bloco de texto tem `min-h-[4.55rem]` (nivela **entre** os dois
+   cards). A reserva fica no bloco todo, não na descrição: assim tanto faz se a
+   linha extra cai no título ou na descrição. Reservando só na descrição, o
+   item "Trabalho Técnico de Equilíbrio / Hold" — o único com título de duas
+   linhas no celular — estourava e desalinhava o card inteiro.
+2. `data.ts`: as descrições ficam em **~50 caracteres**. Passando disso, viram
+   três linhas no celular e a reserva não segura mais.
+
+Medido em 1920, 1440, 1200, 520 e 375: todos os itens iguais nos dois cards.
+Abaixo de ~360px de tela um item fica mais alto que os outros — tela dessa
+largura é raríssima hoje e não vale encurtar mais os textos por causa dela.
+
 A contagem regressiva não precisou de ajuste: `enrollment.opensAt` é 31/07 e já
 passou, então o site mostra "Inscrições abertas" — que é o estado certo para um
 evento em setembro.

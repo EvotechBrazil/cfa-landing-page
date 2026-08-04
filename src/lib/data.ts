@@ -113,13 +113,16 @@ export const handstandWalk = {
   schedule: { period: "Tarde", time: "14:00 às 16:30" },
   accent: "#FF4D00",
   modules: [
+    /* Descrições curtas de propósito (~50 caracteres): é o que mantém todo
+       bloco em no máximo duas linhas, e é isso que deixa os itens dos dois
+       cards do mesmo tamanho até no celular. Ver Clinics.tsx. */
     {
       title: "Mobilidade e Core",
-      desc: "Preparação de ombro e punho para sustentar a posição invertida.",
+      desc: "Ombro e punho prontos para a posição invertida.",
     },
     {
       title: "Desenvolvimento do Bodyline",
-      desc: "Linha do corpo: oco ativo e controle da lombar de cabeça para baixo.",
+      desc: "Linha do corpo: oco ativo e lombar sob controle.",
     },
     {
       title: "Base de Handstand",
@@ -127,19 +130,19 @@ export const handstandWalk = {
     },
     {
       title: "Progressões de Kick Up / Entrada",
-      desc: "Subida controlada — nem chute demais, nem de menos.",
+      desc: "Subida controlada, sem chute demais nem de menos.",
     },
     {
       title: "Trabalho Técnico de Equilíbrio / Hold",
-      desc: "Dedos, ombro e quadril para achar e segurar o ponto de equilíbrio.",
+      desc: "Dedos, ombro e quadril para achar o equilíbrio.",
     },
     {
       title: "Transferência de Peso",
-      desc: "Passar o peso de uma mão para a outra — é daí que sai o passo.",
+      desc: "Passar o peso de uma mão para a outra.",
     },
     {
       title: "Saída Segura e Primeiros Passos",
-      desc: "Como sair sem se machucar e os primeiros metros de deslocamento.",
+      desc: "Sair sem se machucar e dar os primeiros metros.",
     },
   ],
 };

@@ -83,7 +83,13 @@ function ClinicCard({ clinic, index }: { clinic: Clinic; index: number }) {
           {clinic.pitch}
         </p>
 
-        <ol className="mt-8 space-y-3">
+        {/* Grid com `grid-auto-rows: 1fr` em vez de lista solta: todos os itens
+            ficam da altura do maior, sem número mágico. Sem isso, bloco de
+            descrição com uma linha fica visivelmente menor que o de duas e os
+            dois cards desalinham um do outro. O `min-h` cobre o caso de os dois
+            cards terem cabeçalhos de alturas diferentes — aí o 1fr de cada lado
+            resolveria só dentro do próprio card. */}
+        <ol className="mt-8 grid gap-3 [grid-auto-rows:1fr]">
           {clinic.modules.map((mod, i) => (
             <li
               key={mod.title}
@@ -95,7 +101,13 @@ function ClinicCard({ clinic, index }: { clinic: Clinic; index: number }) {
               >
                 {String(i + 1).padStart(2, "0")}
               </span>
-              <div>
+              {/* A reserva de altura fica no bloco inteiro, não na descrição:
+                  assim tanto faz onde a linha extra cai. Item com título de uma
+                  linha e descrição de duas mede o mesmo que um com título de
+                  duas e descrição de uma — que é o caso do "Equilíbrio / Hold"
+                  no celular. Reservando só na descrição, esse item estourava e
+                  o card do HSW ficava com a linha 23px mais alta que o do BMU. */}
+              <div className="min-h-[4.55rem]">
                 <p className="text-[0.95rem] font-semibold uppercase tracking-[0.12em] text-white">
                   {mod.title}
                 </p>
