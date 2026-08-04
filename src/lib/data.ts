@@ -57,7 +57,7 @@ export const ctaInscricao = enrollment.whatsappGroupUrl
 
 export const stats = [
   { value: "02", label: "Clínicas técnicas" },
-  { value: "13+", label: "Blocos de conteúdo" },
+  { value: "14", label: "Blocos de conteúdo" },
   { value: "100%", label: "Foco em progressão" },
   { value: "iRC", label: "Método Stronger Together" },
 ];
@@ -103,8 +103,6 @@ export const barMuscleUp = {
   ],
 };
 
-/* ⚠️ Blocos do Handstand Walk: proposta feita pela agência, aguardando a
-   revisão do gestor. Os horários e a data já vieram confirmados. */
 export const handstandWalk = {
   id: "handstand-walk",
   code: "02",
@@ -116,28 +114,32 @@ export const handstandWalk = {
   accent: "#FF4D00",
   modules: [
     {
-      title: "Mobilidade de Ombro e Punho",
-      desc: "Preparação para sustentar o peso do corpo de cabeça para baixo.",
+      title: "Mobilidade e Core",
+      desc: "Preparação de ombro e punho para sustentar a posição invertida.",
     },
     {
-      title: "Linha do Corpo e Core",
-      desc: "Oco ativo e controle da lombar na posição invertida.",
+      title: "Desenvolvimento do Bodyline",
+      desc: "Linha do corpo: oco ativo e controle da lombar de cabeça para baixo.",
     },
     {
-      title: "Base de Força Invertida",
-      desc: "Força de empurrar no solo e na parede para sustentar o apoio.",
+      title: "Base de Handstand",
+      desc: "Apoio firme e sustentação da parada de mão.",
     },
     {
-      title: "Kick Up e Entrada na Parada",
+      title: "Progressões de Kick Up / Entrada",
       desc: "Subida controlada — nem chute demais, nem de menos.",
     },
     {
-      title: "Equilíbrio e Correções",
+      title: "Trabalho Técnico de Equilíbrio / Hold",
       desc: "Dedos, ombro e quadril para achar e segurar o ponto de equilíbrio.",
     },
     {
-      title: "Deslocamento e Distância",
-      desc: "Primeiros passos, ritmo e ganho de metros com segurança.",
+      title: "Transferência de Peso",
+      desc: "Passar o peso de uma mão para a outra — é daí que sai o passo.",
+    },
+    {
+      title: "Saída Segura e Primeiros Passos",
+      desc: "Como sair sem se machucar e os primeiros metros de deslocamento.",
     },
   ],
 };

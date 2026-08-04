@@ -20,10 +20,12 @@ em `src/lib/data.ts` e o `barMuscleUp` passou a ser a clínica `01` (manhã). On
 havia "TTB" agora se lê "HSW" — hero, Speakers, Pricing, FinalCTA e o SEO da
 `/clinica`.
 
-> **Pendente de revisão do gestor:** os seis blocos do Handstand Walk são
-> proposta nossa (mobilidade de ombro e punho, linha do corpo, força invertida,
-> kick up, equilíbrio, deslocamento). Os blocos do Bar Muscle Up seguem os sete
-> originais, sem tocar. Data e horários vieram confirmados.
+Os **sete blocos do Handstand Walk vieram do gestor em 04/08** e substituíram a
+proposta que tínhamos feito: mobilidade e core · bodyline · base de handstand ·
+kick up/entrada · equilíbrio/hold · transferência de peso · saída segura e
+primeiros passos. Os do Bar Muscle Up seguem os sete originais, sem tocar.
+
+Com isso o total virou **14 blocos** — o `stats` foi de "13+" para "14".
 
 A contagem regressiva não precisou de ajuste: `enrollment.opensAt` é 31/07 e já
 passou, então o site mostra "Inscrições abertas" — que é o estado certo para um
