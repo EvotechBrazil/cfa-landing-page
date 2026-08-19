@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   title:
     "Clínica Bar Muscle Up & Handstand Walk | Paty Moura & Chan · i.R.C × CFA",
   description:
-    "Clínicas técnicas de Bar Muscle Up e Handstand Walk com Paty Moura e Chan (i.R.C Stronger Together). Mobilidade, core, força, equilíbrio e finalização do movimento. 05/09/2026, presencial na CrossFit Arapongas.",
+    "Clínicas técnicas de Bar Muscle Up e Handstand Walk com Paty Moura e Chan (i.R.C Stronger Together). 05/09/2026 na CrossFit Arapongas. 1º lote R$ 220 até 31/08 ou até preencher as vagas.",
   openGraph: {
     title: "Clínica Bar Muscle Up & Handstand Walk | Paty Moura & Chan",
     description:

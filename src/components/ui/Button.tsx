@@ -9,7 +9,7 @@ type Props = {
   variant?: "primary" | "ghost" | "lime";
   className?: string;
   onClick?: () => void;
-  /** Abre em outra aba (grupo do WhatsApp, redes) — já com rel de segurança. */
+  /** Abre em outra aba (Asaas, redes) — já com rel de segurança. */
   external?: boolean;
 };
 

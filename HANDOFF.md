@@ -2,6 +2,22 @@
 
 **Status: filé / 100%** no `main` @ `cf9643e`.
 
+## Valores em lote — 19/08/2026
+
+Pacote único BMU + HSW, três lotes. Inscrição deixou de ser o grupo do
+WhatsApp: todo CTA de vaga vai para o Asaas do lote **acessível**.
+
+| Lote | Valor | Checkout | No site |
+|------|-------|----------|---------|
+| 1º | R$ 220 | https://www.asaas.com/c/d0cxzkkhsxw2fvzy | **Atual** — até 31/08 ou até preencher as vagas |
+| 2º | R$ 230 | https://www.asaas.com/c/vx52t5dqas0ekm5b | **Indisponível** — URL **não** entra no JS do cliente |
+| 3º | R$ 240 | (ainda sem) | **Em breve, maiores informações** |
+
+Para abrir o 2º lote: `current` + `accessible` nele, `paymentUrl` colado **só**
+nesse objeto, e o 1º com `current`/`accessible` false **sem** o URL antigo se
+não quiserem mais vender aquele checkout. `checkoutHref()` é a trava: lote
+sem `accessible` nunca vira `<a href>`.
+
 Master: `/Volumes/Dados/Projetos/CFA-HANDOFF.md`
 
 ## ⚠️ Troca de evento (03/08/2026)

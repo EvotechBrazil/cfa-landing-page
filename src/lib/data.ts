@@ -34,6 +34,10 @@ export const event = {
  * ⚠️ `whatsappGroupUrl` é o único lugar para colar o link do grupo. Enquanto
  * estiver vazio, o site esconde o botão sozinho e mostra só a contagem: melhor
  * não ter botão do que ter um que leva a lugar nenhum.
+ *
+ * O grupo deixou de ser o destino da inscrição em 19/08 — o pagamento é o
+ * Asaas do lote acessível (`checkoutHref`). O link fica aqui caso o gestor
+ * ainda use o grupo para aviso; nenhum CTA de vaga aponta para ele.
  */
 export const enrollment = {
   /** Data/hora da abertura em horário de Brasília (o -03:00 é obrigatório:
@@ -44,16 +48,86 @@ export const enrollment = {
 };
 
 /**
- * Destino de TODO botão de inscrição do site (header, hero, preço, rodapé e a
- * barra fixa): o grupo do WhatsApp.
+ * Pacote único (BMU + HSW) em três lotes.
+ *
+ * Só o lote `current` e `accessible` vira botão de pagar. O URL de checkout
+ * **não** pode existir no objeto de um lote inacessível — iria para o JS do
+ * cliente e qualquer um abriria o Asaas.
+ *
+ * 2º lote (R$ 230) tem checkout pronto, mas o URL mora só no HANDOFF até o
+ * 1º encerrar. 3º lote ainda sem checkout: "em breve, maiores informações".
+ *
+ * Ao passar de lote: (1) `current`/`accessible` no lote novo (2) colar o
+ * `paymentUrl` só nesse lote. Mexer só no `current` mostra um preço e cobra outro.
+ */
+export const pricing = {
+  lot1Rule: "1º lote até 31/08 ou até o preenchimento de todas as vagas.",
+  lots: [
+    {
+      n: 1,
+      label: "1º lote",
+      price: 220,
+      priceLabel: "R$ 220",
+      current: true,
+      accessible: true,
+      paymentUrl: "https://www.asaas.com/c/d0cxzkkhsxw2fvzy",
+      eyebrow: "Lote atual",
+      note: "Até 31/08 ou até preencher as vagas",
+    },
+    {
+      n: 2,
+      label: "2º lote",
+      price: 230,
+      priceLabel: "R$ 230",
+      current: false,
+      accessible: false,
+      eyebrow: "Próximo lote",
+      note: "Indisponível",
+    },
+    {
+      n: 3,
+      label: "3º lote",
+      price: 240,
+      priceLabel: "R$ 240",
+      current: false,
+      accessible: false,
+      eyebrow: "Último lote",
+      note: "Em breve, maiores informações",
+    },
+  ],
+  includes: [
+    "Clínica Bar Muscle Up completa",
+    "Clínica Handstand Walk completa",
+    "Progressões solo → suspenso → invertido",
+    "Trabalho de mobilidade, core e grip",
+    "Orientações técnicas com Paty Moura e Chan (i.R.C)",
+  ],
+};
+
+export const currentLot =
+  pricing.lots.find((lot) => lot.current) ?? pricing.lots[0];
+
+/** Só devolve o Asaas se o lote estiver liberado — nunca vaza href bloqueado. */
+export function checkoutHref(lot: {
+  accessible: boolean;
+  paymentUrl?: string;
+}) {
+  if (!lot.accessible || !lot.paymentUrl) return undefined;
+  return lot.paymentUrl;
+}
+
+/**
+ * Destino de TODO botão de inscrição do site (header, hero, preço e a
+ * barra fixa): o checkout do Asaas do lote atual, se estiver acessível.
  *
  * Use com spread — `<Button {...ctaInscricao}>` — para não espalhar o link
- * pelos componentes. Sem link configurado, cai para a seção de inscrição da
- * própria página: um `href` vazio deixaria o botão morto.
+ * pelos componentes. Sem checkout liberado, cai para a seção de inscrição.
  */
-export const ctaInscricao = enrollment.whatsappGroupUrl
-  ? { href: enrollment.whatsappGroupUrl, external: true }
-  : { href: "#inscricao", external: false };
+const checkoutAtual = checkoutHref(currentLot);
+
+export const ctaInscricao = checkoutAtual
+  ? { href: checkoutAtual, external: true as const }
+  : { href: "#inscricao", external: false as const };
 
 export const stats = [
   { value: "02", label: "Clínicas técnicas" },
@@ -198,6 +272,10 @@ export const speakers = {
 };
 
 export const faq = [
+  {
+    q: "Quanto custa e como pago?",
+    a: "O pacote das duas clínicas sai em três lotes. O 1º lote é R$ 220, até 31/08 ou até o preenchimento de todas as vagas — pagamento online pelo botão de inscrição. O 2º lote (R$ 230) ainda não está liberado. O 3º lote: em breve, maiores informações.",
+  },
   {
     q: "Preciso já fazer bar muscle up ou handstand walk?",
     a: "Não. As clínicas partem de mobilidade, core e base de força. Se você já executa o movimento, aprofunda técnica e eficiência.",

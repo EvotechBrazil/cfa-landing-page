@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Button } from "@/components/ui/Button";
-import { course, ctaInscricao } from "@/lib/data";
+import { course, ctaInscricao, currentLot } from "@/lib/data";
 
 export function StickyCTA() {
   const [show, setShow] = useState(false);
@@ -36,7 +36,7 @@ export function StickyCTA() {
                 {course.subtitle}
               </p>
               <p className="truncate text-xs text-white/45">
-                {course.brand} · {course.partnerShort}
+                {currentLot.label} · {currentLot.priceLabel} · {course.partnerShort}
               </p>
             </div>
             <Button {...ctaInscricao} className="!px-5 !py-2.5 shrink-0">

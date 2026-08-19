@@ -1,7 +1,14 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { enrollment, event } from "@/lib/data";
+import {
+  course,
+  ctaInscricao,
+  currentLot,
+  enrollment,
+  event,
+  pricing,
+} from "@/lib/data";
 import { Button } from "@/components/ui/Button";
 
 const ABERTURA = new Date(enrollment.opensAt).getTime();
@@ -91,7 +98,7 @@ export function Countdown({
 
   const compacto = variant === "hero";
   const aberto = restante?.aberto ?? false;
-  const temGrupo = Boolean(enrollment.whatsappGroupUrl);
+  const temPagamento = Boolean(ctaInscricao.external && ctaInscricao.href);
 
   const chamada = aberto
     ? "Inscrições abertas"
@@ -123,10 +130,8 @@ export function Countdown({
     </div>
   );
 
-  const botao = temGrupo ? (
-    <Button href={enrollment.whatsappGroupUrl} external>
-      Entrar no grupo do WhatsApp
-    </Button>
+  const botao = temPagamento ? (
+    <Button {...ctaInscricao}>{course.cta}</Button>
   ) : null;
 
   /**
@@ -163,14 +168,14 @@ export function Countdown({
             </span>
           )}
 
-          {temGrupo ? (
+          {temPagamento ? (
             <a
-              href={enrollment.whatsappGroupUrl}
+              href={ctaInscricao.href}
               target="_blank"
               rel="noopener noreferrer"
               className="text-[11px] font-semibold uppercase tracking-[0.12em] text-white/70 underline decoration-accent/60 underline-offset-4 transition-colors hover:text-white"
             >
-              Entrar no grupo
+              {currentLot.priceLabel} · garantir vaga
             </a>
           ) : null}
         </div>
@@ -212,14 +217,24 @@ export function Countdown({
         </p>
 
         <p className="mx-auto mt-3 max-w-lg text-sm leading-relaxed text-white/60 sm:text-base">
-          A inscrição acontece pelo <strong className="text-white">grupo do WhatsApp</strong>.
-          {/* Sem link, o texto não pode mandar ninguém "entrar agora" — não há
-              para onde ir. */}
-          {!temGrupo
-            ? " O link do grupo será divulgado aqui em instantes."
+          A inscrição é pelo <strong className="text-white">pagamento online</strong>
+          {currentLot.current ? (
+            <>
+              , no valor de{" "}
+              <strong className="text-white">{currentLot.priceLabel}</strong>.{" "}
+              {pricing.lot1Rule}
+            </>
+          ) : (
+            <>
+              . {currentLot.label}:{" "}
+              <strong className="text-white">{currentLot.priceLabel}</strong>.
+            </>
+          )}
+          {!temPagamento
+            ? " O link de pagamento será divulgado aqui em instantes."
             : aberto
-              ? " Entre no grupo para garantir a sua vaga."
-              : " Entre agora e receba o aviso no momento da abertura."}
+              ? " Pague agora para garantir a sua vaga."
+              : " O checkout abre junto com as inscrições."}
         </p>
 
         {botao ? <div className="mt-8">{botao}</div> : null}

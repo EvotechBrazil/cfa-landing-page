@@ -1,0 +1,4 @@
+- 2026-08-19 | decisão | Inscrição da clínica passa a ser Asaas, não o grupo do WhatsApp — gestor mandou checkout e lotes 220/230/240
+- 2026-08-19 | decisão | 1º lote R$ 220 até 31/08 ou até preencher as vagas; checkout https://www.asaas.com/c/d0cxzkkhsxw2fvzy
+- 2026-08-19 | decisão | 2º lote R$ 230 tem checkout https://www.asaas.com/c/vx52t5dqas0ekm5b mas fica indisponível — URL fora do JS do cliente (só HANDOFF) para ninguém acessar
+- 2026-08-19 | decisão | 3º lote R$ 240 sem checkout — no site: "em breve, maiores informações"
