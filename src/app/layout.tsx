@@ -1,19 +1,6 @@
 import type { Metadata } from "next";
-import { Bebas_Neue, DM_Sans, Inter, Oswald } from "next/font/google";
+import { Inter, Oswald } from "next/font/google";
 import "./globals.css";
-
-const display = Bebas_Neue({
-  weight: "400",
-  subsets: ["latin"],
-  variable: "--font-display",
-  display: "swap",
-});
-
-const body = DM_Sans({
-  subsets: ["latin"],
-  variable: "--font-body",
-  display: "swap",
-});
 
 const boxSans = Inter({
   subsets: ["latin"],
@@ -59,7 +46,7 @@ export default function RootLayout({
   return (
     <html
       lang="pt-BR"
-      className={`${display.variable} ${body.variable} ${boxSans.variable} ${boxDisplay.variable} h-full antialiased`}
+      className={`${boxSans.variable} ${boxDisplay.variable} h-full antialiased`}
     >
       <body className="min-h-full">{children}</body>
     </html>
